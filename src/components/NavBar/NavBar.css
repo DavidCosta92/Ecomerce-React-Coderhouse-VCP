@@ -1,0 +1,29 @@
+.containerNav{
+    width: 100%;
+    margin: 10px auto 0 auto;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+.material-icons {
+    font-size: 40px;
+}
+
+a.nav-link:hover {
+    cursor: pointer;
+    box-shadow: 2px 1px 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+.material-icons:hover{
+    cursor: pointer;
+    box-shadow: 2px 1px 2px 3px rgba(0, 0, 0, 0.3);
+}
+
+.containerNav img{
+    border-radius: 2px;
+    padding-left: 10px;
+}
+
+.brandTitle{
+    font-weight: 900;
+    font-style: italic;
+}
