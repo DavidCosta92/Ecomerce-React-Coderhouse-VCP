@@ -1,13 +1,15 @@
 import "./Products.css";
+import ItemCounter from "./ItemCount/ItemCount";
 
-const Products=({titulo, precio, src, description, textoAlt}) =>{
+const Products=({titulo, precio, src, description, textoAlt, stockDisponible}) =>{
     return(
         <div className="productCard">
             <p className="tituloProducto">{titulo}</p>
             <img src={`./assets/imagenes/products/${src}`} alt={textoAlt}/>
             <p className="productPrice">${precio}</p>
-            <button className="btnBuy">¡Comprar!</button> 
             <p className="productDescription">{description}</p>
+            <ItemCounter stockDisponible={stockDisponible}/>
+            <button className="btnBuy">Agregar!</button> 
         </div>
     )
 }

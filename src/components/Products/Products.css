@@ -22,13 +22,21 @@
 }
 
 .btnBuy{
-    background-color: rgba(81, 163, 4, 0.712);
+    background-color: rgba(20, 100, 211, 0.7);
     border-radius: 10px;
+    margin-bottom: 10px;
+    width: 50%;
     padding: 4px;
     font-weight: 500;
     color:white;
     border: none;
 
+}
+.btnBuy:hover{
+    transform: scale(1.04);
+}
+.btnBuy:active{
+    background-color: rgb(20, 100, 211);
 }
 
 p.productDescription {
