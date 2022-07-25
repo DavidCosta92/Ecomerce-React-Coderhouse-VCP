@@ -30,13 +30,10 @@ const ItemListContainer=({tipoProductos})=>{
             })
             .catch((error)=>{
             console.log("llamada a mock fallo")
-            console.log("agregar un alert o algo parecido que diga error")
+            /* agregar spiner o barra de carga, detalle estetico que diga que esta cargando....  */
             })
     }, [])
     
-
-
-
     return(
         <div>
             <p className="tituloProductoContainer">{tipoProductos}</p> 
