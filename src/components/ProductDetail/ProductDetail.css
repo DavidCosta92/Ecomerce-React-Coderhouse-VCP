@@ -1,0 +1,17 @@
+.productDetails{
+    background-color: rgba(151, 151, 151, 0.1);
+    box-shadow: 3px 3px 2px 1px rgba(0, 0, 0, 0.2);
+    border:none;
+    margin-top: 20px;
+    border-radius: 10px;    
+}
+
+.productDetails .productDescriptionExtra{
+    padding: 5px;
+}
+
+.productDetails .stockDisponible{
+    color: gray;
+    text-align: right;
+    padding-right: 10px;
+}

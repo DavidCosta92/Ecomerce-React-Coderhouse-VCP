@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import ItemList from "../ItemList/ItemList";
-import "./ItemListContainer.css"
+import ProductDetailItem from "../ProductDetail/ProductDetailItem/ProductDetailItem";
 
 import ProductsMock from "../Products/ProductsMock";
 
-const ItemListContainer=({tipoProductos})=>{
+
+const ProductsDetailContainer=({idProduct})=>{
 
     const [listProducts, setListProducts] = useState([]);   
     useEffect(()=>{
@@ -29,12 +29,11 @@ const ItemListContainer=({tipoProductos})=>{
     
     return(
         <div>
-            <p className="tituloProductoContainer">{tipoProductos}</p> 
             <div className="productContainer">
-                <ItemList dataProducts={listProducts}/>
+                <ProductDetailItem dataProducts={listProducts} idProduct={idProduct}/>
             </div>
         </div>
     )
 }
 
-export default ItemListContainer;
+export default ProductsDetailContainer;
