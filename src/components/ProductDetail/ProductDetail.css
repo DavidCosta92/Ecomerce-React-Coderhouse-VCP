@@ -1,17 +1,58 @@
 .productDetails{
-    background-color: rgba(151, 151, 151, 0.1);
-    box-shadow: 3px 3px 2px 1px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.592);
+    box-shadow: 2px 2px 1px 1px rgba(0, 0, 0, 0.136);
     border:none;
     margin-top: 20px;
-    border-radius: 10px;    
+    border-radius: 10px; 
+
+    width: 80vw;
+}
+.productDetails .productCard{
+    max-width: 70vw;
+    margin: auto;
+}
+.productDetails .swiper {
+    max-width: 500px;
+}
+
+.productDetails .tituloProducto{
+    font-size: 2.1rem;
+    margin-top: 1rem;
+}
+
+.productDetails .productPrice{
+    font-size: 1.8rem;
+    margin-top: 1rem;
 }
 
 .productDetails .productDescriptionExtra{
     padding: 5px;
+    font-size: 1.5rem;
+    margin-top: 1rem;
 }
 
 .productDetails .stockDisponible{
     color: gray;
     text-align: right;
+    margin-top: 10px;
     padding-right: 10px;
+}
+
+.productDetails .talles p{
+    color: gray;
+    margin-bottom: 0;
+}
+.productDetails .talles .btnsTalles button{ 
+    width: 35px;
+    height: 35px;
+    background-color: transparent;
+    font-weight: 600;
+    border-radius: 5px;
+    margin: 2px;
+}
+.productDetails .talles .btnsTalles button:hover, .productDetails .talles .btnsTalles button:focus{
+    transform: scale(1.25);
+    font-weight: 800;
+    background-color: black;
+    color: white;
 }

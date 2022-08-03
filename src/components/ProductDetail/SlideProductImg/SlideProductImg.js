@@ -8,7 +8,7 @@ import { EffectFade, Navigation, Pagination } from "swiper";
 import "./SlideProductImg.css"
 
 
-const SlideProductImg = ({a,b,c, textoAlt})=>{
+const SlideProductImg = ({a,b,c, d, textoAlt})=>{
     return (
         <>
         <Swiper
@@ -24,16 +24,16 @@ const SlideProductImg = ({a,b,c, textoAlt})=>{
           className="mySwiper"
         >
           <SwiperSlide className="swiperslide">
-            <img src={`./assets/imagenes/products/${a}`} alt={textoAlt} />
+            <img src={`../assets/imagenes/products/${a}`} alt={textoAlt} />
           </SwiperSlide >
           <SwiperSlide className="swiperslide">
-            <img src={`./assets/imagenes/products/${b}`} alt={textoAlt} />
+            <img src={`../assets/imagenes/products/${b}`} alt={textoAlt} />
           </SwiperSlide>
           <SwiperSlide className="swiperslide">
-            <img src={`./assets/imagenes/products/${c}`} alt={textoAlt} />
+            <img src={`../assets/imagenes/products/${c}`} alt={textoAlt} />
           </SwiperSlide>
           <SwiperSlide className="swiperslide">
-            <img src={`./assets/imagenes/products/${b}`} alt={textoAlt} />
+            <img src={`../assets/imagenes/products/${d}`} alt={textoAlt} />
           </SwiperSlide>
         </Swiper>
       </>

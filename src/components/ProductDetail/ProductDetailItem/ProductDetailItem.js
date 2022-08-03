@@ -5,7 +5,6 @@ const ProductDetailItem = ({dataProducts, idProduct})=>{
         <>
            {dataProducts.map((product)=>{
             if(product.id==idProduct) return <ProductDetail key={idProduct} data={product}/> 
-                
             })}
         </>
     )

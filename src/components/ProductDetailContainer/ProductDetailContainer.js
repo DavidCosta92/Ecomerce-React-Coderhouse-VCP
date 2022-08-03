@@ -9,14 +9,9 @@ const ProductsDetailContainer=({idProduct})=>{
     const [listProducts, setListProducts] = useState([]);   
     useEffect(()=>{
         const getProducts= new Promise( (resolve, reject) =>{
-            setTimeout(()=>{
-    
-    /* agregar spiner o barra de carga, detalle estetico que diga que esta cargando....  */
-    
-                resolve(ProductsMock)
-            },2000)
+            resolve(ProductsMock)
         })
-
+        
         getProducts
             .then( (response)=>{
                 setListProducts(response);

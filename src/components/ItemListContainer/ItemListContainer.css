@@ -1,11 +1,15 @@
 .productContainer{
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
+}
+.productContainer a{
+    text-decoration: none;
 }
 
-
 .tituloProductoContainer{
-    font-size: 1.2rem;
+    font-size: 2rem;
     text-align: center;
     font-weight: 800;
+    color: rgba(0, 0, 0, 0.8);
 }

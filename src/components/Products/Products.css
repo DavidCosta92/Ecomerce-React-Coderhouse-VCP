@@ -1,42 +1,50 @@
 .productCard{
     text-align: center;
-    width: 95%;
     margin: auto;
-    margin-bottom: 20px;
-    border: groove;
-    max-width: 350px;
+    margin-bottom: 40px;
+    border: none;
+    max-width: 50vw;
+    color: black;
 }
 .productCard .tituloProducto{
-    font-size: 1.2rem;
-    font-weight: 800;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 10px;
 }
 
 .productCard img{
     max-width: 300px;
+    object-fit: cover;
+}
+.productCard img:hover{
+    transform: scale(1.05);
 }
 
 .productPrice{
+    margin-top: 10px;
     font-style: italic;
-    font-size: 1.1 rem;
     font-weight: 700;
+    font-size: 1.3rem;
 }
 
 .btnBuy{
-    background-color: rgba(20, 100, 211, 0.7);
+    background-color: rgba(19, 19, 20, 0.7);
     border-radius: 10px;
     margin-bottom: 10px;
-    width: 50%;
+    width: 30%;
     padding: 4px;
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 1.1rem;
     color:white;
     border: none;
 
 }
 .btnBuy:hover{
-    transform: scale(1.04);
+    transform: scale(1.1);
 }
-.btnBuy:active{
-    background-color: rgb(20, 100, 211);
+.btnBuy:active, .btnBuy:focus{
+    background-color: rgba(19, 19, 20, 0.1);
 }
 
 p.productDescription {
