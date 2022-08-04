@@ -1,11 +1,11 @@
 import "./ItemCount.css";
 import { useState } from "react";
 
-const ItemCounter=({stockDisponible})=>{
+const ItemCounter=({stock})=>{
     const [ItemCounter, setItemCounter]= useState(1);
 
     const sumarUnidad = ()=>{
-        if(ItemCounter<stockDisponible) setItemCounter(ItemCounter+1);
+        if(ItemCounter<stock) setItemCounter(ItemCounter+1);
 
     }
     const restarUnidad = ()=>{

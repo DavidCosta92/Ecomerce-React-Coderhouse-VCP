@@ -17,13 +17,13 @@ const Navv=()=>{
                     <Nav.Link><Link to="/" className='txtNav'>Home</Link></Nav.Link>
                     <Nav.Link><Link to="/aboutUs" className='txtNav'>About Us</Link></Nav.Link>
                     <NavDropdown title="Categorias" id="basic-nav-dropdown">
-                    <NavDropdown.Item><Link to="/categorias/verTodo" className='txtNav'>Ver todo</Link></NavDropdown.Item>
-                    <NavDropdown.Item ><Link to="/categorias/Pantalones" className='txtNav'>Pantalones</Link></NavDropdown.Item>
-                    <NavDropdown.Item ><Link to="/categorias/Camperas" className='txtNav'>Camperas</Link></NavDropdown.Item>
-                    <NavDropdown.Item ><Link to="/categorias/Remeras" className='txtNav'>Remeras</Link></NavDropdown.Item>
+                    <NavDropdown.Item><Link to="/categories/verTodo" className='txtNav'>Ver todo</Link></NavDropdown.Item>
+                    <NavDropdown.Item ><Link to="/categories/Pantalones" className='txtNav'>Pantalones</Link></NavDropdown.Item>
+                    <NavDropdown.Item ><Link to="/categories/Camperas" className='txtNav'>Camperas</Link></NavDropdown.Item>
+                    <NavDropdown.Item ><Link to="/categories/Remeras" className='txtNav'>Remeras</Link></NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Item>
-                    <Link to="/categorias/Ofertas" className='txtNav'> Ofertas</Link>
+                    <Link to="/categories/Ofertas" className='txtNav'> Ofertas</Link>
                     </NavDropdown.Item>
                     </NavDropdown>
                 </Nav>

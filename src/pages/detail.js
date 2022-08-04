@@ -1,4 +1,3 @@
-import ProductDetail from "../components/ProductDetail/ProductDetail";
 import ProductsDetailContainer from "../components/ProductDetailContainer/ProductDetailContainer";
 import {useParams} from "react-router-dom"
 const Detail =()=>{

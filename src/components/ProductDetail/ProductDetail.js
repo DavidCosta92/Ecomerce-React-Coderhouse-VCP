@@ -4,13 +4,13 @@ import SlideProductImg from "../SlideProductImg/SlideProductImg";
 
 
 const ProductDetail=({data}) =>{
-    const {titulo, precio, srcA, srcB, srcC,srcD , description, textoAlt, stockDisponible,descriptionExtra} =data;
+    const {title, price, srcA, srcB, srcC,srcD , description, textoAlt, stock,descriptionExtra} =data;
     return(
         <div className="productCard productDetails">
-            <p className="tituloProducto">{titulo}</p>
+            <p className="tituloProducto">{title}</p>
             <p className="productDescription">{description}</p>
             <SlideProductImg a={srcA} b={srcB} c={srcC} d={srcD}  textoAlt={textoAlt} />
-            <p className="productPrice">${precio}</p>
+            <p className="productPrice">${price}</p>
             <p className="productDescriptionExtra">{descriptionExtra}</p>
             <div className="talles">
                 <p>Elegi tu talle</p>
@@ -22,8 +22,8 @@ const ProductDetail=({data}) =>{
                     <button>XL</button>
                 </div>
             </div>
-            <p className="stockDisponible">Stock disponible: {stockDisponible}</p>
-            <ItemCounter stockDisponible={stockDisponible}/>
+            <p className="stockDisponible">Stock disponible: {stock}</p>
+            <ItemCounter stock={stock}/>
             <button className="btnBuy">Agregar!</button> 
         </div>
     )

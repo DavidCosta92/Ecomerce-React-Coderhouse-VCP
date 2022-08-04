@@ -3,7 +3,7 @@ import ItemList from "../ItemList/ItemList";
 import "./ItemListContainer.css"
 import ProductsMock from "../Products/ProductsMock";
 
-const ItemListContainer=({categoria})=>{
+const ItemListContainer=({category})=>{
     const [listProducts, setListProducts] = useState([]);   
     useEffect(()=>{
         const getProducts= new Promise( (resolve, reject) =>{
@@ -26,20 +26,20 @@ const ItemListContainer=({categoria})=>{
             })
     }, [])
 
-    let titulo;
-    categoria=="verTodo"? titulo="Todos nuestros productos":titulo=categoria;
+    let title;
+    category=="verTodo"? title="Todos nuestros productos":title=category;
 
 
     let productosFiltrados=listProducts;
-    if(categoria!="verTodo") productosFiltrados= listProducts.filter((producto)=> producto.categoria===categoria);
-    if(categoria=="Ofertas") productosFiltrados=listProducts.filter((producto)=> producto.oferta===true);
+    if(category!="verTodo") productosFiltrados= listProducts.filter((producto)=> producto.category===category);
+    if(category=="Ofertas") productosFiltrados=listProducts.filter((producto)=> producto.oferta===true);
 
 
 
 
     return(
         <div>
-            <p className="tituloProductoContainer">{titulo}</p>
+            <p className="tituloProductoContainer">{title}</p>
             <div className="productContainer">                
                 <ItemList listProducts={productosFiltrados}/>
             </div>

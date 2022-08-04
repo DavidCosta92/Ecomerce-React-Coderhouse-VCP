@@ -1,5 +1,5 @@
 
-const Nosotros =()=>{
+const AboutUs =()=>{
     return (
         <div>
             <h1>BREVE HISTORIA DE LA MARCA</h1>
@@ -8,4 +8,4 @@ const Nosotros =()=>{
         </div>
     )
 }
-export default Nosotros;
+export default AboutUs;

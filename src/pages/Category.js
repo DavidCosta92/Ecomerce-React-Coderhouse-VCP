@@ -1,11 +1,11 @@
 import ItemListContainer from "../components/ItemListContainer/ItemListContainer";
 import { useParams } from "react-router-dom";
-const Categorias =()=>{    
-    const {categoriaElegida} = useParams();
+const Categories =()=>{    
+    const {category} = useParams();
     return (
         <div>
-            <ItemListContainer categoria={categoriaElegida}/>
+            <ItemListContainer category={category}/>
         </div>
     )
 }
-export default Categorias;
+export default Categories;
