@@ -29,11 +29,19 @@ const ItemListContainer=({categoria})=>{
     let titulo;
     categoria=="verTodo"? titulo="Todos nuestros productos":titulo=categoria;
 
+
+    let productosFiltrados=listProducts;
+    if(categoria!="verTodo") productosFiltrados= listProducts.filter((producto)=> producto.categoria===categoria);
+    if(categoria=="Ofertas") productosFiltrados=listProducts.filter((producto)=> producto.oferta===true);
+
+
+
+
     return(
         <div>
             <p className="tituloProductoContainer">{titulo}</p>
             <div className="productContainer">                
-                <ItemList listProducts={listProducts} categoria={categoria}/>
+                <ItemList listProducts={productosFiltrados}/>
             </div>
         </div>
     )

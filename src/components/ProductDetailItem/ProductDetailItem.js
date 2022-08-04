@@ -1,4 +1,4 @@
-import ProductDetail from "../ProductDetail";
+import ProductDetail from "../ProductDetail/ProductDetail";
 
 const ProductDetailItem = ({dataProducts, idProduct})=>{
     return(

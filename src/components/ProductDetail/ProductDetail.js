@@ -1,6 +1,6 @@
 import "./ProductDetail.css";
 import ItemCounter from "../Products/ItemCount/ItemCount";
-import SlideProductImg from "./SlideProductImg/SlideProductImg";
+import SlideProductImg from "../SlideProductImg/SlideProductImg";
 
 
 const ProductDetail=({data}) =>{

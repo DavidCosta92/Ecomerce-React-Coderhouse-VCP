@@ -7,7 +7,7 @@ import Categorias from './pages/categorias';
 import Nosotros from './pages/nosotros';
 import Error404 from './pages/error404';
 import Detail from './pages/detail.js';
-
+import Footer from './components/Footer/Footer';
 
 function App() {
   
@@ -22,7 +22,7 @@ function App() {
           <Route path='/aboutUs' element={<Nosotros/>}/>
           <Route path='*' element={<Error404/>}/>
         </Routes>
-        
+        <Footer/>
       </div>
     </BrowserRouter>
 

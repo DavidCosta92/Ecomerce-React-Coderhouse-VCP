@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import ProductDetailItem from "../ProductDetail/ProductDetailItem/ProductDetailItem";
+import ProductDetailItem from "../ProductDetailItem/ProductDetailItem";
 
 import ProductsMock from "../Products/ProductsMock";
 
