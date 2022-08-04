@@ -1,5 +1,5 @@
 import "./ProductDetail.css";
-import ItemCounter from "../Products/ItemCount/ItemCount";
+import ItemCounter from "../ItemCount/ItemCount";
 import SlideProductImg from "../SlideProductImg/SlideProductImg";
 
 
