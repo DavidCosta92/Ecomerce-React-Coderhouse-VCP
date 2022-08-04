@@ -2,7 +2,7 @@ const ProductsMock=[
     {
         id:1,
         titulo:"Parka Evans Black",
-        categoria:"campera",
+        categoria:"Camperas",
         precio:23990,
         srcA:"camperas/1/campera1.webp",
         srcB:"camperas/1/campera2.webp",
@@ -10,12 +10,13 @@ const ProductsMock=[
         srcD:"camperas/1/campera4.webp",
         descriptionExtra: "Parka pesada de gabardina, forrada en toda la parte interna de la campera. Peluche y capucha desmontable. Tela Gabardina",
         textoAlt:"Parka Evans Black",
-        stockDisponible:10
+        oferta:true,
+        stockDisponible:10        
     },
     {
         id:2,
         titulo:"Piloto SAS negro",
-        categoria:"campera",
+        categoria:"Camperas",
         precio:149990,
         srcA:"camperas/2/campera1.webp",
         srcB:"camperas/2/campera2.webp",
@@ -23,12 +24,13 @@ const ProductsMock=[
         srcD:"camperas/2/campera4.webp",
         descriptionExtra: "Piloto con botones y capucha - tela Cuerina/Engomado.",
         textoAlt:"Piloto SAS negro",
+        oferta:true,
         stockDisponible:5
     },
     {
         id:3,
         titulo:"Kubor black 17",
-        categoria:"campera",
+        categoria:"Camperas",
         precio:16990,
         srcA:"camperas/3/campera1.webp",
         srcB:"camperas/3/campera2.webp",
@@ -36,12 +38,13 @@ const ProductsMock=[
         srcD:"camperas/3/campera4.webp",
         descriptionExtra: "Campera rompevientos gruesa, forrada con red de microfibra. Capucha incorporada en cartera en cuello con snap oculto en interior. Puños y cintura tejida.",
         textoAlt:"Kubor black 17",
+        oferta:false,
         stockDisponible:7
     },
     {
         id:4,
         titulo:"Orbson black",
-        categoria:"campera",
+        categoria:"Camperas",
         precio:19900,
         srcA:"camperas/4/campera1.webp",
         srcB:"camperas/4/campera2.webp",
@@ -49,12 +52,13 @@ const ProductsMock=[
         srcD:"camperas/4/campera4.webp",
         descriptionExtra: "Campera de material Softshell, con todo el interior y capucha de polar. Puños tejidos con trampa de nieve en ellos y cierres termosellados. Importada",
         textoAlt:"Orbson black",
+        oferta:false,
         stockDisponible:10
     },
     {
         id:5,
         titulo:"Robby Celeste",
-        categoria:"campera",
+        categoria:"Camperas",
         precio:7490,
         srcA:"camperas/5/campera1.webp",
         srcB:"camperas/5/campera2.webp",
@@ -62,12 +66,13 @@ const ProductsMock=[
         srcD:"camperas/5/campera4.webp",
         descriptionExtra: "Campera de algodón rustico con cierre y capucha - tela algodón.",
         textoAlt:"Robby Celeste",
+        oferta:true,
         stockDisponible:17
     },
     {
         id:6,
         titulo:"Jean Curtis Dark Blue",
-        categoria:"pantalon",
+        categoria:"Pantalones",
         precio:8490,
         srcA:"pantalones/1/pantalon1.webp",
         srcB:"pantalones/1/pantalon2.webp",
@@ -75,12 +80,13 @@ const ProductsMock=[
         srcD:"pantalones/1/pantalon4.webp",
         descriptionExtra: "Jean Slim-Fit elastizado.",
         textoAlt:"Jean Curtis Dark Blue",
+        oferta:true,
         stockDisponible:12
     },
     {
         id:7,
         titulo:"Jean Floyd Azul",
-        categoria:"pantalon",
+        categoria:"Pantalones",
         precio:8490,
         srcA:"pantalones/2/pantalon1.webp",
         srcB:"pantalones/2/pantalon2.webp",
@@ -88,12 +94,13 @@ const ProductsMock=[
         srcD:"pantalones/2/pantalon4.webp",
         descriptionExtra: "Jean Slim-Fit elastizado. Ultra-Slim.",
         textoAlt:"Jean Floyd Azul",
+        oferta:false,
         stockDisponible:16
     },
     {
         id:8,
         titulo:"Jean Floyd Chunk Azul",
-        categoria:"pantalon",
+        categoria:"Pantalones",
         precio:7490,
         srcA:"pantalones/3/pantalon1.webp",
         srcB:"pantalones/3/pantalon2.webp",
@@ -101,12 +108,13 @@ const ProductsMock=[
         srcD:"pantalones/3/pantalon4.webp",
         descriptionExtra: "Jean Slim-Fit elastizado con rotura. Ultra-Slim.",
         textoAlt:"Jean Floyd Chunk Azul",
+        oferta:false,
         stockDisponible:4
     },
     {
         id:9,
         titulo:"Jean Floyd Chunk Grey",
-        categoria:"pantalon",
+        categoria:"Pantalones",
         precio:8990,
         srcA:"pantalones/4/pantalon1.webp",
         srcB:"pantalones/4/pantalon2.webp",
@@ -114,12 +122,13 @@ const ProductsMock=[
         srcD:"pantalones/4/pantalon4.webp",
         descriptionExtra: "Jean Slim-Fit elastizado con rotura. Ultra-Slim.",
         textoAlt:"Jean Floyd Chunk Grey",
+        oferta:true,
         stockDisponible:11
     },
     {
         id:10,
         titulo:"JogChino Gabardina Camel",
-        categoria:"pantalon",
+        categoria:"Pantalones",
         precio:8490,
         srcA:"pantalones/5/pantalon1.webp",
         srcB:"pantalones/5/pantalon2.webp",
@@ -127,12 +136,13 @@ const ProductsMock=[
         srcD:"pantalones/5/pantalon4.webp",
         descriptionExtra: "Jogging de gabardina con corte Chino (media estación).",
         textoAlt:"JogChino Gabardina Camel",
+        oferta:true,
         stockDisponible:2
     },
     {
         id:11,
         titulo:"Remera Basic Negra",
-        categoria:"remera",
+        categoria:"Remeras",
         precio:3400,
         srcA:"remeras/1/remera1.webp",
         srcB:"remeras/1/remera2.webp",
@@ -140,12 +150,13 @@ const ProductsMock=[
         srcD:"remeras/1/remera4.webp",
         descriptionExtra: "Remera corte básico lisa - Tela algodón.",
         textoAlt:"Remera Basic Negra",
+        oferta:false,
         stockDisponible:17
     },
     {
         id:12,
         titulo:"Remera Basket Beige",
-        categoria:"remera",
+        categoria:"Remeras",
         precio:3590,
         srcA:"remeras/2/remera1.webp",
         srcB:"remeras/2/remera2.webp",
@@ -153,13 +164,14 @@ const ProductsMock=[
         srcD:"remeras/2/remera4.webp",
         descriptionExtra: "Remera corte clásico con foto estampa - Tela algodón.",
         textoAlt:"Remera Basket Beige",
+        oferta:true,
         stockDisponible:14
     },
     
     {
         id:13,
         titulo:"Remera Basket Malbec",
-        categoria:"remera",
+        categoria:"Remeras",
         precio:3400,
         srcA:"remeras/3/remera1.webp",
         srcB:"remeras/3/remera2.webp",
@@ -167,13 +179,14 @@ const ProductsMock=[
         srcD:"remeras/3/remera4.webp",
         descriptionExtra: "Remera corte clásico con foto estampa - Tela algodón.",
         textoAlt:"Remera Basket Malbec",
+        oferta:false,
         stockDisponible:6
     },
     
     {
         id:14,
         titulo:"Remera Beach Vibes Aqua",
-        categoria:"remera",
+        categoria:"Remeras",
         precio:3790,
         srcA:"remeras/4/remera1.webp",
         srcB:"remeras/4/remera2.webp",
@@ -181,12 +194,13 @@ const ProductsMock=[
         srcD:"remeras/4/remera4.webp",
         descriptionExtra: "Remera corte básico con estampa - Tela algodón.",
         textoAlt:"Remera Beach Vibes Aqua",
+        oferta:true,
         stockDisponible:17
     },
     {
-        id:11,
+        id:15,
         titulo:"Remera Beach Vibes Celeste",
-        categoria:"remera",
+        categoria:"Remeras",
         precio:3790,
         srcA:"remeras/5/remera1.webp",
         srcB:"remeras/5/remera2.webp",
@@ -194,6 +208,7 @@ const ProductsMock=[
         srcD:"remeras/5/remera4.webp",
         descriptionExtra: "Remera corte básico con estampa - Tela algodón.",
         textoAlt:"Remera Beach Vibes Celeste",
+        oferta:false,
         stockDisponible:5
     },
 ]

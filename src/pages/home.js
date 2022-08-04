@@ -1,11 +1,8 @@
-import Ofertas from "./ofertas";
-import Categorias from "./categorias";
+import ItemListContainer from "../components/ItemListContainer/ItemListContainer";
 const Home =()=>{
     return (
         <div>
-            <Ofertas/>
-            <Categorias/>
-
+             <ItemListContainer categoria="Ofertas"/>
         </div>
     )
 }

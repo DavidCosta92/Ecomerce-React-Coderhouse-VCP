@@ -1,10 +1,10 @@
-import {useParams} from "react-router-dom"
-const Categorias =()=>{
-    const {categoria} =useParams();
-    console.log(categoria)
+import ItemListContainer from "../components/ItemListContainer/ItemListContainer";
+import { useParams } from "react-router-dom";
+const Categorias =()=>{    
+    const {categoriaElegida} = useParams();
     return (
         <div>
-            <h1>mi categoria es ver todos</h1>
+            <ItemListContainer categoria={categoriaElegida}/>
         </div>
     )
 }
