@@ -1,10 +1,15 @@
 import "./ProductDetail.css";
 import ItemCounter from "../ItemCount/ItemCount";
 import SlideProductImg from "../SlideProductImg/SlideProductImg";
+import { useState } from "react";
+import {Link} from "react-router-dom"
+import SizeSelector from "../SizeSelector/SizeSelector";
 
 
 const ProductDetail=({data}) =>{
     const {title, price, srcA, srcB, srcC,srcD , description, textoAlt, stock,descriptionExtra} =data;
+    const [unitsSelected, setUnitsSelected] = useState(0);
+    
     return(
         <div className="productCard productDetails">
             <p className="tituloProducto">{title}</p>
@@ -12,19 +17,11 @@ const ProductDetail=({data}) =>{
             <SlideProductImg a={srcA} b={srcB} c={srcC} d={srcD}  textoAlt={textoAlt} />
             <p className="productPrice">${price}</p>
             <p className="productDescriptionExtra">{descriptionExtra}</p>
-            <div className="talles">
-                <p>Elegi tu talle</p>
-                <div className="btnsTalles">
-                    <button>XS</button>
-                    <button>S</button>
-                    <button>M</button>
-                    <button>L</button>
-                    <button>XL</button>
-                </div>
-            </div>
+            <SizeSelector/>
+            
             <p className="stockDisponible">Stock disponible: {stock}</p>
-            <ItemCounter stock={stock}/>
-            <button className="btnBuy">Agregar!</button> 
+            {unitsSelected>0? <Link to="/cart"><button className="btnTerminarCompra">Terminar Compra</button></Link>:<ItemCounter stock={stock} unitsSelected={setUnitsSelected}/>}
+            
         </div>
     )
 }

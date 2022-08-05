@@ -1,0 +1,19 @@
+
+.talles p{
+    color: gray;
+    margin-bottom: 0;
+}
+.talles .btnsTalles button{ 
+    width: 35px;
+    height: 35px;
+    background-color: transparent;
+    font-weight: 600;
+    border-radius: 5px;
+    margin: 2px;
+}
+.talles .btnsTalles button:hover, .productDetails .talles .btnsTalles button:focus{
+    transform: scale(1.25);
+    font-weight: 800;
+    background-color: black;
+    color: white;
+}

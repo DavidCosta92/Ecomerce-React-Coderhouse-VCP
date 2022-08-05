@@ -38,20 +38,16 @@
     padding-right: 10px;
 }
 
-.productDetails .talles p{
-    color: gray;
-    margin-bottom: 0;
-}
-.productDetails .talles .btnsTalles button{ 
-    width: 35px;
-    height: 35px;
+.btnTerminarCompra{
     background-color: transparent;
     font-weight: 600;
     border-radius: 5px;
     margin: 2px;
+    padding: 10px 20px;
 }
-.productDetails .talles .btnsTalles button:hover, .productDetails .talles .btnsTalles button:focus{
-    transform: scale(1.25);
+
+.btnTerminarCompra:hover, .btnTerminarCompra:focus{
+    transform: scale(1.1);
     font-weight: 800;
     background-color: black;
     color: white;
