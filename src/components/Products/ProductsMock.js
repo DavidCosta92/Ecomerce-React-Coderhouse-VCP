@@ -11,6 +11,7 @@ const ProductsMock=[
         descriptionExtra: "Parka pesada de gabardina, forrada en toda la parte interna de la campera. Peluche y capucha desmontable. Tela Gabardina",
         textoAlt:"Parka Evans Black",
         oferta:true,
+        inCart:0,
         stock:10        
     },
     {
@@ -25,6 +26,7 @@ const ProductsMock=[
         descriptionExtra: "Piloto con botones y capucha - tela Cuerina/Engomado.",
         textoAlt:"Piloto SAS negro",
         oferta:true,
+        inCart:0,
         stock:5
     },
     {
@@ -39,6 +41,7 @@ const ProductsMock=[
         descriptionExtra: "Campera rompevientos gruesa, forrada con red de microfibra. Capucha incorporada en cartera en cuello con snap oculto en interior. Puños y cintura tejida.",
         textoAlt:"Kubor black 17",
         oferta:false,
+        inCart:0,
         stock:7
     },
     {
@@ -53,6 +56,7 @@ const ProductsMock=[
         descriptionExtra: "Campera de material Softshell, con todo el interior y capucha de polar. Puños tejidos con trampa de nieve en ellos y cierres termosellados. Importada",
         textoAlt:"Orbson black",
         oferta:false,
+        inCart:0,
         stock:10
     },
     {
@@ -67,6 +71,7 @@ const ProductsMock=[
         descriptionExtra: "Campera de algodón rustico con cierre y capucha - tela algodón.",
         textoAlt:"Robby Celeste",
         oferta:true,
+        inCart:0,
         stock:17
     },
     {
@@ -81,6 +86,7 @@ const ProductsMock=[
         descriptionExtra: "Jean Slim-Fit elastizado.",
         textoAlt:"Jean Curtis Dark Blue",
         oferta:true,
+        inCart:0,
         stock:12
     },
     {
@@ -95,6 +101,7 @@ const ProductsMock=[
         descriptionExtra: "Jean Slim-Fit elastizado. Ultra-Slim.",
         textoAlt:"Jean Floyd Azul",
         oferta:false,
+        inCart:0,
         stock:16
     },
     {
@@ -109,6 +116,7 @@ const ProductsMock=[
         descriptionExtra: "Jean Slim-Fit elastizado con rotura. Ultra-Slim.",
         textoAlt:"Jean Floyd Chunk Azul",
         oferta:false,
+        inCart:0,
         stock:4
     },
     {
@@ -123,6 +131,7 @@ const ProductsMock=[
         descriptionExtra: "Jean Slim-Fit elastizado con rotura. Ultra-Slim.",
         textoAlt:"Jean Floyd Chunk Grey",
         oferta:true,
+        inCart:0,
         stock:11
     },
     {
@@ -137,6 +146,7 @@ const ProductsMock=[
         descriptionExtra: "Jogging de gabardina con corte Chino (media estación).",
         textoAlt:"JogChino Gabardina Camel",
         oferta:true,
+        inCart:0,
         stock:2
     },
     {
@@ -151,6 +161,7 @@ const ProductsMock=[
         descriptionExtra: "Remera corte básico lisa - Tela algodón.",
         textoAlt:"Remera Basic Negra",
         oferta:false,
+        inCart:0,
         stock:17
     },
     {
@@ -165,6 +176,7 @@ const ProductsMock=[
         descriptionExtra: "Remera corte clásico con foto estampa - Tela algodón.",
         textoAlt:"Remera Basket Beige",
         oferta:true,
+        inCart:0,
         stock:14
     },
     
@@ -180,6 +192,7 @@ const ProductsMock=[
         descriptionExtra: "Remera corte clásico con foto estampa - Tela algodón.",
         textoAlt:"Remera Basket Malbec",
         oferta:false,
+        inCart:0,
         stock:6
     },
     
@@ -195,6 +208,7 @@ const ProductsMock=[
         descriptionExtra: "Remera corte básico con estampa - Tela algodón.",
         textoAlt:"Remera Beach Vibes Aqua",
         oferta:true,
+        inCart:0,
         stock:17
     },
     {
@@ -209,6 +223,7 @@ const ProductsMock=[
         descriptionExtra: "Remera corte básico con estampa - Tela algodón.",
         textoAlt:"Remera Beach Vibes Celeste",
         oferta:false,
+        inCart:0,
         stock:5
     },
 ]

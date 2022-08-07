@@ -24,14 +24,14 @@ const ItemListContainer=({category})=>{
             console.log("llamada a mock fallo")
             /* agregar spiner o barra de carga, detalle estetico que diga que esta cargando....  */
             })
-    }, [])
+    }, [category])
 
     let title;
-    category=="verTodo"? title="Todos nuestros productos":title=category;
+    category==="verTodo"? title="Todos nuestros productos":title=category;
 
 
     let productosFiltrados=listProducts;
-    if(category!="verTodo") productosFiltrados= listProducts.filter((producto)=> producto.category===category);
+    if(category!=="verTodo") productosFiltrados= listProducts.filter((producto)=> producto.category===category);
     if(category=="Ofertas") productosFiltrados=listProducts.filter((producto)=> producto.oferta===true);
 
 

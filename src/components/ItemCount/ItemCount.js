@@ -1,12 +1,16 @@
 import "./ItemCount.css";
 import { useState } from "react";
+import { CartContext } from "../../context/CartContext";
+import { useContext } from "react";
 
 
-const ItemCounter=({stock, unitsSelected})=>{
+const ItemCounter=({unitsSelected, data})=>{
     const [ItemCounter, setItemCounter]= useState(1);
 
+    const {addProductToCart} = useContext(CartContext);
+
     const addUnit = ()=>{
-        if(ItemCounter<stock) setItemCounter(ItemCounter+1);
+        if(ItemCounter<data.stock) setItemCounter(ItemCounter+1);
 
     }
     const subtractUnit = ()=>{
@@ -15,6 +19,7 @@ const ItemCounter=({stock, unitsSelected})=>{
 
     const onAdd =()=>{
         unitsSelected(ItemCounter);
+        addProductToCart(data);   
     }
 
     return(

@@ -9,23 +9,26 @@ import Error404 from './Pages/Error404';
 import Detail from './Pages/Detail.js';
 import Footer from './components/Footer/Footer';
 import Checkout from './Pages/Checkout';
+import CartProvider from './context/CartContext';
 
 function App() {
   
   return (
     <BrowserRouter>
-      <div className="App">
-        <Nav/>
-        <Routes>
-          <Route path='/'element={<Home/>}/>
-          <Route path='/products/id=:id' element={<Detail/>}/>
-          <Route path='categories/:category' element={<Category/>}/>
-          <Route path='/aboutUs' element={<AboutUs/>}/>
-          <Route path='/cart' element={<Checkout/>}/>
-          <Route path='*' element={<Error404/>}/>
-        </Routes>
-        <Footer/>
-      </div>
+      <CartProvider>
+        <div className="App">
+          <Nav/>
+          <Routes>
+            <Route path='/'element={<Home/>}/>
+            <Route path='/products/id=:id' element={<Detail/>}/>
+            <Route path='categories/:category' element={<Category/>}/>
+            <Route path='/aboutUs' element={<AboutUs/>}/>
+            <Route path='/cart' element={<Checkout/>}/>
+            <Route path='*' element={<Error404/>}/>
+          </Routes>
+          <Footer/>
+        </div>
+      </CartProvider>
     </BrowserRouter>
 
 
