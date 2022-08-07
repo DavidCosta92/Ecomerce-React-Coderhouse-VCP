@@ -1,6 +1,8 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { CartContext } from "../../context/CartContext";
 import "./CartWidget.css";
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 
 /*  import material */
 import {useState } from 'react'
@@ -12,14 +14,28 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 const CartWidget =()=>{
 
+    const { cartProducts, clearCart, addProductToCart,removeUnitFromCart,removeAllUnitsFromCart, buyCart} = useContext(CartContext)
+
     const [anchorEl, setAnchorEl] = useState(null);
 
-    const { cartProducts /*, clear*/ } = useContext(CartContext)
+    const [amountInCart, setAmountInCart] = useState(0);
+
+    function handleClickAdd(product){
+        setAmountInCart(product.inCart +1);
+        addProductToCart(product,1)
+    }
+    function handleClickRemove(product){
+        setAmountInCart(product.inCart -1);
+        removeUnitFromCart(product)
+    }
+    function handleClickRemoveAll(product){
+        setAmountInCart(0);
+        removeAllUnitsFromCart(product);
+    }
 
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
-        console.log("este es el carrito actual, mostrado desde widget", cartProducts)
     };
     const handleClose = () => {
         setAnchorEl(null);
@@ -42,42 +58,29 @@ return(
             'aria-labelledby': 'basic-button',
             }}
         >
-            {cartProducts.map((product) => {
+        {cartProducts.map((product) => {
                 return(
-                    <div className='item-cart-product' key={product.id}>
+                    <div className='item-cart-product widgetCart' key={product.id}>
                         <img src={`/assets/imagenes/products/${product.srcA}`} className="productImgCartWidget"  alt="" />
                         <div className='cart-product__details'>
-                            <p>{product.title}</p>
-                            <p>TAMAÑO : XS</p>
+                            <p className="widgetTitle">{product.title}</p>
+                            <p className="widgetSize">Talla: Pendiente</p>
                             <p>Cantidad : {product.inCart}</p>
-                        </div>
-                        <div className='cart-product__details'>
-                            <p>$ {product.price}</p>
+                            <p className="widgetPrice">$ {product.price}</p>
                         </div>
                         <div className='cart-product__action'>
-                            <DeleteIcon />
+                            <AddIcon className="WidgetAdd" onClick={()=> handleClickAdd(product)}/>
+                            <RemoveIcon className="WidgetRemove" onClick={()=> handleClickRemove(product)}/>
+                            <DeleteIcon className="WidgetClear" onClick={()=> handleClickRemoveAll(product)}/>
                         </div>
                     </div>
                 )
             })}
-           {/* <button onClick={() => clear()}>Borrar todo</button>*/}
+             {cartProducts.length>0? <button className="comprarCarrito" onClick={() => buyCart()}>COMPRAR CARRITO</button>:<></>}
+            {cartProducts.length>0? <button className="eliminarCarrito" onClick={() => clearCart()}>Eliminar carrito</button>:<div className="carritoVacio"><p>¡El carrito esta vacio!</p></div>}           
         </Menu>
     </div>
 )
 }
 
 export default CartWidget;
-
-/*
-        <>
-        <i class="material-icons large carritoCompras" onClick={mostrarCarrito}>shopping_cart</i>
-        {cartProducts.map((product)=>{
-            return (
-                <div>
-                    <p>yo soy el prodycto que esta en carrito {product.title} y mi precio es {product.price}</p>
-                </div>
-            )
-            })}       
-        </>
-
-        */

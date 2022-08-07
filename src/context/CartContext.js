@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 
 const CartContext =createContext();
@@ -7,35 +7,62 @@ const CartContext =createContext();
 const CartProvider =({children})=>{
     const [cartProducts, setCartProducts] = useState([]);
 
-    function addProductToCart(product){
-        if(!cartProducts.includes(product)){
-            product.inCart=1;
-            setCartProducts(cartProducts=> [...cartProducts, product])
+    const [inCart, setInCart] = useState()
+
+
+    useEffect(() => {
+        console.log('add DESDE context')
+      }, [inCart])
+
+
+    function addProductToCart(productData,ItemCounter){
+        if(!cartProducts.includes(productData)){
+            productData.inCart=ItemCounter;
+            setCartProducts(cartProducts=> [...cartProducts, productData])
         } else{
-            addUnitToCart(product);
+            addUnitsToCart(productData,ItemCounter);
         }
+
+    }
+    function addUnitsToCart(productData,ItemCounter){
+        let indexToUpdate= cartProducts.indexOf(productData)
+        cartProducts[indexToUpdate].inCart=parseInt(cartProducts[indexToUpdate].inCart)+ItemCounter;
+        setCartProducts(cartProducts);
+    }
+    function removeUnitFromCart(productData){
+        if(productData.inCart>1){
+            let indexToUpdate= cartProducts.indexOf(productData)
+            cartProducts[indexToUpdate].inCart=parseInt(cartProducts[indexToUpdate].inCart)-1;
+        } else{
+            removeAllUnitsFromCart(productData);
+        }
+        
+    }
+    function removeAllUnitsFromCart(productData){
+        let indexToDelete= cartProducts.indexOf(productData)
+        cartProducts.splice(indexToDelete,1)
     }
 
-    function addUnitToCart(product){
-         /*  buscar producto a actualizar y aumentar propiedad   */
-        let productToAdd = cartProducts.find(p => p.id=product.id)
-        productToAdd.inCart= productToAdd.inCart+1;
-
-        let indexToUpdate= cartProducts.indexOf(product)
-        console.log("in cart antes", cartProducts[indexToUpdate].inCart)
-        cartProducts[indexToUpdate].inCart=cartProducts[indexToUpdate].inCart+1;
-        console.log("in cart despu", cartProducts[indexToUpdate].inCart)
+    function buyCart(){
+        console.log("por el momento, vaciar carrito y redirigir a mercadopago => LUEGO HACER PANTALLA DE FINALIZACION COMPRA")
+        /* y vaciar carrito */
+        clearCart();
 
 
-     //    setCartProducts();
-     //    console.log("agregaste un segundo producto de ", productToAdd)
-     //    console.log("el carrito queda con ", cartProducts)
+    }
+
+    function clearCart(){
+        setCartProducts([]);
     }
 
 
     const data={
         cartProducts,
-        addProductToCart
+        addProductToCart,
+        clearCart,
+        removeUnitFromCart,
+        removeAllUnitsFromCart,
+        buyCart
     }
     return (
         <CartContext.Provider value={data}>

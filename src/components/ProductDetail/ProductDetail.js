@@ -20,7 +20,7 @@ const ProductDetail=({data}) =>{
             <SizeSelector/>
             
             <p className="stockDisponible">Stock disponible: {stock}</p>
-            {unitsSelected>10? <Link to="/cart"><button className="btnTerminarCompra">Terminar Compra</button></Link>:<ItemCounter unitsSelected={setUnitsSelected} data={data}/>}
+            {unitsSelected>10? <Link to="/cart"><button className="btnTerminarCompra">Terminar Compra</button></Link>:<ItemCounter unitsSelected={setUnitsSelected} productData={data}/>}
             
         </div>
     )
