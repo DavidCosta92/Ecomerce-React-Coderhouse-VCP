@@ -7,14 +7,6 @@ const CartContext =createContext();
 const CartProvider =({children})=>{
     const [cartProducts, setCartProducts] = useState([]);
 
-    const [inCart, setInCart] = useState()
-
-
-    useEffect(() => {
-        console.log('add DESDE context')
-      }, [inCart])
-
-
     function addProductToCart(productData,ItemCounter){
         if(!cartProducts.includes(productData)){
             productData.inCart=ItemCounter;
@@ -26,13 +18,16 @@ const CartProvider =({children})=>{
     }
     function addUnitsToCart(productData,ItemCounter){
         let indexToUpdate= cartProducts.indexOf(productData)
-        cartProducts[indexToUpdate].inCart=parseInt(cartProducts[indexToUpdate].inCart)+ItemCounter;
-        setCartProducts(cartProducts);
+        let newCart= cartProducts;
+        newCart[indexToUpdate].inCart=parseInt(newCart[indexToUpdate].inCart)+ItemCounter;
+        setCartProducts(newCart);
     }
     function removeUnitFromCart(productData){
         if(productData.inCart>1){
             let indexToUpdate= cartProducts.indexOf(productData)
-            cartProducts[indexToUpdate].inCart=parseInt(cartProducts[indexToUpdate].inCart)-1;
+            let newCart = cartProducts;
+            newCart[indexToUpdate].inCart=parseInt(newCart[indexToUpdate].inCart)-1;
+            setCartProducts(newCart);
         } else{
             removeAllUnitsFromCart(productData);
         }
@@ -40,7 +35,9 @@ const CartProvider =({children})=>{
     }
     function removeAllUnitsFromCart(productData){
         let indexToDelete= cartProducts.indexOf(productData)
-        cartProducts.splice(indexToDelete,1)
+        let newCart= cartProducts.splice(indexToDelete,1)
+        setCartProducts(newCart);
+
     }
 
     function buyCart(){
