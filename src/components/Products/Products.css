@@ -42,9 +42,12 @@
 }
 .btnBuy:hover{
     transform: scale(1.1);
-}
-.btnBuy:active, .btnBuy:focus{
     background-color: rgba(19, 19, 20, 0.1);
+    color: black;
+   
+}
+.btnBuy:active{
+    background-color: rgba(19, 19, 20, 0.5);
 }
 
 p.productDescription {

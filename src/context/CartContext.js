@@ -7,6 +7,12 @@ const CartContext =createContext();
 const CartProvider =({children})=>{
     const [cartProducts, setCartProducts] = useState([]);
 
+    /*
+    const [inCart, setInCart] = useState()
+    useEffect(() => {
+        console.log('add DESDE context')
+      }, [inCart])
+*/
     function addProductToCart(productData,ItemCounter){
         if(!cartProducts.includes(productData)){
             productData.inCart=ItemCounter;
@@ -35,9 +41,8 @@ const CartProvider =({children})=>{
     }
     function removeAllUnitsFromCart(productData){
         let indexToDelete= cartProducts.indexOf(productData)
-        let newCart= cartProducts.splice(indexToDelete,1)
-        setCartProducts(newCart);
-
+        cartProducts.splice(indexToDelete,1)
+        setCartProducts(cartProducts);
     }
 
     function buyCart(){

@@ -17,14 +17,19 @@ const CartWidget =()=>{
     const { cartProducts, clearCart, addProductToCart,removeUnitFromCart,removeAllUnitsFromCart, buyCart} = useContext(CartContext)
 
     const [anchorEl, setAnchorEl] = useState(null);
+    
+    const [amountInCart, setAmountInCart] = useState();
 
     function handleClickAdd(product){
+        setAmountInCart(product.inCart +1);
         addProductToCart(product,1)
     }
     function handleClickRemove(product){
+        setAmountInCart(product.inCart -1);
         removeUnitFromCart(product)
     }
     function handleClickRemoveAll(product){
+        setAmountInCart(0);
         removeAllUnitsFromCart(product);
     }
 
