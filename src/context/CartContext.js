@@ -6,13 +6,8 @@ const CartContext =createContext();
 
 const CartProvider =({children})=>{
     const [cartProducts, setCartProducts] = useState([]);
+    const [amountInCart, setAmountInCart] = useState();
 
-    /*
-    const [inCart, setInCart] = useState()
-    useEffect(() => {
-        console.log('add DESDE context')
-      }, [inCart])
-*/
     function addProductToCart(productData,ItemCounter){
         if(!cartProducts.includes(productData)){
             productData.inCart=ItemCounter;
@@ -26,6 +21,7 @@ const CartProvider =({children})=>{
         let indexToUpdate= cartProducts.indexOf(productData)
         let newCart= cartProducts;
         newCart[indexToUpdate].inCart=parseInt(newCart[indexToUpdate].inCart)+ItemCounter;
+        setAmountInCart(productData.inCart +1);
         setCartProducts(newCart);
     }
     function removeUnitFromCart(productData){
@@ -33,6 +29,7 @@ const CartProvider =({children})=>{
             let indexToUpdate= cartProducts.indexOf(productData)
             let newCart = cartProducts;
             newCart[indexToUpdate].inCart=parseInt(newCart[indexToUpdate].inCart)-1;
+            setAmountInCart(productData.inCart -1);
             setCartProducts(newCart);
         } else{
             removeAllUnitsFromCart(productData);
@@ -46,9 +43,12 @@ const CartProvider =({children})=>{
     }
 
     function buyCart(){
-        console.log("por el momento, vaciar carrito y redirigir a mercadopago => LUEGO HACER PANTALLA DE FINALIZACION COMPRA")
-        /* y vaciar carrito */
-        clearCart();
+
+
+
+
+
+
 
 
     }
@@ -64,7 +64,8 @@ const CartProvider =({children})=>{
         clearCart,
         removeUnitFromCart,
         removeAllUnitsFromCart,
-        buyCart
+        buyCart,
+        amountInCart
     }
     return (
         <CartContext.Provider value={data}>

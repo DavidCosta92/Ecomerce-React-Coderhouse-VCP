@@ -4,7 +4,7 @@ import ProductDetailItem from "../ProductDetailItem/ProductDetailItem";
 import ProductsMock from "../Products/ProductsMock";
 
 
-const ProductsDetailContainer=({idProduct})=>{
+const ProductsDetailContainer=()=>{
 
     const [listProducts, setListProducts] = useState([]);   
     useEffect(()=>{
@@ -25,7 +25,7 @@ const ProductsDetailContainer=({idProduct})=>{
     return(
         <div>
             <div className="productContainer">
-                <ProductDetailItem dataProducts={listProducts} idProduct={idProduct}/>
+                <ProductDetailItem dataProducts={listProducts}/>
             </div>
         </div>
     )

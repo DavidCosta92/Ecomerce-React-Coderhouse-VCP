@@ -3,35 +3,20 @@ import { CartContext } from "../../context/CartContext";
 import "./CartWidget.css";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-
-/*  import material */
+import DeleteIcon from '@mui/icons-material/Delete';
+import { Link } from "react-router-dom";
 import {useState } from 'react'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Menu from '@mui/material/Menu';
 import MenuItem from "@mui/material/MenuItem";
-import DeleteIcon from '@mui/icons-material/Delete';
+
 
 
 const CartWidget =()=>{
 
-    const { cartProducts, clearCart, addProductToCart,removeUnitFromCart,removeAllUnitsFromCart, buyCart} = useContext(CartContext)
+    const { cartProducts, clearCart, addProductToCart,removeUnitFromCart,removeAllUnitsFromCart, amountInCart} = useContext(CartContext)
 
     const [anchorEl, setAnchorEl] = useState(null);
-    
-    const [amountInCart, setAmountInCart] = useState();
-
-    function handleClickAdd(product){
-        setAmountInCart(product.inCart +1);
-        addProductToCart(product,1)
-    }
-    function handleClickRemove(product){
-        setAmountInCart(product.inCart -1);
-        removeUnitFromCart(product)
-    }
-    function handleClickRemoveAll(product){
-        setAmountInCart(0);
-        removeAllUnitsFromCart(product);
-    }
 
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -40,6 +25,10 @@ const CartWidget =()=>{
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+    useEffect(()=>{
+        
+    }, [amountInCart])
     
 return(
     <div className='cart-widget'>
@@ -69,14 +58,14 @@ return(
                             <p className="widgetPrice">$ {product.price}</p>
                         </div>
                         <div className='cart-product__action'>
-                            <AddIcon className="WidgetAdd" onClick={()=> handleClickAdd(product)}/>
-                            <RemoveIcon className="WidgetRemove" onClick={()=> handleClickRemove(product)}/>
-                            <DeleteIcon className="WidgetClear" onClick={()=> handleClickRemoveAll(product)}/>
+                            <AddIcon className="WidgetAdd" onClick={()=> addProductToCart(product,1)}/>
+                            <RemoveIcon className="WidgetRemove" onClick={()=> removeUnitFromCart(product)}/>
+                            <DeleteIcon className="WidgetClear" onClick={()=> removeAllUnitsFromCart(product)}/>
                         </div>
                     </div>
                 )
             })}
-             {cartProducts.length>0? <button className="comprarCarrito" onClick={() => buyCart()}>COMPRAR CARRITO</button>:<></>}
+             {cartProducts.length>0? <Link to="/checkout"><button className="comprarCarrito" onClick={() => setAnchorEl(null)}>COMPRAR CARRITO</button></Link>:<></>}
             {cartProducts.length>0? <button className="eliminarCarrito" onClick={() => clearCart()}>Eliminar carrito</button>:<div className="carritoVacio"><p>¡El carrito esta vacio!</p></div>}           
         </Menu>
     </div>

@@ -12,7 +12,7 @@ const ItemListContainer=({category})=>{
     /* agregar spiner o barra de carga, detalle estetico que diga que esta cargando....  */
     
                 resolve(ProductsMock)
-            },2000)
+            }/*,2000*/)
         })
 
         getProducts

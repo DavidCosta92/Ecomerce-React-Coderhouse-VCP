@@ -2,6 +2,7 @@ import "./ItemCount.css";
 import { useState } from "react";
 import { CartContext } from "../../context/CartContext";
 import { useContext } from "react";
+import SizeSelector from "../SizeSelector/SizeSelector";
 
 
 const ItemCounter=({unitsSelected, productData})=>{
@@ -24,12 +25,14 @@ const ItemCounter=({unitsSelected, productData})=>{
 
     return(
         <>
+            <SizeSelector/>
+            <p className="stockDisponible">Stock disponible: {productData.stock}</p>
             <div className="ItemCounter">
                 <button className="restarUnidad" onClick={subtractUnit}>-</button>
                 <p className="cantidadUnidad">{ItemCounter}</p>
                 <button className="sumarUnidad" onClick={addUnit}>+</button>
             </div>
-            <button className="btnBuy" onClick={onAdd}>Agregar!</button> 
+            <button className="btnBuy" onClick={onAdd}>¡Agregar al carrito!</button>
         </>
     )
 }

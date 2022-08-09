@@ -10,7 +10,7 @@ const Products=({data}) =>{
                 <img src={`../assets/imagenes/products/${srcA}`} alt={textoAlt}/>
                 <p className="productPrice">${price}</p>
                 <p className="productDescription">{description}</p>
-                <button className="btnBuy">Agregar!</button> 
+                <button className="btnBuy">Ver mas???!</button> 
             </div>
         </Link>
     )

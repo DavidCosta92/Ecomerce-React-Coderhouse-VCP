@@ -23,7 +23,7 @@ function App() {
             <Route path='/products/id=:id' element={<Detail/>}/>
             <Route path='categories/:category' element={<Category/>}/>
             <Route path='/aboutUs' element={<AboutUs/>}/>
-            <Route path='/cart' element={<Checkout/>}/>
+            <Route path='/checkout' element={<Checkout/>}/>
             <Route path='*' element={<Error404/>}/>
           </Routes>
           <Footer/>
