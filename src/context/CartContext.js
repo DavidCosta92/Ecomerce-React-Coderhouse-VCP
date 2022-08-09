@@ -43,13 +43,10 @@ const CartProvider =({children})=>{
     }
 
     function buyCart(){
+        /* poner link a pagossss
+        podria hacer diferenciacion en tc o td, tippo plan de cuotas?
 
-
-
-
-
-
-
+        */
 
     }
 

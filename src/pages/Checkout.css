@@ -32,3 +32,7 @@
     background-color: rgba(255, 0, 0);
     transform: scale(1.1);
 }
+
+.imgCheckout img{
+    max-width: 150px;
+}

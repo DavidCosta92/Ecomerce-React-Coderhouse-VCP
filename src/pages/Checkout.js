@@ -51,24 +51,30 @@ const invoiceTotal = invoiceTaxes + subtotal(cartProducts);
                         <TableCell align="center" colSpan={3}>
                         Detalles del carrito
                         </TableCell>
-                        <TableCell align="right">Precio</TableCell>
+                        <TableCell align="center" colSpan={2}>Precio</TableCell>
+                        <TableCell align="center">Acciones</TableCell>
                     </TableRow>
                     <TableRow>
-                        <TableCell>Desc</TableCell>
-                        <TableCell align="right">Cant.</TableCell>
-                        <TableCell align="right">Precio Un</TableCell>
-                        <TableCell align="right">Subtotal</TableCell>.
+                        <TableCell colSpan={2}>Articulo</TableCell>
+                        <TableCell align="center">Cant.</TableCell>
+                        <TableCell align="center">Precio Un</TableCell>
+                        <TableCell align="center">Subtotal</TableCell>.
                     </TableRow>
                     </TableHead>
                     <TableBody>
                     {
                         cartProducts.map((product) => (
                             <TableRow key={product.title}>
+                            <TableCell>
+                                <div className="imgCheckout">
+                                    <img src={`../assets/imagenes/products/${product.srcA}`}/>
+                                </div>
+                            </TableCell>
                             <TableCell>{product.title}</TableCell>
-                            <TableCell align="right">{product.inCart}</TableCell>
-                            <TableCell align="right">{product.price}</TableCell>
-                            <TableCell align="right">{product.price*product.inCart}</TableCell>
-                            <TableCell align="right">
+                            <TableCell align="center">{product.inCart}</TableCell>
+                            <TableCell align="center">{product.price}</TableCell>
+                            <TableCell align="center">{product.price*product.inCart}</TableCell>
+                            <TableCell align="center">
                                 <AddIcon className="btnAdd" onClick={()=>addProductToCart(product,1)}/>
                                 <RemoveIcon className="btnRemove" onClick={()=>removeUnitFromCart(product)}/>
                                 <DeleteIcon className="btnClear" onClick={()=>removeAllUnitsFromCart(product)}/>
@@ -80,23 +86,20 @@ const invoiceTotal = invoiceTaxes + subtotal(cartProducts);
                     <TableRow>
                         <TableCell rowSpan={3} />
                         <TableCell colSpan={2}>Subtotal</TableCell>
-                        <TableCell align="right">{subtotal(cartProducts)}</TableCell>
+                        <TableCell align="center" colSpan={3}>{subtotal(cartProducts)}</TableCell>
                     </TableRow>
                     <TableRow>
                         <TableCell>I.V.A.</TableCell>
-                        <TableCell align="right">{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
-                        <TableCell align="right">{Math.round(invoiceTaxes)}</TableCell>
+                        <TableCell align="center" >{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
+                        <TableCell align="center" colSpan={3}>{Math.round(invoiceTaxes)}</TableCell>
                     </TableRow>
                     <TableRow>
-                        <TableCell colSpan={2}>Total</TableCell>
-                        <TableCell align="right">{invoiceTotal}</TableCell>
+                        <TableCell colSpan={3}>Total</TableCell>
+                        <TableCell align="center">{invoiceTotal}</TableCell>
                     </TableRow>
                     </TableBody>
                 </Table> 
             </TableContainer>
-
-
-
         </div>
     )
 }
