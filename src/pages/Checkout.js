@@ -37,7 +37,7 @@ function subtotal(products) {
 }
 
 
-const TAX_RATE = 0.07;
+const TAX_RATE = 0.21;
 const invoiceTaxes = TAX_RATE * subtotal(cartProducts);
 const invoiceTotal = invoiceTaxes + subtotal(cartProducts);
 
@@ -83,9 +83,9 @@ const invoiceTotal = invoiceTaxes + subtotal(cartProducts);
                         <TableCell align="right">{subtotal(cartProducts)}</TableCell>
                     </TableRow>
                     <TableRow>
-                        <TableCell>Tax</TableCell>
+                        <TableCell>I.V.A.</TableCell>
                         <TableCell align="right">{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
-                        <TableCell align="right">{invoiceTaxes}</TableCell>
+                        <TableCell align="right">{Math.round(invoiceTaxes)}</TableCell>
                     </TableRow>
                     <TableRow>
                         <TableCell colSpan={2}>Total</TableCell>
