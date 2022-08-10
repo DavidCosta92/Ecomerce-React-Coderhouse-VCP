@@ -4,7 +4,7 @@ import {Link} from "react-router-dom"
 const Products=({data}) =>{
     const {title, price, srcA, description, textoAlt, id} =data;
     return(
-        <Link to={`/products/id=${id}`}>
+        <Link to={`/Products/Id=${id}`}>
             <div className="productCard">
                 <p className="tituloProducto">{title}</p>
                 <img src={`../assets/imagenes/products/${srcA}`} alt={textoAlt}/>

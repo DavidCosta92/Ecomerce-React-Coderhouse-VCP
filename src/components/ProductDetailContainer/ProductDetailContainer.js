@@ -7,9 +7,14 @@ import ProductsMock from "../Products/ProductsMock";
 const ProductsDetailContainer=()=>{
 
     const [listProducts, setListProducts] = useState([]);   
+    const[spinner, setSpinner]=useState(false);
     useEffect(()=>{
         const getProducts= new Promise( (resolve, reject) =>{
-            resolve(ProductsMock)
+             setSpinner(true);
+             setTimeout(()=>{
+                setSpinner(false);
+                resolve(ProductsMock)
+            },1000)
         })
         
         getProducts

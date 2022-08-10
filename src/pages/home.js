@@ -2,7 +2,7 @@ import ItemListContainer from "../components/ItemListContainer/ItemListContainer
 const Home =()=>{
     return (
         <div>
-             <ItemListContainer category="Ofertas"/>
+             <ItemListContainer Category="Ofertas"/>
         </div>
     )
 }

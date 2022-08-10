@@ -1,10 +1,10 @@
 import ItemListContainer from "../components/ItemListContainer/ItemListContainer";
 import { useParams } from "react-router-dom";
 const Categories =()=>{    
-    const {category} = useParams();
+    const {Category} = useParams();
     return (
         <div>
-            <ItemListContainer category={category}/>
+            <ItemListContainer Category={Category}/>
         </div>
     )
 }

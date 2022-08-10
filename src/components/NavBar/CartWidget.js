@@ -26,8 +26,7 @@ const CartWidget =()=>{
         setAnchorEl(null);
     };
 
-    useEffect(()=>{
-        
+    useEffect(()=>{ 
     }, [amountInCart])
     
 return(
@@ -65,7 +64,8 @@ return(
                     </div>
                 )
             })}
-             {cartProducts.length>0? <Link to="/checkout"><button className="comprarCarrito" onClick={() => setAnchorEl(null)}>COMPRAR CARRITO</button></Link>:<></>}
+            {/* REVISAR LOS TERNARIOS, ESTA FEO ESTA PARTE DEL CODIGO  */}
+             {cartProducts.length>0? <Link to="/Checkout"><button className="comprarCarrito" onClick={() => setAnchorEl(null)}>COMPRAR CARRITO</button></Link>:<></>}
             {cartProducts.length>0? <button className="eliminarCarrito" onClick={() => clearCart()}>Eliminar carrito</button>:<div className="carritoVacio"><p>¡El carrito esta vacio!</p></div>}           
         </Menu>
     </div>

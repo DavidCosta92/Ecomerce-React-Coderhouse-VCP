@@ -15,15 +15,15 @@ const Navv=()=>{
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
                     <Nav.Link><Link to="/" className='txtNav'>Home</Link></Nav.Link>
-                    <Nav.Link><Link to="/aboutUs" className='txtNav'>About Us</Link></Nav.Link>
+                    <Nav.Link><Link to="/AboutUs" className='txtNav'>About Us</Link></Nav.Link>
                     <NavDropdown title="Categorias" id="basic-nav-dropdown">
-                    <NavDropdown.Item><Link to="/categories/verTodo" className='txtNav'>Ver todo</Link></NavDropdown.Item>
-                    <NavDropdown.Item ><Link to="/categories/Pantalones" className='txtNav'>Pantalones</Link></NavDropdown.Item>
-                    <NavDropdown.Item ><Link to="/categories/Camperas" className='txtNav'>Camperas</Link></NavDropdown.Item>
-                    <NavDropdown.Item ><Link to="/categories/Remeras" className='txtNav'>Remeras</Link></NavDropdown.Item>
+                    <NavDropdown.Item><Link to="/Categories/verTodo" className='txtNav'>Ver todo</Link></NavDropdown.Item>
+                    <NavDropdown.Item ><Link to="/Categories/Pantalones" className='txtNav'>Pantalones</Link></NavDropdown.Item>
+                    <NavDropdown.Item ><Link to="/Categories/Camperas" className='txtNav'>Camperas</Link></NavDropdown.Item>
+                    <NavDropdown.Item ><Link to="/Categories/Remeras" className='txtNav'>Remeras</Link></NavDropdown.Item>
                     <NavDropdown.Divider />
                     <NavDropdown.Item>
-                    <Link to="/categories/Ofertas" className='txtNav'> Ofertas</Link>
+                    <Link to="/Categories/Ofertas" className='txtNav'> Ofertas</Link>
                     </NavDropdown.Item>
                     </NavDropdown>
                 </Nav>

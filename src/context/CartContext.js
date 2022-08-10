@@ -6,7 +6,8 @@ const CartContext =createContext();
 
 const CartProvider =({children})=>{
     const [cartProducts, setCartProducts] = useState([]);
-    const [amountInCart, setAmountInCart] = useState();
+    
+    const [amountInCart, setAmountInCart] = useState(0);
 
     function addProductToCart(productData,ItemCounter){
         if(!cartProducts.includes(productData)){
@@ -39,7 +40,10 @@ const CartProvider =({children})=>{
     function removeAllUnitsFromCart(productData){
         let indexToDelete= cartProducts.indexOf(productData)
         cartProducts.splice(indexToDelete,1)
+        
+        setAmountInCart(0);
         setCartProducts(cartProducts);
+        console.log("elimine todas las unidades", amountInCart)
     }
 
     function buyCart(){

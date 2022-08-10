@@ -3,16 +3,21 @@ import ItemList from "../ItemList/ItemList";
 import "./ItemListContainer.css"
 import ProductsMock from "../Products/ProductsMock";
 
-const ItemListContainer=({category})=>{
+import * as React from 'react';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
+
+const ItemListContainer=({Category})=>{
     const [listProducts, setListProducts] = useState([]);   
+    const[spinner, setSpinner]=useState(false);
+
     useEffect(()=>{
         const getProducts= new Promise( (resolve, reject) =>{
+            setSpinner(true);
             setTimeout(()=>{
-    
-    /* agregar spiner o barra de carga, detalle estetico que diga que esta cargando....  */
-    
+                setSpinner(false);
                 resolve(ProductsMock)
-            }/*,2000*/)
+            },1000)
         })
 
         getProducts
@@ -22,17 +27,16 @@ const ItemListContainer=({category})=>{
             })
             .catch((error)=>{
             console.log("llamada a mock fallo")
-            /* agregar spiner o barra de carga, detalle estetico que diga que esta cargando....  */
             })
-    }, [category])
+    }, [Category])
 
     let title;
-    category==="verTodo"? title="Todos nuestros productos":title=category;
+    Category==="verTodo"? title="Todos nuestros productos":title=Category;
 
 
     let productosFiltrados=listProducts;
-    if(category!=="verTodo") productosFiltrados= listProducts.filter((producto)=> producto.category===category);
-    if(category=="Ofertas") productosFiltrados=listProducts.filter((producto)=> producto.oferta===true);
+    if(Category!=="verTodo") productosFiltrados= listProducts.filter((producto)=> producto.category===Category);
+    if(Category=="Ofertas") productosFiltrados=listProducts.filter((producto)=> producto.oferta===true);
 
 
 
@@ -40,7 +44,14 @@ const ItemListContainer=({category})=>{
     return(
         <div>
             <p className="tituloProductoContainer">{title}</p>
-            <div className="productContainer">                
+            {spinner&&(
+                    <div className="spinner"> 
+                        <Box sx={{ display: 'flex' }} >
+                            <CircularProgress />
+                        </Box>
+                    </div>
+            )}
+            <div className="productContainer">                                
                 <ItemList listProducts={productosFiltrados}/>
             </div>
         </div>

@@ -20,10 +20,10 @@ function App() {
           <Nav/>
           <Routes>
             <Route path='/'element={<Home/>}/>
-            <Route path='/products/id=:id' element={<Detail/>}/>
-            <Route path='categories/:category' element={<Category/>}/>
-            <Route path='/aboutUs' element={<AboutUs/>}/>
-            <Route path='/checkout' element={<Checkout/>}/>
+            <Route path='/Products/Id=:id' element={<Detail/>}/>
+            <Route path='Categories/:Category' element={<Category/>}/>
+            <Route path='/AboutUs' element={<AboutUs/>}/>
+            <Route path='/Checkout' element={<Checkout/>}/>
             <Route path='*' element={<Error404/>}/>
           </Routes>
           <Footer/>
