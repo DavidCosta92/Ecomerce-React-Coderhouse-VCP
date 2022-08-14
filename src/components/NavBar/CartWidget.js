@@ -13,11 +13,9 @@ import MenuItem from "@mui/material/MenuItem";
 
 
 const CartWidget =()=>{
-
-    const { cartProducts, clearCart, addProductToCart,removeUnitFromCart,removeAllUnitsFromCart, amountInCart} = useContext(CartContext)
-
+    const { cartProducts, clearCart, addProductToCart,removeUnitFromCart,removeAllUnitsFromCart, amountInCart, totalAmountInCart, totalPrice} = useContext(CartContext)
     const [anchorEl, setAnchorEl] = useState(null);
-
+    
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -25,9 +23,14 @@ const CartWidget =()=>{
     const handleClose = () => {
         setAnchorEl(null);
     };
-
-    useEffect(()=>{ 
-    }, [amountInCart])
+    function calcular(){
+        let sumatoria=0;
+        cartProducts.map((p)=>{
+            sumatoria+=p.price*p.inCart
+        })
+        return sumatoria
+    }
+        
     
 return(
     <div className='cart-widget'>
@@ -37,6 +40,7 @@ return(
             aria-expanded={open ? 'true' : undefined}
             onClick={handleClick}
         />
+        <p className="contadorProductosCarrito">{totalAmountInCart>0&&totalAmountInCart}</p>
         <Menu
             id="basic-menu"
             anchorEl={anchorEl}
@@ -54,7 +58,7 @@ return(
                             <p className="widgetTitle">{product.title}</p>
                             <p className="widgetSize">Talla: Pendiente</p>
                             <p>Cantidad : {product.inCart}</p>
-                            <p className="widgetPrice">$ {product.price}</p>
+                            <p className="widgetPrice">$ {product.price*product.inCart}</p>
                         </div>
                         <div className='cart-product__action'>
                             <AddIcon className="WidgetAdd" onClick={()=> addProductToCart(product,1)}/>
@@ -65,7 +69,8 @@ return(
                 )
             })}
             {/* REVISAR LOS TERNARIOS, ESTA FEO ESTA PARTE DEL CODIGO  */}
-             {cartProducts.length>0? <Link to="/Checkout"><button className="comprarCarrito" onClick={() => setAnchorEl(null)}>COMPRAR CARRITO</button></Link>:<></>}
+            {cartProducts.length>0&&<p className="precioTotalWidget">Precio actual carrito ${calcular()}</p>}
+            {cartProducts.length>0&&  <Link to="/Checkout"><button className="comprarCarrito" onClick={() => setAnchorEl(null)}>COMPRAR CARRITO</button></Link>}
             {cartProducts.length>0? <button className="eliminarCarrito" onClick={() => clearCart()}>Eliminar carrito</button>:<div className="carritoVacio"><p>¡El carrito esta vacio!</p></div>}           
         </Menu>
     </div>

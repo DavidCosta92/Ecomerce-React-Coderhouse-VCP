@@ -36,3 +36,10 @@
 .imgCheckout img{
     max-width: 150px;
 }
+
+.textoCarroVacio{
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-top: 20px;
+}

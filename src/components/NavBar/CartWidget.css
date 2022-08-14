@@ -4,6 +4,17 @@
     border-bottom: 2px rgba(0, 0, 0, 0.492) groove;
 }
 
+.cart-widget{
+    display: flex;
+}
+.cart-widget .contadorProductosCarrito{
+    padding: 1px 4px;
+    background-color: rgba(0, 4, 255, 0.69);
+    border-radius: 20%;
+    color: white;
+    font-size: 0.8rem;
+    margin-top: -5px;
+}
 
 img.productImgCartWidget{
     max-width: 200px;
@@ -56,6 +67,11 @@ img.productImgCartWidget{
     background-color: rgba(255, 0, 0);
     transform: scale(1.1);
 }
+.precioTotalWidget{
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
 
 .comprarCarrito{
     background-color: rgba(0, 255, 0, 0.21);
@@ -86,6 +102,7 @@ img.productImgCartWidget{
 .eliminarCarrito:hover{
     background-color: rgba(255, 0, 0);
 }
+
 .carritoVacio p{
     font-size: 1.2rem;
     font-weight: 600;
