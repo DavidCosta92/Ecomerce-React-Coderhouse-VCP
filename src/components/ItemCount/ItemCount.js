@@ -23,8 +23,6 @@ const ItemCounter=({unitsSelected, productData})=>{
         addProductToCart(productData,ItemCounter);
         setTotalAmountInCart(totalAmountInCart+ItemCounter);
     }
-
-
     return(
 
         <>

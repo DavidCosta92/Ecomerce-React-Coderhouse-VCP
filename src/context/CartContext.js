@@ -44,10 +44,10 @@ const CartProvider =({children})=>{
     function removeAllUnitsFromCart(productData){
         let indexToDelete= cartProducts.indexOf(productData)
         cartProducts.splice(indexToDelete,1)
-        
         setAmountInCart(0);
         setCartProducts(cartProducts);
-        calcSumTotal()
+        calcSumTotal();
+      
     }
 
     function buyCart(){
@@ -57,9 +57,9 @@ const CartProvider =({children})=>{
     }
 
     function clearCart(){
+        setTotalAmountInCart(0); // ERROR, NO BORRA LA CANTIDAD DE ITEMS, CUANDO DESDE EL WIDGET SE APRIETA ELIMINAR CARRITO!!
+        setTotalPrice(0);
         setCartProducts([]);
-        setAmountInCart(0);
-        calcSumTotal();
     }
 
 
