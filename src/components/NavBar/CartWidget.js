@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import "./CartWidget.css";
 import AddIcon from '@mui/icons-material/Add';
@@ -8,12 +8,10 @@ import { Link } from "react-router-dom";
 import {useState } from 'react'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Menu from '@mui/material/Menu';
-import MenuItem from "@mui/material/MenuItem";
-
 
 
 const CartWidget =()=>{
-    const { cartProducts, clearCart, addProductToCart,removeUnitFromCart,removeAllUnitsFromCart, amountInCart, totalAmountInCart, totalPrice} = useContext(CartContext)
+    const { cartProducts, clearCart, addProductToCart,removeUnitFromCart,removeAllUnitsFromCart, totalAmountInCart} = useContext(CartContext)
     const [anchorEl, setAnchorEl] = useState(null);
     
     const open = Boolean(anchorEl);
@@ -40,7 +38,7 @@ return(
             aria-expanded={open ? 'true' : undefined}
             onClick={handleClick}
         />
-        <p className="contadorProductosCarrito">{totalAmountInCart>0&&totalAmountInCart}</p>
+        {totalAmountInCart>0&&<p className="contadorProductosCarrito">{totalAmountInCart}</p>}
         <Menu
             id="basic-menu"
             anchorEl={anchorEl}

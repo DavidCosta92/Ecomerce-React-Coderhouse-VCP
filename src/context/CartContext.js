@@ -6,12 +6,14 @@ const CartContext =createContext();
 
 const CartProvider =({children})=>{
     const [cartProducts, setCartProducts] = useState([]);
-    
     const [amountInCart, setAmountInCart] = useState(0);
+    const [totalAmountInCart, setTotalAmountInCart] = useState(0);
+    const [totalPrice, setTotalPrice] = useState(0);
 
     function addProductToCart(productData,ItemCounter){
         if(!cartProducts.includes(productData)){
             productData.inCart=ItemCounter;
+            setAmountInCart(ItemCounter);
             setCartProducts(cartProducts=> [...cartProducts, productData])
             calcSumTotal()
         } else{
@@ -56,16 +58,14 @@ const CartProvider =({children})=>{
 
     function clearCart(){
         setCartProducts([]);
+        setAmountInCart(0);
+        calcSumTotal();
     }
 
-
-    const [totalAmountInCart, setTotalAmountInCart] = useState(0);
-    const [totalPrice, setTotalPrice] = useState(0);
 
     function calcSumTotal(){
         let totalAmount=0;
         let sumPrice=0;
-
         cartProducts.map((p)=>{
             totalAmount+=p.inCart;
             sumPrice+=p.price;
@@ -85,7 +85,9 @@ const CartProvider =({children})=>{
         buyCart,
         amountInCart,
         totalAmountInCart,
-        totalPrice
+        setTotalAmountInCart,
+        totalPrice,
+        calcSumTotal
     }
     return (
         <CartContext.Provider value={data}>

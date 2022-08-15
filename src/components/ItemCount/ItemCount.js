@@ -1,5 +1,5 @@
 import "./ItemCount.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CartContext } from "../../context/CartContext";
 import { useContext } from "react";
 import SizeSelector from "../SizeSelector/SizeSelector";
@@ -8,7 +8,7 @@ import SizeSelector from "../SizeSelector/SizeSelector";
 const ItemCounter=({unitsSelected, productData})=>{
     const [ItemCounter, setItemCounter]= useState(1);
 
-    const {addProductToCart} = useContext(CartContext);
+    const {setTotalAmountInCart,totalAmountInCart,addProductToCart, calcSumTotal} = useContext(CartContext);
 
     const addUnit = ()=>{
         if(ItemCounter<productData.stock) setItemCounter(ItemCounter+1);
@@ -18,12 +18,15 @@ const ItemCounter=({unitsSelected, productData})=>{
         if(ItemCounter>1) setItemCounter(ItemCounter-1);
     }
 
-    const onAdd =()=>{
+    function onAdd (productData,ItemCounter){
         unitsSelected(ItemCounter);
-        addProductToCart(productData,ItemCounter);        
+        addProductToCart(productData,ItemCounter);
+        setTotalAmountInCart(totalAmountInCart+ItemCounter);
     }
 
+
     return(
+
         <>
             <SizeSelector/>
             <p className="stockDisponible">Stock disponible: {productData.stock}</p>
@@ -32,8 +35,11 @@ const ItemCounter=({unitsSelected, productData})=>{
                 <p className="cantidadUnidad">{ItemCounter}</p>
                 <button className="sumarUnidad" onClick={addUnit}>+</button>
             </div>
-            <button className="btnBuy" onClick={onAdd}>¡Agregar al carrito!</button>
+            <button className="btnBuy" onClick={()=>onAdd(productData,ItemCounter)}>¡Agregar al carrito!</button>
+            
         </>
     )
 }
 export default ItemCounter;
+
+/* onClick={()=>addProductToCart(product,1)}*/
