@@ -51,7 +51,7 @@ return(
         {cartProducts.map((product) => {
                 return(
                     <div className='item-cart-product widgetCart' key={product.id}>
-                        <img src={`/assets/imagenes/products/${product.srcA}`} className="productImgCartWidget"  alt="" />
+                        <img src={`/assets/imagenes/${product.srcA}`} className="productImgCartWidget"  alt="" />
                         <div className='cart-product__details'>
                             <p className="widgetTitle">{product.title}</p>
                             <p className="widgetSize">Talla: Pendiente</p>

@@ -1,10 +1,18 @@
+import SlideProductImg from "../components/SlideProductImg/SlideProductImg";
+import Form from "../components/Form/Form";
+import "./AboutUs.css"
 
 const AboutUs =()=>{
     return (
         <div>
-            <h1>BREVE HISTORIA DE LA MARCA</h1>
-            <h1>SLIDER IMAGENES</h1>                      
-            <h1>FORMULARIO DE CONTACTO PENDIENTE</h1>
+            <p className="tituloAbout">Escribenos!</p>
+            <div>
+                <Form/>
+            </div>
+            <div className="sliderAbout">
+                <SlideProductImg a="./slider/1.jpg" b="./slider/2.png" c="./slider/3.png" d="./slider/4.jpg"  textoAlt="Locales de van como piña"/>
+            </div>
+                             
         </div>
     )
 }

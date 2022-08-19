@@ -7,7 +7,7 @@ const Products=({data}) =>{
         <Link to={`/Products/Id=${id}`}>
             <div className="productCard">
                 <p className="tituloProducto">{title}</p>
-                <img src={`../assets/imagenes/products/${srcA}`} alt={textoAlt}/>
+                <img src={`../assets/imagenes/${srcA}`} alt={textoAlt}/>
                 <p className="productPrice">${price}</p>
                 <p className="productDescription">{description}</p>
                 <button className="btnBuy">Ver mas</button> 

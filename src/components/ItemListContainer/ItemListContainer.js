@@ -6,50 +6,42 @@ import * as React from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs,query,where} from "firebase/firestore";
 import db from "../../firebaseConfig"
 
 
 const ItemListContainer=({Category})=>{
-    const [listProducts, setListProducts] = useState([]);   
     const[spinner, setSpinner]=useState(false);
-
-    const getProducts = async () =>{
-        const productCollection= collection(db, "coleccionPrueba")
-        const productsSnapshot = await getDocs(productCollection)
-        const productList = productsSnapshot.docs.map((doc)=>{
-            let product = doc.data() // => devuelve la info de bd en objeto json
-            product.id =doc.id // crea nueva propiedad de nombre id, y le agrega el valor del id
-            return product
-        })
-        return productList
+    const[listProducts, setListProducts] = useState([]);
+    const productRender= (res)=>{
+        setSpinner(true);
+        setTimeout(()=>{
+            setSpinner(false);
+            setListProducts(res.docs.map(product=> ({id: product.id, ...product.data()})));
+        },1000)           
     }
 
     useEffect(()=>{
-        getProducts()
-            .then( (response)=>{
-                setSpinner(true);
-                setTimeout(()=>{
-                    setSpinner(false);
-                    setListProducts(response);
-                },1000)
-            })
-            .catch((error)=>{
-            console.log("llamada a mock fallo")
-            })
+        const queryCollection= collection (db, "products")
+    
+        if(Category==="Ofertas"){
+            const queryFilter=query(queryCollection, where ("oferta","==",true ))
+            getDocs(queryFilter)
+            .then(res=> productRender(res))
+        }
+        else if (Category==="verTodo"){
+            getDocs(queryCollection)
+            .then(res=> productRender(res))
+        }
+        else if (Category!=="verTodo"){
+            const queryFilter=query(queryCollection, where ("category","==",Category ))
+            getDocs(queryFilter)
+            .then(res=> productRender(res))
+        }
     }, [Category])
 
     let title;
     Category==="verTodo"? title="Todos nuestros productos":title=Category;
-
-    let productosFiltrados=listProducts;
-
-     // revisar para filyrar desde la llamada a firebase
-    if(Category!=="verTodo") productosFiltrados= listProducts.filter((producto)=> producto.category===Category);
-    if(Category=="Ofertas") productosFiltrados=listProducts.filter((producto)=> producto.oferta===true);
-
-
-   
 
     return(
         <div>
@@ -62,7 +54,7 @@ const ItemListContainer=({Category})=>{
                     </div>
             )}
             <div className="productContainer">                                
-                <ItemList listProducts={productosFiltrados}/>
+                <ItemList listProducts={listProducts}/>
             </div>
         </div>
     )

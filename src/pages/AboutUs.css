@@ -1,0 +1,16 @@
+.tituloAbout{
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.productDetails .swiper {
+    max-width: 500px;
+}
+.swiperslide img{
+
+}
+
+.sliderAbout{
+   background-color: green;
+}

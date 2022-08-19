@@ -24,16 +24,16 @@ const SlideProductImg = ({a,b,c, d, textoAlt})=>{
           className="mySwiper"
         >
           <SwiperSlide className="swiperslide">
-            <img src={`../assets/imagenes/products/${a}`} alt={textoAlt} />
+            <img src={`../assets/imagenes/${a}`} alt={textoAlt} />
           </SwiperSlide >
           <SwiperSlide className="swiperslide">
-            <img src={`../assets/imagenes/products/${b}`} alt={textoAlt} />
+            <img src={`../assets/imagenes/${b}`} alt={textoAlt} />
           </SwiperSlide>
           <SwiperSlide className="swiperslide">
-            <img src={`../assets/imagenes/products/${c}`} alt={textoAlt} />
+            <img src={`../assets/imagenes/${c}`} alt={textoAlt} />
           </SwiperSlide>
           <SwiperSlide className="swiperslide">
-            <img src={`../assets/imagenes/products/${d}`} alt={textoAlt} />
+            <img src={`../assets/imagenes/${d}`} alt={textoAlt} />
           </SwiperSlide>
         </Swiper>
       </>

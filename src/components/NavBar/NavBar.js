@@ -28,6 +28,7 @@ const Navv=()=>{
                     </NavDropdown>
                 </Nav>
                 </Navbar.Collapse>
+                <p>Hacer campo de busqueda, por palabras claves</p>
                 <Navbar.Brand className='brandTitle'><Link to="/" className='nombreMarca'> Van Como Piña</Link></Navbar.Brand>
                <CartWidget/>
             </Container>

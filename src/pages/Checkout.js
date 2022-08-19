@@ -69,7 +69,7 @@ const invoiceTotal = invoiceTaxes + subtotal(cartProducts);
                                 <TableRow key={product.title}>
                                 <TableCell>
                                     <div className="imgCheckout">
-                                        <img src={`../assets/imagenes/products/${product.srcA}`}/>
+                                        <img src={`../assets/imagenes/${product.srcA}`}/>
                                     </div>
                                 </TableCell>
                                 <TableCell>{product.title}</TableCell>

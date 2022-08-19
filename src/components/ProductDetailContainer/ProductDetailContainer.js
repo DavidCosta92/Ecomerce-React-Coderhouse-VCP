@@ -17,7 +17,7 @@ const ProductsDetailContainer=()=>{
     const {id} =useParams();    
     // USANDO FIREBASE
     const getProduct = async ()=>{
-        const docRef = doc(db, "coleccionPrueba", id)
+        const docRef = doc(db, "products", id)
         const docSnapshot = await getDoc(docRef)
         let product=docSnapshot.data()
         product.id=id
