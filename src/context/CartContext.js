@@ -9,6 +9,7 @@ const CartProvider =({children})=>{
     const [amountInCart, setAmountInCart] = useState(0);
     const [totalAmountInCart, setTotalAmountInCart] = useState(0);
     const [totalPrice, setTotalPrice] = useState(0);
+    const [bought, setBought] = useState(false);
 
     function addProductToCart(productData,ItemCounter){
         if(!cartProducts.includes(productData)){
@@ -51,6 +52,10 @@ const CartProvider =({children})=>{
     }
 
     function buyCart(){
+        setBought(true);
+        clearCart();
+        // GUARDAR LA INFO EN LOCAL STORAGE DE COMPRAS??
+
         /* poner link a pagossss
         podria hacer diferenciacion en tc o td, tippo plan de cuotas?
         */
@@ -87,7 +92,9 @@ const CartProvider =({children})=>{
         totalAmountInCart,
         setTotalAmountInCart,
         totalPrice,
-        calcSumTotal
+        calcSumTotal,
+        bought,
+        setBought
     }
     return (
         <CartContext.Provider value={data}>
