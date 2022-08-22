@@ -31,15 +31,16 @@
 .btnBuy{
     background-color: rgba(19, 19, 20, 0.7);
     border-radius: 10px;
+    margin-top: 25px;
     margin-bottom: 10px;
-    width: 30%;
+    width: 35%;
     padding: 4px;
     font-weight: 600;
     font-size: 1.1rem;
     color:white;
     border: none;
-
 }
+
 .btnBuy:hover{
     transform: scale(1.1);
     background-color: rgba(19, 19, 20, 0.1);
@@ -48,6 +49,17 @@
 }
 .btnBuy:active{
     background-color: rgba(19, 19, 20, 0.5);
+}
+.txtSoldOut{
+    margin-bottom: 0;
+    height: 25px;
+}
+.imgSoldOut{
+    filter: opacity(0.50);
+}
+.SoldOut{
+    background-color: rgba(19, 19, 20, 0.3);
+    margin-top: 0;
 }
 
 p.productDescription {

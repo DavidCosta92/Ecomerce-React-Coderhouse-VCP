@@ -10,24 +10,43 @@ const CartProvider =({children})=>{
     const [totalAmountInCart, setTotalAmountInCart] = useState(0);
     const [totalPrice, setTotalPrice] = useState(0);
     const [bought, setBought] = useState(false);
+    const [orderID, setOrderID]=useState();
+    const [order, setOrder]=useState();
 
-    function addProductToCart(productData,ItemCounter){
-        if(!cartProducts.includes(productData)){
-            productData.inCart=ItemCounter;
-            setAmountInCart(ItemCounter);
-            setCartProducts(cartProducts=> [...cartProducts, productData])
-            calcSumTotal()
+    function isInCart(productData){
+        let isInCart=false;
+        cartProducts.map((product)=>{
+            if(product.id===productData.id){
+                isInCart=true;
+            }
+        })
+        return isInCart;
+    }
+
+    function addProductToCart(productData,ItemCounter, size){
+        if(isInCart(productData)){
+            addUnitsToCart(productData,ItemCounter);            
         } else{
-            addUnitsToCart(productData,ItemCounter);
-        }
+            productData.inCart=ItemCounter;
+            productData.size=size;
+            setAmountInCart(productData.inCart);
+            cartProducts.push(productData)
+            setCartProducts(cartProducts);
+            calcSumTotal()
+        }   
     }
     function addUnitsToCart(productData,ItemCounter){
-        let indexToUpdate= cartProducts.indexOf(productData)
+        let ids=[];
+        cartProducts.map((product)=>{
+            ids.push(product.id)
+        })
+        let indexToUpdate= ids.indexOf(productData.id)
         let newCart= cartProducts;
         newCart[indexToUpdate].inCart=parseInt(newCart[indexToUpdate].inCart)+ItemCounter;
         setAmountInCart(productData.inCart +1);
-        setCartProducts(newCart);
+        setCartProducts(cartProducts);
         calcSumTotal()
+        
     }
     function removeUnitFromCart(productData){
         if(productData.inCart>1){
@@ -51,14 +70,11 @@ const CartProvider =({children})=>{
       
     }
 
-    function buyCart(){
+    function buyCart(newOrder,orderID){
         setBought(true);
+        setOrderID(orderID);
+        setOrder(newOrder);
         clearCart();
-        // GUARDAR LA INFO EN LOCAL STORAGE DE COMPRAS??
-
-        /* poner link a pagossss
-        podria hacer diferenciacion en tc o td, tippo plan de cuotas?
-        */
     }
 
     function clearCart(){
@@ -70,16 +86,20 @@ const CartProvider =({children})=>{
 
     function calcSumTotal(){
         let totalAmount=0;
-        let sumPrice=0;
         cartProducts.map((p)=>{
             totalAmount+=p.inCart;
-            sumPrice+=p.price;
         })
         setTotalAmountInCart(totalAmount);
-        setTotalPrice(sumPrice);
     }
 
-    
+    function subtotal(products) {
+        let subtotal=0;
+        products.map((product)=>{
+            subtotal+=product.price * product.inCart
+        })
+        setTotalPrice(subtotal);
+      return subtotal;
+    }
 
     const data={
         cartProducts,
@@ -94,7 +114,11 @@ const CartProvider =({children})=>{
         totalPrice,
         calcSumTotal,
         bought,
-        setBought
+        setBought,
+        orderID,
+        subtotal,
+        order,
+        addUnitsToCart
     }
     return (
         <CartContext.Provider value={data}>

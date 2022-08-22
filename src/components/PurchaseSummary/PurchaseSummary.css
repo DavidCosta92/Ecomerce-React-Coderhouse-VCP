@@ -1,0 +1,16 @@
+.cartelSucces{
+    text-align: center;
+    background-color: rgba(139, 249, 84, 0.2);
+    font-size: 2.5rem;
+    font-weight: 200;
+    padding: 3rem;
+    margin: 30px;
+    border-radius: 30px;
+    border: 2px solid rgba(139, 249, 84, 0.7);
+}
+
+.tableContainer .tableTitle{
+    font-size: 1.3rem;
+    font-weight: 600;
+    
+}

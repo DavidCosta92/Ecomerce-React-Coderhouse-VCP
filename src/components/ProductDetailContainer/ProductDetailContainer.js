@@ -39,6 +39,8 @@ const ProductsDetailContainer=()=>{
                 })
     }, [id])
 
+    
+
     return(
         <div>
             {spinner&&(

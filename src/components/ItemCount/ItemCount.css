@@ -39,3 +39,42 @@
 .sumarUnidad:active{
     background-color: rgba(10, 114, 0);
 }
+
+
+.talles p{
+    color: gray;
+    margin-bottom: 0;
+}
+
+.talles .btnsTalles button{ 
+    width: 35px;
+    height: 35px;
+    background-color: transparent;
+    font-weight: 600;
+    border-radius: 5px;
+    margin: 2px;
+}
+.talles .btnsTalles .btnSizeDisabled{
+    text-decoration:line-through;
+    text-decoration-thickness: 3px;
+    font-weight: 400;
+}
+
+/*
+
+SOLUCIONAR ESTILOS... NECESITO QUE MUESTRE EL CLIQUEADO! COMO SI FUERA UN RADIO BUTTON
+
+.btnsTalles button .sizeClicked{
+    transform: scale(1.25);
+    font-weight: 800;
+    background-color: black;
+    color: white;
+}
+*/
+
+.talles .btnsTalles button:hover, .productDetails .talles .btnsTalles button:focus{
+    transform: scale(1.25);
+    font-weight: 800;
+    background-color: black;
+    color: white;
+}
