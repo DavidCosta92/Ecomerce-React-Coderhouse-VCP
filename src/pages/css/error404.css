@@ -1,0 +1,25 @@
+.txtError404Container{
+    background-color: rgba(255, 0, 0, 0.15);
+    border-radius: 30px;
+    padding: 10px;    
+    margin: 180px 60px 120px 60px;
+    border: rgba(255, 0, 0, 0.7) solid 1px;
+}
+.error404 .title{
+    font-size: 3rem;
+    text-align: center;
+    font-weight: 600;
+    padding: 10px;
+}
+
+.error404 .subTitle{
+    font-size: 1.8rem;
+    text-align: center;
+    font-weight: 600;
+    margin-top: 20px;
+    padding: 10px;
+
+}
+.formError404{
+    margin-top: 100px;
+}

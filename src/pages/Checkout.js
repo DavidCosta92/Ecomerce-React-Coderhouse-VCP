@@ -9,8 +9,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import Home from "./Home"; // CAMBIAR HOME A MINUSCULA
-import "./Checkout.css"
+import Home from "./home";
+import "./css/Checkout.css"
 import PurchaseForm from "../components/PurchaseForm/PurchaseForm";
 import PurchaseSummary from "../components/PurchaseSummary/PurchaseSummary";
 
@@ -23,7 +23,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 const Checkout = () =>{
     
-    const { cartProducts, addProductToCart,addUnitsToCart,removeUnitFromCart,removeAllUnitsFromCart, amountInCart,bought, subtotal} = useContext(CartContext)
+    const { cartProducts,addUnitsToCart,removeUnitFromCart,removeAllUnitsFromCart, amountInCart,bought, subtotal} = useContext(CartContext)
     
     useEffect(()=>{
     }, [amountInCart])
@@ -63,7 +63,7 @@ const Checkout = () =>{
                                         <TableRow key={product.title}>
                                         <TableCell>
                                             <div className="imgCheckout">
-                                                <img src={`../assets/imagenes/${product.srcA}`}/>
+                                                <img src={`../assets/imagenes/${product.srcA}`} alt={`${product.textoAlt}`}/>
                                             </div>
                                         </TableCell>
                                         <TableCell>{product.title}</TableCell>

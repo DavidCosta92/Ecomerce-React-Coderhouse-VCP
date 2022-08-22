@@ -1,11 +1,11 @@
 import "./ItemCount.css";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import { CartContext } from "../../context/CartContext";
 import { useContext } from "react";
 
 
 const ItemCounter=({unitsSelected, productData})=>{
-    const {setTotalAmountInCart,totalAmountInCart,addProductToCart, calcSumTotal} = useContext(CartContext);
+    const {setTotalAmountInCart,totalAmountInCart,addProductToCart} = useContext(CartContext);
     const {stockXS,stockS,stockM,stockL,stockXL} =productData;
     const [ItemCounter, setItemCounter]= useState(1);
     const [size, setSize] = useState("");
@@ -48,6 +48,10 @@ const ItemCounter=({unitsSelected, productData})=>{
                 setSizeStock(stockXL);
                 setItemCounter(1)
                 break;
+            default :
+                setSizeStock("");
+                setItemCounter();
+
         }
     }
     return(

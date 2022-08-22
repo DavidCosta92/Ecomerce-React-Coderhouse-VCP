@@ -1,6 +1,6 @@
 import SlideProductImg from "../components/SlideProductImg/SlideProductImg";
 import Form from "../components/Form/Form";
-import "./AboutUs.css"
+import "./css/AboutUs.css" 
 
 const AboutUs =()=>{
     return (

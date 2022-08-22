@@ -120,7 +120,7 @@ const PurchaseForm =()=>{
             <div className="formularioContacto">
                 <fieldset>
                 <legend>Completa los datos para terminar la compra</legend>
-                <form className="formulario" onSubmit={submitData}>
+                <form className="formulario" onSubmit={submitData} >
                     <label className="name">Nombre 
                         <input type="text" onChange={handleChange} value={formData.name} required name="name" />
                     </label>

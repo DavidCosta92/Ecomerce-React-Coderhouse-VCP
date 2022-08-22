@@ -3,11 +3,10 @@ import ItemCounter from "../ItemCount/ItemCount";
 import SlideProductImg from "../SlideProductImg/SlideProductImg";
 import { useState } from "react";
 import {Link} from "react-router-dom"
-import { async } from "@firebase/util";
 
 
 const ProductDetail=({data}) =>{
-    const {title, price, srcA, srcB, srcC,srcD , description, textoAlt, stockXS,stockS,stockM,stockL,stockXL,descriptionExtra,id} =data;
+    const {title, price, srcA, srcB, srcC,srcD , description, textoAlt, stockXS,stockS,stockM,stockL,stockXL,descriptionExtra} =data;
     const [unitsSelected, setUnitsSelected] = useState(0);
     
     let stockTotal=stockXS+stockS+stockM+stockL+stockXL;
