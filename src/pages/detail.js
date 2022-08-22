@@ -1,7 +1,7 @@
 import ProductsDetailContainer from "../components/ProductDetailContainer/ProductDetailContainer";
 const Detail =()=>{
     return (
-        <ProductsDetailContainer/>
+        <ProductsDetailContainer />
     )
 }
 export default Detail;
