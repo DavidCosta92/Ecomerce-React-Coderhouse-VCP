@@ -29,7 +29,7 @@ const PurchaseSummary = () =>{
                             <Table sx={{ minWidth: 700 }} aria-label="spanning table" className="table">
                                 <TableHead>
                                 <TableRow>
-                                    <TableCell align="left" colSpan={3} className="tableTitle">
+                                    <TableCell align="left" colSpan={4} className="tableTitle">
                                     Resumen de compra
                                     </TableCell>
                                     <TableCell align="center" colSpan={2}>
@@ -66,9 +66,9 @@ const PurchaseSummary = () =>{
                                     )) 
                                 }
                                 <TableRow>
-                                <TableCell colSpan={1}>Comprado {date}</TableCell>
-                                    <TableCell align="right" colSpan={3} className="tableTitle">Total</TableCell>
-                                    <TableCell align="center" className="tableTitle">{total}</TableCell>
+                                <TableCell colSpan={4}>Comprado {date}</TableCell>
+                                    <TableCell align="center" colSpan={1} className="tableTitle">Total</TableCell>
+                                    <TableCell align="center" colSpan={2} className="tableTitle">{total}</TableCell>
                                 </TableRow>
                                 <TableRow>
                                     <TableCell colSpan={1}>ID compra: {orderID}</TableCell>

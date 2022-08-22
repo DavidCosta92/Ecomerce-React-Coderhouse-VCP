@@ -9,7 +9,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import Home from "./Home";
+import Home from "./Home"; // CAMBIAR HOME A MINUSCULA
 import "./Checkout.css"
 import PurchaseForm from "../components/PurchaseForm/PurchaseForm";
 import PurchaseSummary from "../components/PurchaseSummary/PurchaseSummary";
@@ -43,7 +43,7 @@ const Checkout = () =>{
                             <Table sx={{ minWidth: 700 }} aria-label="spanning table" className="table">
                                 <TableHead>
                                 <TableRow>
-                                    <TableCell align="center" colSpan={3}>
+                                    <TableCell align="left" colSpan={4} className="tableTitle">
                                     Detalles del carrito
                                     </TableCell>
                                     <TableCell align="center" colSpan={2}>Precio</TableCell>
@@ -81,8 +81,8 @@ const Checkout = () =>{
                                 }
 
                                 <TableRow>
-                                    <TableCell colSpan={4}>Total</TableCell>
-                                    <TableCell align="center">{subtotal(cartProducts)}</TableCell>
+                                    <TableCell colSpan={5} className="tableTitle">Total</TableCell>
+                                    <TableCell align="center" className="tableTitle">{subtotal(cartProducts)}</TableCell>
                                     <TableCell ></TableCell>
                                 </TableRow>
                                 </TableBody>
