@@ -8,6 +8,7 @@ import Box from '@mui/material/Box';
 
 import { collection, getDocs,query,where} from "firebase/firestore";
 import db from "../../firebaseConfig"
+import NavBarSearch from "../NavBarSearch/NavBarSearch";
 
 
 const ItemListContainer=({Category})=>{
@@ -55,6 +56,7 @@ const ItemListContainer=({Category})=>{
 
     return(
         <div>
+            
             <p className="tituloProductoContainer">{title}</p>
             {spinner&&(
                     <div className="spinner"> 
