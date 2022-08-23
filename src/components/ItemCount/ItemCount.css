@@ -60,20 +60,25 @@
     font-weight: 400;
 }
 
-/*
+.talles .btnsTalles .btnSizeDisabled:hover, .talles .btnsTalles .btnSizeDisabled:focus, .talles .btnsTalles .btnSizeDisabled:active{
+    transform: none;
+    font-weight: 800;
+    background-color: rgba(0, 0, 0, 0.416);
+    color: white;
 
-SOLUCIONAR ESTILOS... NECESITO QUE MUESTRE EL CLIQUEADO! COMO SI FUERA UN RADIO BUTTON
+}
 
-.btnsTalles button .sizeClicked{
-    transform: scale(1.25);
+
+
+.talles .btnsTalles .sizeClicked{
+    transform: scale(1.2);
     font-weight: 800;
     background-color: black;
     color: white;
 }
-*/
 
 .talles .btnsTalles button:hover, .productDetails .talles .btnsTalles button:focus{
-    transform: scale(1.25);
+    transform: scale(1.3);
     font-weight: 800;
     background-color: black;
     color: white;

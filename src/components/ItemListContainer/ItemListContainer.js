@@ -21,22 +21,32 @@ const ItemListContainer=({Category})=>{
         },1000)           
     }
 
+    const queryCollection= collection (db, "products")   
     useEffect(()=>{
-        const queryCollection= collection (db, "products")
-    
+        
         if(Category==="Ofertas"){
             const queryFilter=query(queryCollection, where ("oferta","==",true ))
             getDocs(queryFilter)
             .then(res=> productRender(res))
+           /* .catch((error)=>{
+                console.log("llamada a Ofertas fallo")
+                })*/
+
         }
         else if (Category==="verTodo"){
             getDocs(queryCollection)
             .then(res=> productRender(res))
+           /* .catch((error)=>{
+                console.log("llamada a verTodo fallo")
+                }) */
         }
         else if (Category!=="verTodo"){
             const queryFilter=query(queryCollection, where ("category","==",Category ))
             getDocs(queryFilter)
             .then(res=> productRender(res))
+          /*  .catch((error)=>{
+                console.log("llamada a categoria fallo")
+                }) */
         }
     }, [Category])
 

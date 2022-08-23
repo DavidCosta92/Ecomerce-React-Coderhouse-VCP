@@ -5,6 +5,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import "./NavBar.css"
 import CartWidget from './CartWidget';
 import {Link} from "react-router-dom"
+import NavBarSearch from '../NavBarSearch/NavBarSearch';
 
 const Navv=()=>{
     return (
@@ -28,7 +29,7 @@ const Navv=()=>{
                     </NavDropdown>
                 </Nav>
                 </Navbar.Collapse>
-                <p>Hacer campo de busqueda, por palabras claves</p>
+                <NavBarSearch/>
                 <Navbar.Brand className='brandTitle'><Link to="/" className='nombreMarca'> Van Como Piña</Link></Navbar.Brand>
                <CartWidget/>
             </Container>
