@@ -101,6 +101,11 @@ const CartProvider =({children})=>{
       return subtotal;
     }
 
+    function warningClearCart(){
+        /// hacer cartel de warning.. si es ok se vacia y sino no
+        clearCart();
+    }
+
     const data={
         cartProducts,
         addProductToCart,
@@ -118,7 +123,8 @@ const CartProvider =({children})=>{
         orderID,
         subtotal,
         order,
-        addUnitsToCart
+        addUnitsToCart,
+        warningClearCart
     }
     return (
         <CartContext.Provider value={data}>

@@ -134,7 +134,7 @@ const PurchaseForm =()=>{
                         <input type="number" onChange={handleChange} value={formData.phone} required name="phone" placeholder="Solo lo usaremos para contactarnos contigo.."/>
                     </label>
                     <label className="address">Direccion
-                        <input type="text" onChange={handleChange} value={formData.address} required name="address" placeholder="Solo lo usaremos para contactarnos contigo.."/>
+                        <input type="text" onChange={handleChange} value={formData.address} required name="address" placeholder="Requerido para realizar envio"/>
                     </label>
                     <input type="submit" class="botonEnvio"/>
                 </form></fieldset>

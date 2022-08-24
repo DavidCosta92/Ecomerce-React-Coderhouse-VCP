@@ -54,7 +54,7 @@ const NavBarSearch = () =>{
 
     return (
         <div className="containerNavBarSearch" >
-            <form noValidate autoComplete="off" onChange={handleChange} >
+            <form noValidate onChange={handleChange} >
                 <TextField id="outlined-basic" label="PENDIENTE AUN.." variant="outlined"  value={searchData}/>
             </form>
             <div>

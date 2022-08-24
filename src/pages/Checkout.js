@@ -17,13 +17,15 @@ import PurchaseSummary from "../components/PurchaseSummary/PurchaseSummary";
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import DeleteIcon from '@mui/icons-material/Delete';
+import DangerousIcon from '@mui/icons-material/Dangerous';
+import {Link} from "react-router-dom"
 
 
 
 
 const Checkout = () =>{
     
-    const { cartProducts,addUnitsToCart,removeUnitFromCart,removeAllUnitsFromCart, amountInCart,bought, subtotal} = useContext(CartContext)
+    const { cartProducts,addUnitsToCart,removeUnitFromCart,removeAllUnitsFromCart, amountInCart,bought, subtotal,warningClearCart} = useContext(CartContext)
     
     useEffect(()=>{
     }, [amountInCart])
@@ -62,9 +64,11 @@ const Checkout = () =>{
                                     cartProducts.map((product) => (
                                         <TableRow key={product.title}>
                                         <TableCell>
+                                        <Link to={`/Products/Id=${product.id}`}>
                                             <div className="imgCheckout">
                                                 <img src={`../assets/imagenes/${product.srcA}`} alt={`${product.textoAlt}`}/>
                                             </div>
+                                        </Link>
                                         </TableCell>
                                         <TableCell>{product.title}</TableCell>
                                         <TableCell align="center">{product.size}</TableCell>
@@ -83,6 +87,7 @@ const Checkout = () =>{
                                 <TableRow>
                                     <TableCell colSpan={5} className="tableTitle">Total</TableCell>
                                     <TableCell align="center" className="tableTitle">{subtotal(cartProducts)}</TableCell>
+                                    <TableCell align="center" className="tableTitle"><button className="btnVaciarCarrito" onClick={()=>warningClearCart()}>Vaciar Carrito <DangerousIcon/></button></TableCell>
                                     <TableCell ></TableCell>
                                 </TableRow>
                                 </TableBody>

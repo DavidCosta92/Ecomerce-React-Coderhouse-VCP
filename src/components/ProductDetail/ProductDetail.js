@@ -22,9 +22,10 @@ const ProductDetail=({data}) =>{
             {stockTotal===0? 
                 (<p className="soldOutText">Producto Agotado</p>) 
                 : (unitsSelected>=1? 
-                    (<Link to="/checkout"><button className="btnTerminarCompra">Terminar Compra</button></Link>) 
+                    (<><Link to="/checkout"><button className="btnTerminarCompra">Terminar Compra</button></Link><Link to="/"><button className="btnTerminarCompra">Ver mas productos</button></Link></>) 
                     : (<ItemCounter unitsSelected={setUnitsSelected} productData={data}/>))
                 }
+                
         </div>
     )
 }
