@@ -16,25 +16,30 @@ const SearchResults =()=>{
         setListProducts(res.docs.map(product=> ({id: product.id, ...product.data()})));
     }
 
+    let auxSearch= search.toLocaleLowerCase();
     useEffect(()=>{
-        const queryCollection= collection (db, "products")   
-        const queryFilter=query(queryCollection, where ("category","==",search)) // podria usar includes para buscar!!
+        const queryCollection= collection (db, "products")  
+        auxSearch=auxSearch[0].toUpperCase()+auxSearch.substring(1);
+        const queryFilter=query(queryCollection, where ("category","==",auxSearch)) // podria usar includes para buscar!!
+
+        
+        ///const queryFilter2=query(queryCollection, where ("title","==",auxSearch))
+        
+
+        /*
+        BUSQUEDA DEBERIA SER MAS FLEXIBLE, SIN IMPORTAR MAYUSCULAS O MINUSCULA, QUE BUSQUE POR CATEGORIA O NOMBRE DE PRODUCTOS.p.
+        */
             setSpinner(true);
             setTimeout(()=>{
                 setSpinner(false);
                 getDocs(queryFilter)
                 .then(res=> productRender(res))
             },500)  
-
-
-
-
-
-    }, [search])
+    }, [auxSearch])
     
     return (
         <div>
-            <h1>soy los resultados de busquedas con el parametro:</h1>
+            <h1>Resultados de busqueda</h1>
             {spinner&&(
                     <div className="spinner"> 
                         <Box sx={{ display: 'flex' }} >

@@ -94,7 +94,14 @@ const PurchaseForm =()=>{
                 data={ stockXL: resp};
                 break;
         }
-        const updateStock= setDoc(updateRef, data,{ merge:true });
+        const updateStock= setDoc(updateRef, data,{ merge:true })
+        // OPCIONAL PARA ERROR DE UPCDATE, DEBERIA HACER UN TOSTY O MODAL
+        .then(()=>{
+            console.log("Update exitoso")
+        })
+        .catch((error)=>{
+            console.log("Update erroneo", error)
+        });
        })       
     }
 

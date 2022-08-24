@@ -8,12 +8,12 @@ const NavBarSearch = () =>{
     const [searchData, setSearchData]=useState("")
     function handleChange(e){
         setSearchData(e.target.value)
-        console.log("Mostrando termino de busqueda", searchData)        
+        
     }
     const navigate = useNavigate();
 
     function redirectSearch(){
-        navigate(`/search/${searchData}`);     
+        navigate(`/search/search=${searchData}`);     
     }
 
     function handleSubmit(e){

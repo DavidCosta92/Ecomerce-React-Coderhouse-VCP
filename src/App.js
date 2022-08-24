@@ -23,7 +23,7 @@ function App() {
             <Route path='/'element={<Home/>}/>
             <Route path='/Products/Id=:id' element={<Detail/>}/>
             <Route path='Categories/:Category' element={<Category/>}/>
-            <Route path='search/:search' element={<SearchResults/>}/>
+            <Route path='search/search=:search' element={<SearchResults/>}/>
             <Route path='/AboutUs' element={<AboutUs/>}/>
             <Route path='/Checkout' element={<Checkout/>}/>
             <Route path='*' element={<Error404/>}/>
