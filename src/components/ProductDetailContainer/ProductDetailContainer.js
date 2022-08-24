@@ -14,7 +14,7 @@ import { doc, getDoc } from "firebase/firestore";
 
 
 const ProductsDetailContainer=()=>{
-    const {id} =useParams();    
+    const {id} =useParams();
     // USANDO FIREBASE
     const getProduct = async ()=>{
         const docRef = doc(db, "products", id)
