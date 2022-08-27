@@ -21,11 +21,7 @@ const SearchResults =()=>{
         const queryCollection= collection (db, "products")  
         auxSearch=auxSearch[0].toUpperCase()+auxSearch.substring(1);
         const queryFilter=query(queryCollection, where ("category","==",auxSearch)) // podria usar includes para buscar!!
-
         
-        ///const queryFilter2=query(queryCollection, where ("title","==",auxSearch))
-        
-
         /*
         BUSQUEDA DEBERIA SER MAS FLEXIBLE, SIN IMPORTAR MAYUSCULAS O MINUSCULA, QUE BUSQUE POR CATEGORIA O NOMBRE DE PRODUCTOS.p.
         */

@@ -2,26 +2,27 @@ import { useEffect, useState } from "react";
 import ItemList from "../ItemList/ItemList";
 import "./ItemListContainer.css"
 
-import * as React from 'react';
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
+import { Skeleton } from "@mui/material";
+
+//import * as React from 'react';
+//import CircularProgress from '@mui/material/CircularProgress';
+//import Box from '@mui/material/Box';
 
 import { collection, getDocs,query,where} from "firebase/firestore";
-import { orderBy } from "firebase/firestore";
-import { limitToLast } from "firebase/firestore";
+//import { orderBy } from "firebase/firestore";
+//import { limitToLast } from "firebase/firestore";
 import db from "../../firebaseConfig"
-import NavBarSearch from "../NavBarSearch/NavBarSearch";
 
 
 const ItemListContainer=({Category})=>{
-    const[spinner, setSpinner]=useState(false);
     const[listProducts, setListProducts] = useState([]);
+    const [loading, setLoading]=useState(true);  
+
     const productRender= (res)=>{
-        setSpinner(true);
         setTimeout(()=>{
-            setSpinner(false);
+            setLoading(false);
             setListProducts(res.docs.map(product=> ({id: product.id, ...product.data()})));
-        },1000)           
+        },1500)           
     }
 
     const queryCollection= collection (db, "products")   
@@ -57,22 +58,42 @@ const ItemListContainer=({Category})=>{
     }, [Category])
 
     let title;
-    Category==="verTodo"? title="Todos nuestros productos":title=Category;
+    Category==="verTodo"? title="Todos nuestros productos":title=Category; 
 
+    const renderSkeleton=()=>{
+        let productListSkeleton=[];
+        for (let p=0; p<10;p++){
+            productListSkeleton.push(
+                <div className="productCard">
+                    <Skeleton  className="skeletonTxt" width={300} height={33} duration={0.5}/>               
+                    <Skeleton  variant="rectangular" className="skeletonImg" width={300} height={300} duration={0.5}/>
+                    <Skeleton  className="skeletonTxt" width={300} height={200} duration={0.5}/>
+                </div>)
+        }
+        return (
+            <div>
+                <Skeleton  className="skeletonTxt" width={300} height={50} duration={0.5}/>
+                <div className="productContainer containerSkeleton">
+                    {productListSkeleton}
+                </div>
+            </div>
+        )
+    }
+
+    const renderContent=()=>{
+        return(
+            <div>
+                <p className="tituloProductoContainer">{title}</p>
+                <div className="productContainer">                                
+                    <ItemList listProducts={listProducts}/>
+                </div>
+            </div>
+        )
+    }
+    
     return(
         <div>
-            
-            <p className="tituloProductoContainer">{title}</p>
-            {spinner&&(
-                    <div className="spinner"> 
-                        <Box sx={{ display: 'flex' }} >
-                            <CircularProgress />
-                        </Box>
-                    </div>
-            )}
-            <div className="productContainer">                                
-                <ItemList listProducts={listProducts}/>
-            </div>
+            {loading? renderSkeleton():renderContent()}
         </div>
     )
 }

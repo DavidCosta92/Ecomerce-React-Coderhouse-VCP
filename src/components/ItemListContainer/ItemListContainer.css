@@ -20,3 +20,9 @@
     padding-top: 10%;
     padding-bottom: 10%;
 }
+.containerSkeleton{
+    margin-top: 90px;
+}
+.skeletonImg{
+    margin: auto;
+}

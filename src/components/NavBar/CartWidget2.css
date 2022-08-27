@@ -1,0 +1,65 @@
+
+.css-tlelie-MuiListItemText-root{
+    width: 130px;
+}
+
+img.productImgCartWidget{
+    height: 150px;
+}
+
+/*
+.carritoVacio p{
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 5px;
+    margin: 5px;
+}
+*/
+.titleWidget{
+    font-weight: 600;
+    text-align: left;
+    margin-right: 10px;
+    width:30%;
+    font-size: 1.2rem;
+}
+.priceWidget{
+    font-size: 1.1rem;
+}
+.priceWidget, .cantWidget{
+    font-weight: 600;
+    text-align: center;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.totalPriceWidget{
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    width: 100%;
+}
+.widgetAction{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: space-evenly;
+    margin-left: 20px;
+}
+
+.WidgetAdd,.WidgetRemove,.WidgetClear{
+    border-radius: 5px;
+    width: 40px;
+    height: 30px;
+} 
+.WidgetAdd:hover{
+    background-color: rgba(9, 114, 0, 0.664);
+    transform: scale(1.1);
+}
+.WidgetRemove:hover{
+    background-color: rgba(255, 0, 0, 0.441);
+    transform: scale(1.1);
+}
+
+.WidgetClear:hover{
+    background-color: rgba(255, 0, 0);
+    transform: scale(1.1);
+}

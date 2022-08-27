@@ -6,6 +6,7 @@ import "./NavBar.css"
 import CartWidget from './CartWidget';
 import {Link} from "react-router-dom"
 import NavBarSearch from '../NavBarSearch/NavBarSearch';
+import TemporaryDrawer from './CartWidget2';
 
 const Navv=()=>{
     return (
@@ -29,9 +30,11 @@ const Navv=()=>{
                     </NavDropdown>
                 </Nav>
                 </Navbar.Collapse>
+                
                 <NavBarSearch/>
                 <Navbar.Brand className='brandTitle'><Link to="/" className='nombreMarca'> Van Como Piña</Link></Navbar.Brand>
                <CartWidget/>
+               <TemporaryDrawer/>
             </Container>
             </Navbar>
         </div>

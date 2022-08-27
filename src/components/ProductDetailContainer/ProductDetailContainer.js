@@ -1,12 +1,8 @@
 import { useEffect, useState } from "react";
 import {useParams} from "react-router-dom"
 import ProductDetail from "../ProductDetail/ProductDetail";
-
 import "./ProductDetailContainer.css"
-
-import * as React from 'react';
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
+import { Skeleton } from "@mui/material";
 
 import db from "../../firebaseConfig"
 import { doc, getDoc } from "firebase/firestore";
@@ -14,8 +10,10 @@ import { doc, getDoc } from "firebase/firestore";
 
 
 const ProductsDetailContainer=()=>{
+    const [product, setProduct]= useState([]);
+    const [loading, setLoading]=useState(true);  
     const {id} =useParams();
-    // USANDO FIREBASE
+
     const getProduct = async ()=>{
         const docRef = doc(db, "products", id)
         const docSnapshot = await getDoc(docRef)
@@ -24,39 +22,44 @@ const ProductsDetailContainer=()=>{
         return product;
        }
 
-    const [product, setProduct]= useState([]);
-    const[spinner, setSpinner]=useState(false);
+    const loaderSkeleton=()=>{
+        return(
+            <div className="productContainer">
+                <div className="productCard productDetails">
+                    <Skeleton  className="skeletonTxt" width={600} height={50} duration={0.5}/>
+                    <Skeleton  variant="rectangular" className="skeletonImg" width={600} height={500} duration={0.5}/>
+                    <Skeleton  className="skeletonTxt" width={600} height={44} duration={0.5}/>
+                    <Skeleton  className="skeletonTxt" width={600} height={46} duration={0.5}/>
+                    <Skeleton  className="skeletonTxt" width={600} height={110} duration={0.5}/>                              
+                </div>
+            </div>
+        )
+    }
+
+    const renderContent=()=>{
+        return(
+            <div className="productContainer">
+                <ProductDetail key={id} data={product}/>
+            </div>
+        )
+    }
+
+
     useEffect(()=>{
             getProduct()
             .then((response)=>{
-                setSpinner(true);
                 setTimeout(()=>{
-                    setSpinner(false);
+                    setLoading(false);
                     setProduct(response)
-                },200) })
+                },1500) })
             .catch((error)=>{
                 console.log("llamada a mock fallo", error)
                 })
     }, [id])
 
-    
-
     return(
         <div>
-            {spinner&&(
-                    <div className="spinner"> 
-                        <Box sx={{ display: 'flex' }} >
-                            <CircularProgress />
-                        </Box>
-                    </div>
-            )}
-            
-            {!spinner&&(
-                <div className="productContainer">
-                    <ProductDetail key={id} data={product}/>
-                </div>
-                )
-            }
+            {loading? loaderSkeleton():renderContent()}
         </div>
     )
 }

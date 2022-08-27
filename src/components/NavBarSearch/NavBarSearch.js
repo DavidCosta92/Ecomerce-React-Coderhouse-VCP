@@ -8,8 +8,9 @@ const NavBarSearch = () =>{
     const [searchData, setSearchData]=useState("")
     function handleChange(e){
         setSearchData(e.target.value)
-        
+        redirectSearch();        
     }
+    
     const navigate = useNavigate();
 
     function redirectSearch(){
