@@ -7,14 +7,17 @@ img.productImgCartWidget{
     height: 150px;
 }
 
-/*
-.carritoVacio p{
-    font-size: 1.2rem;
+
+.carritoVacio {
+    font-size: 1.8rem;
     font-weight: 600;
     padding: 5px;
     margin: 5px;
+    margin-top: 40%;
+    text-align: center;
+    width: 100%;
 }
-*/
+
 .titleWidget{
     font-weight: 600;
     text-align: left;
@@ -30,6 +33,7 @@ img.productImgCartWidget{
     text-align: center;
     margin-left: 5px;
     margin-right: 5px;
+    width: 100px;
 }
 .totalPriceWidget{
     text-align: center;
@@ -62,4 +66,34 @@ img.productImgCartWidget{
 .WidgetClear:hover{
     background-color: rgba(255, 0, 0);
     transform: scale(1.1);
+}
+.containerBtnComprarCarrito a{
+    width: 100%;
+}
+.comprarCarrito{
+    background-color: rgba(0, 255, 0, 0.21);
+    padding: 2px;
+    width: 96%;
+    margin-left: 2%;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 2%; 
+}
+.comprarCarrito:hover{
+    background-color: rgba(0, 255, 0, 0.8);
+}
+
+.eliminarCarrito{
+    background-color: rgba(255, 0, 0, 0.21);
+    padding: 2px;
+    width: 96%;
+    margin-left: 2%;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 2%;
+}
+.eliminarCarrito:hover{
+    background-color: rgba(255, 0, 0);
 }

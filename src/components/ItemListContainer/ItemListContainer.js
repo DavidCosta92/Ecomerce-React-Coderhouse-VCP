@@ -12,11 +12,47 @@ import { collection, getDocs,query,where} from "firebase/firestore";
 //import { orderBy } from "firebase/firestore";
 //import { limitToLast } from "firebase/firestore";
 import db from "../../firebaseConfig"
+import ColorToggleButton from "../ToggleButtonGroup/ToggleButtonGroup";
 
 
 const ItemListContainer=({Category})=>{
     const[listProducts, setListProducts] = useState([]);
-    const [loading, setLoading]=useState(true);  
+    const [loading, setLoading]=useState(true);
+    const [orderProducts, setOrderProducts]=useState("");  
+
+    function orderProductsBy(order){
+        switch(order){
+            case "priceAsc": 
+                listProducts.sort(compareByPrice);
+                break;
+            case "priceDesc": 
+                listProducts.sort(compareByPriceDesc);
+                break;
+            case "category": 
+                listProducts.sort(compareByCategory);
+                break;
+        }
+        setOrderProducts(order);
+        setListProducts(listProducts);
+    }
+
+    function compareByPrice(a,b){
+        if ( a.price < b.price) return -1;
+        if ( a.price > b.price) return 1;
+        return 0;
+    }
+    function compareByPriceDesc(a,b){
+        if ( a.price > b.price) return -1;
+        if ( a.price < b.price) return 1;
+        return 0;
+    }
+    function compareByCategory(a,b){
+        if ( a.category < b.category) return -1;
+        if ( a.category > b.category) return 1;
+        return 0;
+    }
+
+
 
     const productRender= (res)=>{
         setTimeout(()=>{
@@ -84,6 +120,7 @@ const ItemListContainer=({Category})=>{
         return(
             <div>
                 <p className="tituloProductoContainer">{title}</p>
+                <ColorToggleButton orderProductsBy={orderProductsBy}/>
                 <div className="productContainer">                                
                     <ItemList listProducts={listProducts}/>
                 </div>

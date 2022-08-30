@@ -26,3 +26,35 @@
     border-radius: 2px;
     box-shadow: 1px 1px 1px 2px rgba(20, 20, 20, 0.3);
 }
+.MuiFormControl-root.formMediosPagos.css-1nrlq1o-MuiFormControl-root {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.formMediosPagos .radioBtnMedioPago{
+    width: 25%;
+}
+.medioPago{
+    display: flex;
+    justify-content: space-between;
+    width: 74%;
+    align-items: center;
+}
+.medioPago svg{
+    width: 100px;
+}
+
+.medioPago p{
+    margin-left: 4px;
+    text-align: center;
+    font-size: 1.3rem;
+    width: 60%;
+}
+
+.medioPago .mediosPagoPrecio{
+    
+    font-weight: 600;
+}
+.errorForm{
+    color: red;
+}

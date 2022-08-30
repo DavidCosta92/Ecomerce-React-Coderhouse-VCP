@@ -22,6 +22,7 @@ const PurchaseSummary = () =>{
         <div>
             <div className="cartelSucces">
                 <p>¡Ya estamos preparando tu compra!</p>
+                <p>Revisa tu casilla de email, recibiras un link de pago con mas instrucciones</p>
                 <p>♥ Gracias por elegirnos ♥</p>
             </div>
             <div className="tableContainer">   
@@ -66,9 +67,9 @@ const PurchaseSummary = () =>{
                                     )) 
                                 }
                                 <TableRow>
-                                <TableCell colSpan={4}>Comprado {date}</TableCell>
+                                    <TableCell colSpan={4}>Comprado {date}, pago elegido: {buyer.payMethod}</TableCell>
                                     <TableCell align="center" colSpan={1} className="tableTitle">Total</TableCell>
-                                    <TableCell align="center" colSpan={2} className="tableTitle">{total}</TableCell>
+                                    <TableCell align="center" colSpan={2} className="tableTitle">{total}</TableCell>                                    
                                 </TableRow>
                                 <TableRow>
                                     <TableCell colSpan={1}>ID compra: {orderID}</TableCell>

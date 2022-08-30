@@ -6,16 +6,11 @@ import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import "./CartWidget2.css";
-import { Link } from '@mui/material';
+import { Link } from "react-router-dom";
 import ColorBadge from './BadgeCounter/BadgeCounter.js';
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { CartContext } from "../../context/CartContext";
-
 
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
@@ -34,6 +29,45 @@ export default function TemporaryDrawer() {
         return sumatoria
     }
 
+    /*
+    useEffect(()=>{
+      renderProductsWidget();
+    }, [])
+
+    */
+
+    function renderProductsWidget(){
+      return(
+        <>
+          <p className='totalPriceWidget'>Carrito</p>
+          <Divider />
+            {cartProducts.map((product) => (        
+              <ListItem key={product.title} disablePadding>
+                <ListItemButton>
+                    <img src={`/assets/imagenes/${product.srcA}`} className="productImgCartWidget"/>
+                    <p className="titleWidget">{product.title}</p>
+                  <div>
+                    <p className="priceWidget">$ {product.inCart*product.price}</p>
+                    <p className="cantWidget">Cant. {product.inCart}</p>
+                  </div>
+                  <div className='widgetAction'>
+                    <AddIcon className="WidgetAdd" onClick={()=> addProductToCart(product,1)}/>
+                    <RemoveIcon className="WidgetRemove" onClick={()=> removeUnitFromCart(product)}/>
+                    <DeleteIcon className="WidgetClear" onClick={()=> removeAllUnitsFromCart(product)}/>
+                  </div>
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </>
+      )
+    }
+    /*
+    useEffect(()=>{
+      renderProductsWidget()
+    }, [cartProducts])
+    */
+
+
 
   const [state, setState] = React.useState({right: false});
 
@@ -41,7 +75,6 @@ export default function TemporaryDrawer() {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
-
     setState({ ...state, [anchor]: open });
   };
 
@@ -52,42 +85,24 @@ export default function TemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        <p className='totalPriceWidget'>Carrito</p>
-      <Divider />
-        {cartProducts.map((product) => (        
-          <ListItem key={product.title} disablePadding>
-            <ListItemButton>
-                <img src={`/assets/imagenes/${product.srcA}`} className="productImgCartWidget"/>
-                <p className="titleWidget">{product.title}</p>
-              <div>
-                <p className="priceWidget">$ {product.inCart*product.price}</p>
-                <p className="cantWidget">Cant. {product.inCart}</p>
-              </div>
-              <div className='widgetAction'>
-                <AddIcon className="WidgetAdd" onClick={()=> addProductToCart(product,1)}/>
-                <RemoveIcon className="WidgetRemove" onClick={()=> removeUnitFromCart(product)}/>
-                <DeleteIcon className="WidgetClear" onClick={()=> removeAllUnitsFromCart(product)}/>
-              </div>
-            </ListItemButton>
-          </ListItem>
-        ))}
+      {renderProductsWidget()}
       </List>
       {cartProducts.length > 0 && <Divider />}
       <List>       
         {cartProducts.length > 0 && 
-        (    <ListItem key={"text"} disablePadding>
+        (    <ListItem key={"totalPriceWidget"} disablePadding>
                 <ListItemButton>
                 <p className="totalPriceWidget">{`Precio total $${calcular()}`}</p>
                 </ListItemButton>
             </ListItem> )         
-        }        
+        }     
         {cartProducts.length > 0 && 
-        (<ListItem key={"text"} disablePadding>
-              <ListItemText primary={cartProducts.length>0&& <Link to="/Checkout"><button className="comprarCarrito" /* onClick={() => setAnchorEl(null)}*/>COMPRAR CARRITO</button></Link>} />
+        (<ListItem key={"comprarCarrito"} disablePadding className='containerBtnComprarCarrito'> 
+            <Link to="/Checkout"><button className="comprarCarrito" onClick={()=>setState({right: false})}>COMPRAR CARRITO</button></Link>
           </ListItem>  )        
         }
-        {<ListItem key={"text"} disablePadding>
-              <ListItemText primary= {cartProducts.length>0? <button className="eliminarCarrito" onClick={() => clearCart()}>Eliminar carrito</button>:<div className="carritoVacio"><p>¡El carrito esta vacio!</p></div>} />
+        {<ListItem key={"eliminarCarrito"} disablePadding>
+            {cartProducts.length>0? <button className="eliminarCarrito" onClick={() => clearCart()}>Eliminar carrito</button>:(<div className="carritoVacio"><p>¡Aun no has agregado productos al carrito! ¿Deseas ver algunas ofertas?</p><Link to="/"><button className="comprarCarrito" onClick={()=>setState({right: false})}>Ver Ofertas</button></Link></div>)}
           </ListItem>          
         }
       </List>

@@ -14,7 +14,7 @@ const NavBarSearch = () =>{
     const navigate = useNavigate();
 
     function redirectSearch(){
-        navigate(`/search/search=${searchData}`);     
+       navigate(`/search/search=${searchData}`);     
     }
 
     function handleSubmit(e){

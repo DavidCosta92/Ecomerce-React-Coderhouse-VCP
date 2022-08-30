@@ -23,13 +23,14 @@ import {Link} from "react-router-dom"
 
 
 
+
 const Checkout = () =>{
-    
     const { cartProducts,addUnitsToCart,removeUnitFromCart,removeAllUnitsFromCart, amountInCart,bought, subtotal,warningClearCart} = useContext(CartContext)
     
     useEffect(()=>{
     }, [amountInCart])
 
+    
     return (
         <>  
         {(cartProducts.length===0 && bought===false)? 
@@ -41,6 +42,7 @@ const Checkout = () =>{
                 <>
                 <div className="tableContainer">   
                         <p className="tituloCarrito"> Carrito</p>
+                        
                         <TableContainer component={Paper} >
                             <Table sx={{ minWidth: 700 }} aria-label="spanning table" className="table">
                                 <TableHead>
@@ -94,7 +96,7 @@ const Checkout = () =>{
                             </Table> 
                         </TableContainer>
                     </div>
-                    <PurchaseForm/>
+                    <PurchaseForm/>             
             </>
             ) : (
              <PurchaseSummary/>

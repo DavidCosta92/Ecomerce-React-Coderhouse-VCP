@@ -1,5 +1,4 @@
 .containerNav{
-    width: 100%;
     margin: 0 auto 0 auto;
     text-transform: uppercase;
     font-weight: 500;
@@ -9,6 +8,7 @@
     border-bottom-style: groove;
     border-bottom-color: rgba(168, 168, 168, 0.301);
 }
+
 
 .material-icons {
     font-size: 40px;
@@ -52,7 +52,21 @@ a.nav-link:hover {
     color: rgba(8, 8, 8, 0.6);
     font-weight: 700;
 }
+.brandTitle a{
+    text-decoration: none;
+}
+.brandContainer{
+    display: flex;
+    align-items: center;
+}
+
+svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root{
+    color: black;
+    margin-right: 5px;
+}
 
 .nombreMarca, .nombreMarca:focus, .nombreMarca:hover{
     color: black;
+    margin: auto;
+    
 }

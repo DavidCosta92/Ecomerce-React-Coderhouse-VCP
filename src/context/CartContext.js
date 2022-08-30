@@ -1,17 +1,65 @@
-import { createContext, useState, useEffect } from "react";
+import { ConstructionOutlined } from "@mui/icons-material";
+import { createContext, useState } from "react";
 
 
 const CartContext =createContext();
 
 
 const CartProvider =({children})=>{
-    const [cartProducts, setCartProducts] = useState([]);
+    
+    
+
+    const [cartProducts, setCartProducts] = useState([]);  
     const [amountInCart, setAmountInCart] = useState(0);
     const [totalAmountInCart, setTotalAmountInCart] = useState(0);
     const [totalPrice, setTotalPrice] = useState(0);
     const [bought, setBought] = useState(false);
     const [orderID, setOrderID]=useState();
     const [order, setOrder]=useState();
+
+   /* function existCartStorage(){
+        let carritoEnLocal=  JSON.parse(localStorage.getItem("userCart"));
+        carritoEnLocal? setCartProducts(carritoEnLocal) : setCartProducts([]);
+        let resp= carritoEnLocal? "si hay" :"no hay";
+        console.log("carrito en local?",resp);
+    }
+*/
+
+/// ULTIMA PRUEBA... INTENTE SACAR LA INFO DEL LOCAL Y PUSHEAR TODOS LOS PRODUCTOS AL CARRITO... NO FUNCIONA!
+  
+/*
+    function loadProductsFromLocalStorage(){
+        let carritoEnLocal=  JSON.parse(localStorage.getItem("userCart"));
+        console.log("mostrando carrito en local",carritoEnLocal)
+        carritoEnLocal.map((producto)=>{
+           // producto.inCart=producto.inCart;
+           // producto.size=producto.size;
+            setAmountInCart(producto.inCart);
+            cartProducts.push(producto)
+            setCartProducts(cartProducts);
+            console.log("agregue el producto",producto )
+        })
+        console.log("terminie de agruegar todos los productos del local sto, ahora cart produc tiene=>",cartProducts)
+        calcSumTotal()
+        
+    }
+    loadProductsFromLocalStorage();
+    
+   */
+
+
+    function saveLocalStorage(cartProducts){
+        localStorage.setItem("userCart",JSON.stringify(cartProducts));
+    }
+    function removeItemLocalStorage(){
+        deleteCartLocalStorage();
+        saveLocalStorage(cartProducts);
+    }
+
+    function deleteCartLocalStorage(){
+         localStorage.removeItem("userCart");
+    }
+
 
     function isInCart(productData){
         let isInCart=false;
@@ -34,7 +82,9 @@ const CartProvider =({children})=>{
             setCartProducts(cartProducts);
             calcSumTotal()
         }   
+        saveLocalStorage(cartProducts)
     }
+
     function addUnitsToCart(productData,ItemCounter){
         let ids=[];
         cartProducts.map((product)=>{
@@ -56,18 +106,19 @@ const CartProvider =({children})=>{
             setAmountInCart(productData.inCart -1);
             setCartProducts(newCart);
             calcSumTotal()
+            saveLocalStorage(cartProducts)
         } else{
             removeAllUnitsFromCart(productData);
-        }
-        
+        }      
     }
+
     function removeAllUnitsFromCart(productData){
         let indexToDelete= cartProducts.indexOf(productData)
         cartProducts.splice(indexToDelete,1)
         setAmountInCart(0);
         setCartProducts(cartProducts);
         calcSumTotal();
-      
+        removeItemLocalStorage(productData);
     }
 
     function buyCart(newOrder,orderID){
@@ -81,6 +132,7 @@ const CartProvider =({children})=>{
         setTotalAmountInCart(0); // ERROR, NO BORRA LA CANTIDAD DE ITEMS, CUANDO DESDE EL WIDGET SE APRIETA ELIMINAR CARRITO!!
         setTotalPrice(0);
         setCartProducts([]);
+        deleteCartLocalStorage();
     }
 
 

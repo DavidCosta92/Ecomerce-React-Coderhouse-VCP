@@ -3,10 +3,10 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import "./NavBar.css"
-import CartWidget from './CartWidget';
 import {Link} from "react-router-dom"
 import NavBarSearch from '../NavBarSearch/NavBarSearch';
 import TemporaryDrawer from './CartWidget2';
+import HomeIcon from '@mui/icons-material/Home';
 
 const Navv=()=>{
     return (
@@ -30,10 +30,8 @@ const Navv=()=>{
                     </NavDropdown>
                 </Nav>
                 </Navbar.Collapse>
-                
                 <NavBarSearch/>
-                <Navbar.Brand className='brandTitle'><Link to="/" className='nombreMarca'> Van Como Piña</Link></Navbar.Brand>
-               <CartWidget/>
+                <Navbar.Brand className='brandTitle'><Link to="/"><div className='brandContainer'><HomeIcon/><p className='nombreMarca'>Van Como Piña</p></div></Link></Navbar.Brand>
                <TemporaryDrawer/>
             </Container>
             </Navbar>

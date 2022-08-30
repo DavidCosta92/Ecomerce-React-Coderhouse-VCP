@@ -4,11 +4,25 @@ import { CartContext } from "../../context/CartContext";
 import {useState } from 'react'
 import db from "../../firebaseConfig"
 import { collection, addDoc, getDoc, doc, setDoc } from 'firebase/firestore'
-
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
+import CreditCardIcon from '@mui/icons-material/CreditCard';
+import { useForm } from "react-hook-form";
 
 const PurchaseForm =()=>{
+    const { register, handleSubmit, formState: { errors } }  = useForm();
     const {cartProducts,subtotal, buyCart}=useContext(CartContext)
     const [success,setSuccess] = useState();
+
+    const { setFocus } = useForm()
+
+    setFocus("lastName", { shouldSelect: true })
+
     
     const [formData, setFormData]=useState({
         name:"",
@@ -34,15 +48,14 @@ const PurchaseForm =()=>{
         }),
         buyer: {},
         total: subtotal(cartProducts),
-        date: new Date().toLocaleString() // poner otro tipo de fecha, que diga hace 5 horas fue comprado...
+        date: new Date().toLocaleString(), // poner otro tipo de fecha, que diga hace 5 horas fue comprado...
     })
 
     const handleChange = (e) => {
+        console.log("estoy manejando el cambio en form",e)
         setFormData({...formData, [e.target.name] : e.target.value})
     }
-
     const submitData=(e)=>{
-        e.preventDefault();
         let newOrder={...order, buyer: formData}
         pushData(newOrder)
     }
@@ -118,8 +131,45 @@ const PurchaseForm =()=>{
         setSuccess(orderDoc.id);
         buyCart(newOrder,orderDoc.id);
     }
+    const payMethods=()=>{
+        return (
+            <FormControl className="formMediosPagos" >
+              <FormLabel id="payMethod">Metodos de pago</FormLabel>
+              <RadioGroup
+                row
+                aria-labelledby="demo-row-radio-buttons-group-label"
+                name="payMethod"  
+              >
+                <FormControlLabel onChange={handleChange} value="Efectivo" control={<Radio />} label="Efectivo" className="radioBtnMedioPago" />
+                <div className="medioPago">
+                    <MonetizationOnIcon/>
+                    <p>Pago efectivo contado, 10% OFF<div className="mediosPagoPrecio"> ${Math.round(subtotal(cartProducts)*0.9)}</div></p>
+                </div>
+               
+                <FormControlLabel onChange={handleChange} value="Transferencia" control={<Radio />} label="Transferencia" className="radioBtnMedioPago"/>
+                <div className="medioPago">
+                    <AccountBalanceIcon/>
+                    <p>Pago con transferencia, 5% OFF<div className="mediosPagoPrecio"> ${Math.round(subtotal(cartProducts)*0.95)}</div></p>
+                </div>
+               
+                <FormControlLabel onChange={handleChange} value="Tarjeta Credito" control={<Radio />} label="Tarjeta Credito" className="radioBtnMedioPago"/>
+                <div className="medioPago">
+                    <CreditCardIcon/>
+                    <p>Credito, hasta 6 cuotas sin interes de<div className="mediosPagoPrecio"> ${Math.round(subtotal(cartProducts)/6)}</div></p>
+                </div>
+              </RadioGroup>
+            </FormControl>
+          );
+    }
 
-
+    {<div className="labelFormContacto">
+        <label >Nombre
+        <input type="text" name="name" {...register("name", { required: true})} />
+        {errors.name && <p className="errorForm">Necesitamos tu nombre para conocerte</p>}
+        {errors.mensaje && errors.mensaje.type ==="minLength" && (<p className="errorForm">Al menos necesitamos 8 caracteres..</p>)}
+        {errors.mensaje && errors.mensaje.type ==="maxLength" && <p className="errorForm">Mensaje demasiado largo, mantente en los 200 caracteres por favor</p>}
+        </label>
+    </div>}
 
     return (
         <>  
@@ -127,22 +177,37 @@ const PurchaseForm =()=>{
             <div className="formularioContacto">
                 <fieldset>
                 <legend>Completa los datos para terminar la compra</legend>
-                <form className="formulario" onSubmit={submitData} >
+                <form className="formulario" onSubmit={handleSubmit(submitData)} onChange={handleChange}>
+
                     <label className="name">Nombre 
-                        <input type="text" onChange={handleChange} value={formData.name} required name="name" />
+                        <input type="text"  name="name" {...register("name", { required: true})}/>
+                        {errors.name && <p className="errorForm">Necesitamos tu nombre para realizar tu facturar</p>}
                     </label>
+
+                    {console.log("estoy CAMBIANDO LA INFO DE FORMDATA?",formData)}
+
                     <label className="lastName">Apellido 
-                        <input type="text" onChange={handleChange} value={formData.lastName} required name="lastName" />
+                        <input type="text" name="lastName" {...register("lastName", { required: true})} />
+                        {errors.lastName && <p className="errorForm">Necesitamos tu nombre para realizar tu facturar</p>}
                     </label>
+
                     <label className="email">Email
-                        <input type="email" onChange={handleChange} value={formData.email} required name="email" placeholder="Solo lo usaremos para contactarnos contigo.."/>
+                        <input type="email"  name="email" {...register("email", { required: true})}  placeholder="Solo lo usaremos para contactarnos contigo.."/>
+                        {errors.email && <p className="errorForm">Necesitamos tu email para contactarnos en caso de ser necesario</p>}
                     </label>
+
                     <label className="phone">Telefono
-                        <input type="number" onChange={handleChange} value={formData.phone} required name="phone" placeholder="Solo lo usaremos para contactarnos contigo.."/>
+                        <input type="number"  name="phone" {...register("phone", { required: true})} placeholder="Solo lo usaremos para contactarnos contigo.."/>
+                        {errors.phone && <p className="errorForm">Necesitamos tu numero de telefono para contactarnos en caso de ser necesario</p>}
                     </label>
+
                     <label className="address">Direccion
-                        <input type="text" onChange={handleChange} value={formData.address} required name="address" placeholder="Requerido para realizar envio"/>
+                        <input type="text"  name="address" {...register("address", { required: true})} placeholder="Requerido para realizar envio"/>
+                        {errors.text && <p className="errorForm">Necesitamos tu direccion para enviarte la compra</p>}
                     </label>
+
+                    {payMethods()}
+
                     <input type="submit" class="botonEnvio"/>
                 </form></fieldset>
             </div>

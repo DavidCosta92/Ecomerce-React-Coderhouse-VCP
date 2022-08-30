@@ -1,5 +1,5 @@
 import "./ItemCount.css";
-import { useEffect, useState} from "react";
+import { useState} from "react";
 import { CartContext } from "../../context/CartContext";
 import { useContext } from "react";
 import BasicAlerts from "../BasicAlerts/BasicAlerts";
@@ -15,8 +15,6 @@ const ItemCounter=({unitsSelected, productData})=>{
 
     const addUnit = ()=>{
         if(ItemCounter<sizeStock) setItemCounter(ItemCounter+1);
-       
-
     }
     const subtractUnit = ()=>{
         if(ItemCounter>1) setItemCounter(ItemCounter-1);
@@ -27,9 +25,8 @@ const ItemCounter=({unitsSelected, productData})=>{
         addProductToCart(productData,ItemCounter,size);
         setTotalAmountInCart(totalAmountInCart+ItemCounter);
         setAlertAdd("si"); /// no funciona.. no esta seteando el estado
-        console.log(alertAdd)
+        //console.log(alertAdd)
     }
-
 
     const handleClickTalle =(e)=>{
         setSize(e.target.value);

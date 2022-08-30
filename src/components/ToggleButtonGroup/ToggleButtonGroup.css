@@ -1,0 +1,16 @@
+
+.toggleContainer{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.MuiToggleButtonGroup-root.css-1gjgmky-MuiToggleButtonGroup-root {
+   margin-right:20px;
+   margin-bottom: 10px;
+}
+
+button.MuiButtonBase-root.MuiToggleButton-root.MuiToggleButton-sizeMedium.MuiToggleButton-primary.MuiToggleButtonGroup-grouped.MuiToggleButtonGroup-groupedHorizontal.css-d9c359-MuiButtonBase-root-MuiToggleButton-root {
+    font-size: 0.7rem;
+    padding: 4px;
+}
