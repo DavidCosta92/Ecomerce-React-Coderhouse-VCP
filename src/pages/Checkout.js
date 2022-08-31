@@ -25,11 +25,11 @@ import {Link} from "react-router-dom"
 
 
 const Checkout = () =>{
-    const { cartProducts,addUnitsToCart,removeUnitFromCart,removeAllUnitsFromCart, amountInCart,bought, subtotal,warningClearCart} = useContext(CartContext)
-    
+    const { cartProducts,addUnitsToCart,removeUnitFromCart,removeAllUnitsFromCart, amountInCart,bought,totalPrice,warningClearCart} = useContext(CartContext)
+   /* 
     useEffect(()=>{
     }, [amountInCart])
-
+*/
     
     return (
         <>  
@@ -88,7 +88,7 @@ const Checkout = () =>{
 
                                 <TableRow>
                                     <TableCell colSpan={5} className="tableTitle">Total</TableCell>
-                                    <TableCell align="center" className="tableTitle">{subtotal(cartProducts)}</TableCell>
+                                    <TableCell align="center" className="tableTitle">{totalPrice}</TableCell>
                                     <TableCell align="center" className="tableTitle"><button className="btnVaciarCarrito" onClick={()=>warningClearCart()}>Vaciar Carrito <DangerousIcon/></button></TableCell>
                                     <TableCell ></TableCell>
                                 </TableRow>

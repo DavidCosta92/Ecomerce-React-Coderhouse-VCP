@@ -32,7 +32,8 @@ const Navv=()=>{
                 </Navbar.Collapse>
                 <NavBarSearch/>
                 <Navbar.Brand className='brandTitle'><Link to="/"><div className='brandContainer'><HomeIcon/><p className='nombreMarca'>Van Como Piña</p></div></Link></Navbar.Brand>
-               <TemporaryDrawer/>
+               {<TemporaryDrawer/>}
+               
             </Container>
             </Navbar>
         </div>

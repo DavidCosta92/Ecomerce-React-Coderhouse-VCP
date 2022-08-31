@@ -9,7 +9,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import "./CartWidget2.css";
 import { Link } from "react-router-dom";
 import ColorBadge from './BadgeCounter/BadgeCounter.js';
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 
 import AddIcon from '@mui/icons-material/Add';
@@ -18,23 +18,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 
 export default function TemporaryDrawer() {
-    const { cartProducts, clearCart, addProductToCart,removeUnitFromCart,removeAllUnitsFromCart, totalAmountInCart} = useContext(CartContext)
-
-
-    function calcular(){
-        let sumatoria=0;
-        cartProducts.map((p)=>{
-            sumatoria+=p.price*p.inCart
-        })
-        return sumatoria
-    }
-
-    /*
-    useEffect(()=>{
-      renderProductsWidget();
-    }, [])
-
-    */
+    const { cartProducts, clearCart, addProductToCart,removeUnitFromCart,removeAllUnitsFromCart,totalPrice} = useContext(CartContext)
 
     function renderProductsWidget(){
       return(
@@ -61,13 +45,6 @@ export default function TemporaryDrawer() {
           </>
       )
     }
-    /*
-    useEffect(()=>{
-      renderProductsWidget()
-    }, [cartProducts])
-    */
-
-
 
   const [state, setState] = React.useState({right: false});
 
@@ -92,7 +69,7 @@ export default function TemporaryDrawer() {
         {cartProducts.length > 0 && 
         (    <ListItem key={"totalPriceWidget"} disablePadding>
                 <ListItemButton>
-                <p className="totalPriceWidget">{`Precio total $${calcular()}`}</p>
+                <p className="totalPriceWidget">{`Precio total $${totalPrice}`}</p>
                 </ListItemButton>
             </ListItem> )         
         }     
@@ -113,7 +90,7 @@ export default function TemporaryDrawer() {
     <div>
       {['right'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}><ColorBadge totalAmountInCart={totalAmountInCart}/></Button>
+          <Button onClick={toggleDrawer(anchor, true)}><ColorBadge/></Button>
           <Drawer
             anchor={anchor}
             open={state[anchor]}

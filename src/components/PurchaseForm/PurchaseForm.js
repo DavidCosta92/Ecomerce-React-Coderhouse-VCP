@@ -1,7 +1,7 @@
 import "./PurchaseForm.css"
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
-import {useState } from 'react'
+import {useState, useEffect } from 'react'
 import db from "../../firebaseConfig"
 import { collection, addDoc, getDoc, doc, setDoc } from 'firebase/firestore'
 import Radio from '@mui/material/Radio';
@@ -15,14 +15,13 @@ import CreditCardIcon from '@mui/icons-material/CreditCard';
 import { useForm } from "react-hook-form";
 
 const PurchaseForm =()=>{
-    const { register, handleSubmit, formState: { errors } }  = useForm();
+    const { register, handleSubmit, formState: { errors },setFocus }  = useForm();
     const {cartProducts,subtotal, buyCart}=useContext(CartContext)
     const [success,setSuccess] = useState();
 
-    const { setFocus } = useForm()
-
-    setFocus("lastName", { shouldSelect: true })
-
+    useEffect(() => {
+        setFocus("name");
+      }, [setFocus]);
     
     const [formData, setFormData]=useState({
         name:"",
@@ -52,7 +51,6 @@ const PurchaseForm =()=>{
     })
 
     const handleChange = (e) => {
-        console.log("estoy manejando el cambio en form",e)
         setFormData({...formData, [e.target.name] : e.target.value})
     }
     const submitData=(e)=>{
@@ -138,25 +136,26 @@ const PurchaseForm =()=>{
               <RadioGroup
                 row
                 aria-labelledby="demo-row-radio-buttons-group-label"
-                name="payMethod"  
+                name="payMethod"                 
               >
-                <FormControlLabel onChange={handleChange} value="Efectivo" control={<Radio />} label="Efectivo" className="radioBtnMedioPago" />
+                <FormControlLabel onChange={handleChange} value="Efectivo" control={<Radio {...register("payMethod", { required: true})}/>} label="Efectivo" className="radioBtnMedioPago" />
                 <div className="medioPago">
                     <MonetizationOnIcon/>
                     <p>Pago efectivo contado, 10% OFF<div className="mediosPagoPrecio"> ${Math.round(subtotal(cartProducts)*0.9)}</div></p>
                 </div>
                
-                <FormControlLabel onChange={handleChange} value="Transferencia" control={<Radio />} label="Transferencia" className="radioBtnMedioPago"/>
+                <FormControlLabel onChange={handleChange} value="Transferencia" control={<Radio {...register("payMethod", { required: true})}/>} label="Transferencia" className="radioBtnMedioPago"/>
                 <div className="medioPago">
                     <AccountBalanceIcon/>
                     <p>Pago con transferencia, 5% OFF<div className="mediosPagoPrecio"> ${Math.round(subtotal(cartProducts)*0.95)}</div></p>
                 </div>
                
-                <FormControlLabel onChange={handleChange} value="Tarjeta Credito" control={<Radio />} label="Tarjeta Credito" className="radioBtnMedioPago"/>
+                <FormControlLabel onChange={handleChange} value="Tarjeta Credito" control={<Radio {...register("payMethod", { required: true})}/>} label="Tarjeta Credito" className="radioBtnMedioPago"/>
                 <div className="medioPago">
                     <CreditCardIcon/>
                     <p>Credito, hasta 6 cuotas sin interes de<div className="mediosPagoPrecio"> ${Math.round(subtotal(cartProducts)/6)}</div></p>
                 </div>
+                {errors.payMethod && <p className="errorForm">Debes seleccionar una forma de pago</p>}
               </RadioGroup>
             </FormControl>
           );
@@ -183,8 +182,6 @@ const PurchaseForm =()=>{
                         <input type="text"  name="name" {...register("name", { required: true})}/>
                         {errors.name && <p className="errorForm">Necesitamos tu nombre para realizar tu facturar</p>}
                     </label>
-
-                    {console.log("estoy CAMBIANDO LA INFO DE FORMDATA?",formData)}
 
                     <label className="lastName">Apellido 
                         <input type="text" name="lastName" {...register("lastName", { required: true})} />

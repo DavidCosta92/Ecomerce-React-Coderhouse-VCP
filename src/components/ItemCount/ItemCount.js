@@ -6,12 +6,21 @@ import BasicAlerts from "../BasicAlerts/BasicAlerts";
 
 
 const ItemCounter=({unitsSelected, productData})=>{
-    const {setTotalAmountInCart,totalAmountInCart,addProductToCart,cartProducts} = useContext(CartContext);
+    const {setTotalAmountInCart,totalAmountInCart,addProductToCart} = useContext(CartContext);
     const {stockXS,stockS,stockM,stockL,stockXL} =productData;
     const [ItemCounter, setItemCounter]= useState(1);
     const [size, setSize] = useState("");
     const [sizeStock, setSizeStock] =useState();
-    const [alertAdd, setAlertAdd]= useState("");
+   
+   // alert
+    const [alert, setAlert]= useState(false);
+    const onAdd=()=>{
+        setAlert( current=>!current)
+        setTimeout(() => {
+            setAlert(current=>!current) 
+            addProduct()          
+        }, 2000); 
+    }
 
     const addUnit = ()=>{
         if(ItemCounter<sizeStock) setItemCounter(ItemCounter+1);
@@ -20,12 +29,16 @@ const ItemCounter=({unitsSelected, productData})=>{
         if(ItemCounter>1) setItemCounter(ItemCounter-1);
     }
 
-    function onAdd (productData,ItemCounter){
+    function addProduct (){
         unitsSelected(ItemCounter);
         addProductToCart(productData,ItemCounter,size);
         setTotalAmountInCart(totalAmountInCart+ItemCounter);
-        setAlertAdd("si"); /// no funciona.. no esta seteando el estado
-        //console.log(alertAdd)
+    }
+
+    function renderAlert(){
+        return(
+            <BasicAlerts type={true} message={`${productData.title} fue agregado al carrito`}/>
+        )
     }
 
     const handleClickTalle =(e)=>{
@@ -54,9 +67,9 @@ const ItemCounter=({unitsSelected, productData})=>{
             default :
                 setSizeStock("");
                 setItemCounter();
-
         }
     }
+
     return(
         <>
             <div className="talles">
@@ -75,8 +88,8 @@ const ItemCounter=({unitsSelected, productData})=>{
                     <p className="cantidadUnidad">{ItemCounter}</p>
                 <button className="sumarUnidad" onClick={addUnit}>+</button>
             </div>
-            {size===""?<p>Seleccione un talle para continuar</p> : <button className="btnBuy" onClick={()=>onAdd(productData,ItemCounter,size)}>¡Agregar prenda en talle {size} !</button>}
-            {alertAdd==="si"&&<BasicAlerts type={true} message={`${productData.title} fue agregado al carrito`}/>}
+            {size===""?<p>Seleccione un talle para continuar</p> : <button className="btnBuy" onClick={()=> onAdd()}>¡Agregar prenda en talle {size} !</button>}
+            {alert&& renderAlert()}
         </>
     )
 }

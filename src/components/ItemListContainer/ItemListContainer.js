@@ -100,7 +100,7 @@ const ItemListContainer=({Category})=>{
         let productListSkeleton=[];
         for (let p=0; p<10;p++){
             productListSkeleton.push(
-                <div className="productCard">
+                <div className="productCard" key={p}>
                     <Skeleton  className="skeletonTxt" width={300} height={33} duration={0.5}/>               
                     <Skeleton  variant="rectangular" className="skeletonImg" width={300} height={300} duration={0.5}/>
                     <Skeleton  className="skeletonTxt" width={300} height={200} duration={0.5}/>

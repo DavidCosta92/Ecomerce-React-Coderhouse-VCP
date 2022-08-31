@@ -26,7 +26,7 @@ const NavBarSearch = () =>{
         <div className="containerNavBarSearch" >
             <form noValidate onSubmit={handleSubmit} onChange={handleChange}>
                 <TextField id="outlined-basic" label="PENDIENTE AUN.." variant="outlined"  value={searchData}/>
-                <input type="submit" class="botonEnvio"/>
+                <input type="submit" className="botonEnvio"/>
             </form>            
         </div>
     )

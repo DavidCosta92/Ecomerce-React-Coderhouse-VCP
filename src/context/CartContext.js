@@ -1,66 +1,40 @@
-import { ConstructionOutlined } from "@mui/icons-material";
 import { createContext, useState } from "react";
 
+let productCartFromLocalStorage;
+let totalAmountInCartFromLocalStorage;
+let totalPriceFromLocalStorage;
+
+if(JSON.parse(localStorage.getItem("userCart"))){
+    productCartFromLocalStorage = JSON.parse(localStorage.getItem("userCart"));
+    productCartFromLocalStorage.map((product)=>{
+        totalAmountInCartFromLocalStorage+=product.inCart;
+        totalPriceFromLocalStorage+=product.inCart*product.price
+    })
+    console.log("accedi al carrito guardado.. =>",productCartFromLocalStorage)
+} else{
+    productCartFromLocalStorage = localStorage.setItem("userCart",JSON.stringify([]));
+    totalAmountInCartFromLocalStorage=0;
+    totalPriceFromLocalStorage=0;
+    console.log("no habia carrito, asi que cree uno nuevo vacio..=>",productCartFromLocalStorage)
+}
 
 const CartContext =createContext();
 
-
 const CartProvider =({children})=>{
-    
-    
-
-    const [cartProducts, setCartProducts] = useState([]);  
-    const [amountInCart, setAmountInCart] = useState(0);
-    const [totalAmountInCart, setTotalAmountInCart] = useState(0);
-    const [totalPrice, setTotalPrice] = useState(0);
-    const [bought, setBought] = useState(false);
+    const [cartProducts, setCartProducts] = useState(productCartFromLocalStorage);  
+    const [totalAmountInCart, setTotalAmountInCart] = useState(totalAmountInCartFromLocalStorage);
+    const [totalPrice, setTotalPrice] = useState(totalPriceFromLocalStorage);
     const [orderID, setOrderID]=useState();
     const [order, setOrder]=useState();
 
-   /* function existCartStorage(){
-        let carritoEnLocal=  JSON.parse(localStorage.getItem("userCart"));
-        carritoEnLocal? setCartProducts(carritoEnLocal) : setCartProducts([]);
-        let resp= carritoEnLocal? "si hay" :"no hay";
-        console.log("carrito en local?",resp);
-    }
-*/
-
-/// ULTIMA PRUEBA... INTENTE SACAR LA INFO DEL LOCAL Y PUSHEAR TODOS LOS PRODUCTOS AL CARRITO... NO FUNCIONA!
-  
-/*
-    function loadProductsFromLocalStorage(){
-        let carritoEnLocal=  JSON.parse(localStorage.getItem("userCart"));
-        console.log("mostrando carrito en local",carritoEnLocal)
-        carritoEnLocal.map((producto)=>{
-           // producto.inCart=producto.inCart;
-           // producto.size=producto.size;
-            setAmountInCart(producto.inCart);
-            cartProducts.push(producto)
-            setCartProducts(cartProducts);
-            console.log("agregue el producto",producto )
-        })
-        console.log("terminie de agruegar todos los productos del local sto, ahora cart produc tiene=>",cartProducts)
-        calcSumTotal()
-        
-    }
-    loadProductsFromLocalStorage();
     
-   */
 
-
-    function saveLocalStorage(cartProducts){
+    function saveLocalStorage(){
         localStorage.setItem("userCart",JSON.stringify(cartProducts));
     }
-    function removeItemLocalStorage(){
-        deleteCartLocalStorage();
-        saveLocalStorage(cartProducts);
-    }
-
     function deleteCartLocalStorage(){
-         localStorage.removeItem("userCart");
+        localStorage.setItem("userCart",JSON.stringify([]));
     }
-
-
     function isInCart(productData){
         let isInCart=false;
         cartProducts.map((product)=>{
@@ -71,18 +45,35 @@ const CartProvider =({children})=>{
         return isInCart;
     }
 
+
+
+    /// de aca para abajo revisar... y mejorar!
+
+  //  const [amountInCart, setAmountInCart] = useState(
+        /* JSON.parse(localStorage.getItem("userCart")).amountInCart */
+ //   0
+    /// PARA QUE LO ESSTOY USANDO??? DEBERIA SER UN AUMOUNT PARA CADA PRODUCTO... USO PARA RENDERIZAR???
+ //   );
+
+
+
+    
+    const [bought, setBought] = useState(false);
+
+
+   
     function addProductToCart(productData,ItemCounter, size){
         if(isInCart(productData)){
             addUnitsToCart(productData,ItemCounter);            
         } else{
             productData.inCart=ItemCounter;
             productData.size=size;
-            setAmountInCart(productData.inCart);
+         //   setAmountInCart(productData.inCart);
             cartProducts.push(productData)
             setCartProducts(cartProducts);
-            calcSumTotal()
-        }   
-        saveLocalStorage(cartProducts)
+            calcSumTotal(cartProducts);
+            saveLocalStorage();
+        }           
     }
 
     function addUnitsToCart(productData,ItemCounter){
@@ -93,9 +84,10 @@ const CartProvider =({children})=>{
         let indexToUpdate= ids.indexOf(productData.id)
         let newCart= cartProducts;
         newCart[indexToUpdate].inCart=parseInt(newCart[indexToUpdate].inCart)+ItemCounter;
-        setAmountInCart(productData.inCart +1);
-        setCartProducts(cartProducts);
-        calcSumTotal()
+      //  setAmountInCart(productData.inCart +1);
+        setCartProducts(newCart);  // antes calculaba con cart Products.. que onda??
+        calcSumTotal(newCart); // antes calculaba con cart Products.. que onda??
+        saveLocalStorage();
         
     }
     function removeUnitFromCart(productData){
@@ -103,9 +95,9 @@ const CartProvider =({children})=>{
             let indexToUpdate= cartProducts.indexOf(productData)
             let newCart = cartProducts;
             newCart[indexToUpdate].inCart=parseInt(newCart[indexToUpdate].inCart)-1;
-            setAmountInCart(productData.inCart -1);
+      //      setAmountInCart(productData.inCart -1);
             setCartProducts(newCart);
-            calcSumTotal()
+            calcSumTotal(cartProducts)
             saveLocalStorage(cartProducts)
         } else{
             removeAllUnitsFromCart(productData);
@@ -115,14 +107,19 @@ const CartProvider =({children})=>{
     function removeAllUnitsFromCart(productData){
         let indexToDelete= cartProducts.indexOf(productData)
         cartProducts.splice(indexToDelete,1)
-        setAmountInCart(0);
+    //    setAmountInCart(0);
         setCartProducts(cartProducts);
-        calcSumTotal();
-        removeItemLocalStorage(productData);
+        calcSumTotal(cartProducts);
+        saveLocalStorage(cartProducts);
     }
+  /*  const seEstaComprando=()=>{
+        setBought(current => !current);
+   }*/
 
     function buyCart(newOrder,orderID){
-        setBought(true);
+       // seEstaComprando() 
+       setBought() // solucionar porque no funcioa
+        console.log("estoy mostrando si se compro o no...",bought)
         setOrderID(orderID);
         setOrder(newOrder);
         clearCart();
@@ -136,7 +133,7 @@ const CartProvider =({children})=>{
     }
 
 
-    function calcSumTotal(){
+    function calcSumTotal(cartProducts){
         let totalAmount=0;
         cartProducts.map((p)=>{
             totalAmount+=p.inCart;
@@ -165,7 +162,7 @@ const CartProvider =({children})=>{
         removeUnitFromCart,
         removeAllUnitsFromCart,
         buyCart,
-        amountInCart,
+       // amountInCart,
         totalAmountInCart,
         setTotalAmountInCart,
         totalPrice,

@@ -6,7 +6,7 @@ import {Link} from "react-router-dom"
 
 
 const ProductDetail=({data}) =>{
-    const {title, price, srcA, srcB, srcC,srcD , description, textoAlt, stockXS,stockS,stockM,stockL,stockXL,descriptionExtra} =data;
+    const {title, price, srcA, srcB, srcC,srcD , description, textoAlt, stockXS,stockS,stockM,stockL,stockXL,descriptionExtra, discount} =data;
     const [unitsSelected, setUnitsSelected] = useState(0);
     
     let stockTotal=stockXS+stockS+stockM+stockL+stockXL;
@@ -14,10 +14,22 @@ const ProductDetail=({data}) =>{
     return(
         <div className="productCard productDetails">
             <p className="tituloProducto">{title}</p>
+            {discount!==0 && (
+                        <div className="offer">
+                            <p>-{discount}%OFF</p>
+                        </div>
+            )}
             <p className="productDescription">{description}</p>
             <SlideProductImg a={srcA} b={srcB} c={srcC} d={srcD}  textoAlt={textoAlt} />
-            <p className="productPrice">${price}</p>
+            <p className={`productPrice ${discount!==0 && "discountPrice"}`}>${price*discount/100+price}</p>
+            {discount!==0 && (
+                        <div className="offerPrice">    
+                            <p>${price}</p>
+                        </div>
+                )} 
+            
             <p className="productDescriptionExtra">{descriptionExtra}</p>
+            
             
             {stockTotal===0? 
                 (<p className="soldOutText">Producto Agotado</p>) 
