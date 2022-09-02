@@ -4,12 +4,10 @@
     margin-bottom: 40px;
     border: none;
     max-width: 50vw;
-    color: black;
 }
 .productCard .tituloProducto{
     font-size: 1.4rem;
     font-weight: 600;
-    color: rgba(0, 0, 0, 0.8);
     margin-bottom: 10px;
 }
 
@@ -29,7 +27,6 @@
 }
 
 .btnBuy{
-    background-color: rgba(19, 19, 20, 0.7);
     border-radius: 10px;
     margin-top: 25px;
     margin-bottom: 10px;
@@ -37,18 +34,16 @@
     padding: 4px;
     font-weight: 600;
     font-size: 1.1rem;
-    color:white;
-    border: none;
+    background-color: transparent;
 }
 
 .btnBuy:hover{
     transform: scale(1.1);
-    background-color: rgba(19, 19, 20, 0.1);
-    color: black;
-   
+    background-color: #032e5c;
+    color:white;
 }
 .btnBuy:active{
-    background-color: rgba(19, 19, 20, 0.5);
+    background-color: #032e5c;
 }
 .txtSoldOut{
     margin-bottom: 0;
@@ -58,8 +53,11 @@
     filter: opacity(0.50);
 }
 .SoldOut{
-    background-color: rgba(19, 19, 20, 0.3);
+    background-color: rgba(27, 27, 27, 0.153);
     margin-top: 0;
+}
+.SoldOut:hover{
+    background-color: #01214371;
 }
 
 p.productDescription {
@@ -71,7 +69,6 @@ p.productDescription {
     position: absolute;
     z-index: 100;
     border-radius: 15px;
-    border: blue 2px solid;
     margin-top: 2%;
     transform: rotate(-25deg);
 }
@@ -79,7 +76,6 @@ p.productDescription {
 .offer p{
     font-size: 1.6rem;
     font-weight: 700;
-    color: rgba(0, 4, 255, 0.8);
     margin: 0;
     padding: 2px;
     animation-name: priceAnima;
@@ -89,8 +85,8 @@ p.productDescription {
 }
 
 @keyframes priceAnima {
-    from {color:rgba(0, 4, 255, 0.8);font-size: 1.2rem; opacity: 0.5;}
-    to {color: rgba(38, 165, 9, 0.8);font-size: 1.5rem; opacity: 1;}
+    from {font-size: 1.2rem; opacity: 0.5;}
+    to {font-size: 1.5rem; opacity: 1;}
 } 
 
 .discountPrice{
@@ -104,17 +100,11 @@ p.productDescription {
     margin-left: 16%;
     z-index: 100;
     border-radius: 15px;
-    border: blue 2px solid;
     margin-top: -3%;
     transform: rotate(20deg);
-   
 }
 
-
-
-
 .offerPrice p{
-    color: blue;
     font-style: italic;
     font-size: 1.3rem;
     font-weight: 700;

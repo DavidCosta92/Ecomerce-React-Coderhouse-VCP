@@ -11,26 +11,51 @@ import Footer from './components/Footer/Footer';
 import Checkout from './pages/Checkout';
 import CartProvider from './context/CartContext';
 import SearchResults from './pages/SearchResults';
+//import SwitchColorMode from './components/SwitchColorMode/SwitchColorMode';
 
-function App() {
+import React, { useState, useEffect } from "react";
+
+import {ThemeProvider} from "styled-components";
+import { GlobalStyles } from "./components/globalStyles";
+import { lightTheme, darkTheme } from "./components/Themes"
+
+function App() {  
+
+  let themePreference;
+  JSON.parse(localStorage.getItem("userThemePreference"))&& (themePreference=JSON.parse(localStorage.getItem("userThemePreference")))
+  !JSON.parse(localStorage.getItem("userThemePreference"))&& ( themePreference='light')
   
+  localStorage.setItem("userThemePreference",JSON.stringify(themePreference));
+  
+  const [theme, setTheme] = useState(themePreference);
+  const themeToggler = () => {
+    theme === 'light' ? localStorage.setItem("userThemePreference",JSON.stringify('dark')): localStorage.setItem("userThemePreference",JSON.stringify('light'));
+    theme === 'light' ? setTheme('dark') : setTheme('light');
+  }
+
   return (
     <BrowserRouter>
       <CartProvider>
-        <div className="App">
-          <Nav/>
-          <Routes>
-            <Route path='/'element={<Home/>}/>
-            <Route path='/Products/Id=:id' element={<Detail/>}/>
-            <Route path='Categories/:Category' element={<Category/>}/>
-            <Route path='search/search=:search' element={<SearchResults/>}/>
-            <Route path='/AboutUs' element={<AboutUs/>}/>
-            <Route path='/Checkout' element={<Checkout/>}/>
-            <Route path='*' element={<Error404/>}/>
-          </Routes>
-          <Footer/>
-        </div>
-      </CartProvider>
+      <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+        <>
+          <GlobalStyles/>
+              <div className="App">
+                <Nav theme={theme} themeToggler= {themeToggler}/>          
+                  <Routes>
+                  <Route path='/'element={<Home/>}/>
+                  <Route path='/Products/Id=:id' element={<Detail/>}/>
+                  <Route path='Categories/:Category' element={<Category/>}/>
+                  <Route path='search/search=:search' element={<SearchResults/>}/>
+                  <Route path='/AboutUs' element={<AboutUs/>}/>
+                  <Route path='/Checkout' element={<Checkout/>}/>
+                  <Route path='*' element={<Error404/>}/>
+                </Routes>
+                <Footer/>
+              </div>
+        </>
+    </ThemeProvider>
+
+    </CartProvider>
     </BrowserRouter>
 
 

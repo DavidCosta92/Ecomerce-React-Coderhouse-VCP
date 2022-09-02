@@ -7,12 +7,15 @@ import {Link} from "react-router-dom"
 import NavBarSearch from '../NavBarSearch/NavBarSearch';
 import TemporaryDrawer from './CartWidget2';
 import HomeIcon from '@mui/icons-material/Home';
+import SwitchColorMode from '../SwitchColorMode/SwitchColorMode'
 
-const Navv=()=>{
+
+const Navv=({theme, themeToggler})=>{
     return (
         <div className='containerNav'>
             <Navbar bg="light" expand="lg">
             <Container>
+            <SwitchColorMode theme={theme} themeToggler= {themeToggler} />
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
@@ -32,6 +35,7 @@ const Navv=()=>{
                 </Navbar.Collapse>
                 <NavBarSearch/>
                 <Navbar.Brand className='brandTitle'><Link to="/"><div className='brandContainer'><HomeIcon/><p className='nombreMarca'>Van Como Piña</p></div></Link></Navbar.Brand>
+                
                {<TemporaryDrawer/>}
                
             </Container>

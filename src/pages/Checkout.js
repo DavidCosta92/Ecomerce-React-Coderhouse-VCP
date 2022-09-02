@@ -48,17 +48,17 @@ const Checkout = () =>{
                                 <TableHead>
                                 <TableRow>
                                     <TableCell align="left" colSpan={4} className="tableTitle">
-                                    Detalles del carrito
+                                    <p>Detalles del carrito</p>
                                     </TableCell>
-                                    <TableCell align="center" colSpan={2}>Precio</TableCell>
-                                    <TableCell align="center">Acciones</TableCell>
+                                    <TableCell align="center" colSpan={2}><p>Precio</p></TableCell>
+                                    <TableCell align="center"><p>Acciones</p></TableCell>
                                 </TableRow>
                                 <TableRow>
-                                    <TableCell colSpan={2}>Articulo</TableCell>
-                                    <TableCell align="center">Talle</TableCell>
-                                    <TableCell align="center">Cant.</TableCell>
-                                    <TableCell align="center">Precio Un</TableCell>
-                                    <TableCell align="center">Subtotal</TableCell>.
+                                    <TableCell colSpan={2}><p>Articulo</p></TableCell>
+                                    <TableCell align="center"><p>Talle</p></TableCell>
+                                    <TableCell align="center"><p>Cant.</p></TableCell>
+                                    <TableCell align="center"><p>Precio Un</p></TableCell>
+                                    <TableCell align="center"><p>Subtotal</p></TableCell>.
                                 </TableRow>
                                 </TableHead>
                                 <TableBody>
@@ -72,11 +72,11 @@ const Checkout = () =>{
                                             </div>
                                         </Link>
                                         </TableCell>
-                                        <TableCell>{product.title}</TableCell>
-                                        <TableCell align="center">{product.size}</TableCell>
-                                        <TableCell align="center">{product.inCart}</TableCell>
-                                        <TableCell align="center">{product.price}</TableCell>
-                                        <TableCell align="center">{product.price*product.inCart}</TableCell>
+                                        <TableCell><p>{product.title}</p></TableCell>
+                                        <TableCell align="center"><p>{product.size}</p></TableCell>
+                                        <TableCell align="center"><p>{product.inCart}</p></TableCell>
+                                        <TableCell align="center"><p>{product.price}</p></TableCell>
+                                        <TableCell align="center"><p>{product.price*product.inCart}</p></TableCell>
                                         <TableCell align="center">
                                             <AddIcon className="btnAdd" onClick={()=>addUnitsToCart(product,1)}/>
                                             <RemoveIcon className="btnRemove" onClick={()=>removeUnitFromCart(product)}/>
@@ -87,8 +87,8 @@ const Checkout = () =>{
                                 }
 
                                 <TableRow>
-                                    <TableCell colSpan={5} className="tableTitle">Total</TableCell>
-                                    <TableCell align="center" className="tableTitle">{totalPrice}</TableCell>
+                                    <TableCell colSpan={5} className="tableTitle"><p>Total</p></TableCell>
+                                    <TableCell align="center" className="tableTitle"><p>{totalPrice}</p></TableCell>
                                     <TableCell align="center" className="tableTitle"><button className="btnVaciarCarrito" onClick={()=>warningClearCart()}>Vaciar Carrito <DangerousIcon/></button></TableCell>
                                     <TableCell ></TableCell>
                                 </TableRow>

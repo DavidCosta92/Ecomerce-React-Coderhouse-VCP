@@ -1,6 +1,5 @@
 .footer{
     padding: 20px;
-    background-color: rgba(168, 168, 168, 0.192);
     border-top-style: groove;
     border-top-color: rgba(168, 168, 168, 0.301);
     display: flex;
@@ -11,7 +10,7 @@
 .tituloFooter{
     font-size: 1.8rem;
     font-weight: 900;
-    color: black;
+    
 }
 .contenidoFooter{
     display: flex;
@@ -31,10 +30,10 @@
 .red{
     margin: 20px;
 }
-.red img{
-    max-width: 50px;
+.red svg{
+font-size: 5rem;
 }
-.red img:hover, .red img:focus{
+.red svg:hover, .red svg:focus{
     transform: scale(1.4);
     cursor: pointer;
 }

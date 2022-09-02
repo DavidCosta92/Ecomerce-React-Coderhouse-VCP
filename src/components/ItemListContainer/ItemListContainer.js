@@ -31,6 +31,9 @@ const ItemListContainer=({Category})=>{
             case "category": 
                 listProducts.sort(compareByCategory);
                 break;
+            default:
+                listProducts.sort(compareByPrice);
+                break;
         }
         setOrderProducts(order);
         setListProducts(listProducts);
@@ -61,20 +64,18 @@ const ItemListContainer=({Category})=>{
         },1500)           
     }
 
-    const queryCollection= collection (db, "products")   
+    
     useEffect(()=>{
-        
+        const queryCollection= collection (db, "products")   
         if(Category==="Ofertas"){
             const queryFilter=query(queryCollection, where ("oferta","==",true ) /*, orderBy('price') , limitToLast(2)*/) 
 // DEBO CREAR UN INDEX ESPECIAL PARA USAR ORDER Y WHERE, O SOLO USAR ORDER... EN CUANTO A LIMIT, SE PODRIA USAR LUEGO DE USAR ORDER
 //  PARA CREAR EL INDEX => https://console.firebase.google.com/project/ecommerce-coderhouse-vcp/firestore/indexes?create_composite=Cllwcm9qZWN0cy9lY29tbWVyY2UtY29kZXJob3VzZS12Y3AvZGF0YWJhc2VzLyhkZWZhdWx0KS9jb2xsZWN0aW9uR3JvdXBzL3Byb2R1Y3RzL2luZGV4ZXMvXxABGgoKBm9mZXJ0YRABGgkKBXByaWNlEAIaDAoIX19uYW1lX18QAg
-
             getDocs(queryFilter)
             .then(res=> productRender(res))
            /* .catch((error)=>{
                 console.log("llamada a Ofertas fallo")
                 })*/
-
         }
         else if (Category==="verTodo"){
             getDocs(queryCollection)
@@ -94,7 +95,7 @@ const ItemListContainer=({Category})=>{
     }, [Category])
 
     let title;
-    Category==="verTodo"? title="Todos nuestros productos":title=Category; 
+    Category==="verTodo"? title="Todos nuestros productos":title=Category.toUpperCase(); 
 
     const renderSkeleton=()=>{
         let productListSkeleton=[];

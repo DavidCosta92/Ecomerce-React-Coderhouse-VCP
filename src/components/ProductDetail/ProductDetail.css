@@ -1,10 +1,7 @@
 .productDetails{
-    background-color: rgba(255, 255, 255, 0.592);
-    box-shadow: 2px 2px 1px 1px rgba(0, 0, 0, 0.136);
     border:none;
     margin-top: 20px;
     border-radius: 10px; 
-
     width: 80vw;
 }
 .productDetails .productCard{
@@ -32,7 +29,6 @@
 }
 
 .productDetails .stockDisponible{
-    color: gray;
     text-align: right;
     margin-top: 10px;
     padding-right: 10px;
@@ -44,13 +40,12 @@
     border-radius: 5px;
     margin: 2px;
     padding: 10px 20px;
+    margin-bottom: 20px;
 }
 
 .btnTerminarCompra:hover, .btnTerminarCompra:focus{
     transform: scale(1.1);
     font-weight: 800;
-    background-color: black;
-    color: white;
 }
 
 .soldOutText{

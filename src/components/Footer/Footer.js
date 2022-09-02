@@ -1,5 +1,8 @@
 import "./Footer.css"
 import {Link} from "react-router-dom"
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
 
 const Footer =()=>{
     return (
@@ -14,17 +17,17 @@ const Footer =()=>{
                 <div className="redesFooter">
                     <a href="https://wa.me/5492644647572" target="_blank">
                         <div className="red">
-                            <img src="../assets/imagenes/icons/logoWs.png"/>
+                           <WhatsAppIcon/>
                         </div>
                     </a>
                     <a  href="tel:+542644647572" target="_blank">
                         <div className="red">
-                            <img src="../assets/imagenes/icons/logoTel.png"/>
+                            <LocalPhoneIcon/>
                         </div>
                     </a>
                     <Link to="/aboutUs">
                         <div className="red">
-                            <img src="../assets/imagenes/icons/logoMail.png"/>
+                           <MailOutlineIcon/>
                         </div>
                     </Link>
                 </div>

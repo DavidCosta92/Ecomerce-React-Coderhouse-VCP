@@ -1,76 +1,97 @@
 import {useParams} from "react-router-dom"
 import { useState, useEffect } from "react";
 import ItemList from "../components/ItemList/ItemList";
-import db from "../firebaseConfig";
-import { collection, getDocs,query,where} from "firebase/firestore";
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
+//import db from "../firebaseConfig";
+//import { collection, getDocs,query,where} from "firebase/firestore";
+//import CircularProgress from '@mui/material/CircularProgress';
+//import Box from '@mui/material/Box';
+import AuxListProductSearch from "../components/NavBarSearch/AuxListProducsSearch";
+
 
 const SearchResults =()=>{
-    const[spinner, setSpinner]=useState(false);
-    const {search} =useParams();
-    
-
     const[listProducts, setListProducts] = useState([]);
-    //const [auxListProduct, setAuxListProduct]= useState([]);
-    let auxListProduct=[];
+    const {search} =useParams();
     let auxSearch= search.toLowerCase();
 
-    const queryCollection= collection (db, "products");  
-    const queryFilter=query(queryCollection);
-    getDocs(queryFilter)
+    //const [auxListProduct, setAuxListProduct]= useState([]);
+   // const {auxListProduct} = useContext(AuxContext)
+
+/*
+    useEffect(()=>{
+        const queryCollection= collection (db, "products");  
+        const queryFilter=query(queryCollection);
+        getDocs(queryFilter)
         .then(res=> getAuxListProduct(res));
 
-    const getAuxListProduct= (res)=>{
-        //setAuxListProduct(res.docs.map(product=> ({id: product.id, ...product.data()})));
-        let listP=[];
-        res.docs.map(product=> ( 
-            listP.push({id: product.id, ...product.data()})
-        ));
-        auxListProduct=listP;
-    }
+        const getAuxListProduct= (res)=>{
+            let listP=[];
+            res.docs.map(product=> ( 
+                listP.push({id: product.id, ...product.data()})
+            ));
+            setAuxListProduct(listP);
+            console.log("esto viendo cuantas veces me renderizo dentro de un useEfect con corchetes vacios..")
+            localStorage.setItem("auxListProduct",JSON.stringify(listP));
+        }
+    }, []) // corchete vacio para que solo descargue productos una unica vez...
+    console.log("lista actual aux de productos, osea TODOS=>",auxListProduct)
+*/
 
 
-    /// DEBO REVISAR, PORQUE CADA VEZ QUE BUSCO RE CARGA TODA LA PAGINA!, ASI QUE DEBERIA ARREGLAR... EMPEZE A SOLUCIONAR.. DEBO VER DONDE LLAMAR AL SEARCH PRODUCTS
+    useEffect(()=>{
+        setTimeout(() => {
+            searchProducts();       
+        }, 2000); 
+        console.log("estoy renderizando el useEfect segun aux search?")
+    }, [auxSearch])
+
+// FUNCION SEARCH PARA OBTENER PRODUCTOS DESDE LOCAL STORAGE
+
+/*
+
+**************************** DEBO SOLUCIONAR CANTIDAD DE LLAMADAS A BD
+- INTENTE LLAMANDO A BD, GUARDANDO PRODUCTOS EN LOCAL STORAGE Y LUEGO TRATANDO DE TOMARLOS DE AHI...
+AUN QUEDA POR EXPLORAR, YA QUE ME SALE UNDEFINED EL STORAGE.. ALGUN ERROR HAY POR ALLI...
+
+*/
+
 
     function searchProducts(){
-        setSpinner(true)
-        let listProductSearch=[];
-        console.log("mostrando aux list pr",auxListProduct)
-        auxListProduct.map((product)=>{
-            let keyWords= product.keyWords.toLowerCase()
-            console.log("keyWords",keyWords)
-            if(keyWords.includes(auxSearch)){
-                listProductSearch.push(product);
-        }})
-        setListProducts(listProductSearch);
-        console.log("mostrando lista a renderizar",listProductSearch)
-        setSpinner(false);
-    }
+           let listProductSearch=[];
+           if (localStorage.getItem("auxListProduct")){
+            let productListLocalStorage= JSON.parse(localStorage.getItem("auxListProduct"));
+            productListLocalStorage.forEach((product)=>{
+                let productKeyWords=product.keyWords.toLowerCase();
+                if(productKeyWords.includes(auxSearch)){
+                    listProductSearch.push(product);
+                }
+               })
+           } 
+           setListProducts(listProductSearch);
+           //  setSpinner(false);
+       }
+   
+
+
     function renderProducts(){
         return (
             <div>
                 <ItemList listProducts={listProducts}/>
             </div>
         )
-
     }
-
-    useEffect(()=>{
-        renderProducts();
-    }, [auxSearch])
 
     return (
         <div>
+            <AuxListProductSearch/>
             <h1>Resultados de busqueda</h1>
-            {spinner&&(
+            {/*spinner&&(
                     <div className="spinner"> 
                         <Box sx={{ display: 'flex' }} >
                             <CircularProgress />
                         </Box>
                     </div>
-            )}
-            {renderProducts()}
+            )*/}
+            {renderProducts() }
         </div>
     )
 }

@@ -180,12 +180,12 @@ const PurchaseForm =()=>{
 
                     <label className="name">Nombre 
                         <input type="text"  name="name" {...register("name", { required: true})}/>
-                        {errors.name && <p className="errorForm">Necesitamos tu nombre para realizar tu facturar</p>}
+                        {errors.name && <p className="errorForm">Necesitamos tu nombre para realizar tu factura</p>}
                     </label>
 
                     <label className="lastName">Apellido 
                         <input type="text" name="lastName" {...register("lastName", { required: true})} />
-                        {errors.lastName && <p className="errorForm">Necesitamos tu nombre para realizar tu facturar</p>}
+                        {errors.lastName && <p className="errorForm">Necesitamos tu nombre para realizar tu factura </p>}
                     </label>
 
                     <label className="email">Email

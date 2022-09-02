@@ -5,7 +5,7 @@ import "./css/AboutUs.css"
 const AboutUs =()=>{
     return (
         <div>
-            <p className="tituloAbout">Escribenos!</p>
+            <p className="tituloAbout textoEjemplo">Escribenos!</p>
             <div className="aboutContainer">
                 <div className="formAbout">
                     <Form/>

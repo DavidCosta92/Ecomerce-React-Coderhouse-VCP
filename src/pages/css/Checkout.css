@@ -47,6 +47,7 @@ svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.btnClear.css-i4bv87-MuiSvgIcon-roo
 .btnVaciarCarrito:hover{
     background-color: rgba(255, 0, 0,0.7);
     color: white;
+    font-weight: 500;
 }
 
 .imgCheckout img{

@@ -25,7 +25,8 @@ export default function TemporaryDrawer() {
         <>
           <p className='totalPriceWidget'>Carrito</p>
           <Divider />
-            {cartProducts.map((product) => (        
+          
+            {cartProducts.forEach((product) => (        
               <ListItem key={product.title} disablePadding>
                 <ListItemButton>
                     <img src={`/assets/imagenes/${product.srcA}`} className="productImgCartWidget"/>
