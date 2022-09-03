@@ -4,27 +4,52 @@
     font-weight: 500;
 }
 .containerNav{
-    background-color: rgba(168, 168, 168, 0.063);
     border-bottom-style: groove;
-    border-bottom-color: rgba(168, 168, 168, 0.301);
+    border-bottom-color: rgba(0, 0, 0, 0.301);
+}
+.containerNav .navbar {
+    margin: 0;
+    display: flex;
+    justify-content:center;
+}
+.containerNav .navbar .container{
+    margin: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+}
+.marcaNavBar {
+    width: 30%;
 }
 
-
+.marcaNavBar img{
+    width: 80px;
+}
+.navbar-brand{
+    margin:10px;
+}
 .material-icons {
     font-size: 40px;
 }
-
 a.nav-link:hover {
     cursor: pointer;
     border-radius: 2px;
-    box-shadow: 1px 1px 1px 2px rgba(20, 20, 20, 0.3);
+    box-shadow: 1px 1px 1px 2px #0095ff63;
+}
+.containerNav .dropdown-menu{
+    box-shadow: 1px 1px 1px 2px #0095ff63;
+    margin: -5px 10px 20px 25px;
 }
 
 .material-icons:hover{
     cursor: pointer;
     box-shadow: 2px 1px 2px 3px rgba(0, 0, 0, 0.3);
-    
 }
+.containerNav .btnLinkNav:hover {
+    background-color: #03528a72;
+ }
+
 
 .containerNav img{
     border-radius: 2px;
@@ -42,15 +67,15 @@ a.nav-link:hover {
 }
 
 .txtNav, .txtNav:focus, .txtNav:hover{
-    color: rgba(8, 8, 8, 0.6);
     text-decoration: none;
     font-weight: 700;
 }
 
 
 .nav-link, .nav-link:focus, .nav-link:hover {
-    color: rgba(8, 8, 8, 0.6);
     font-weight: 700;
+    margin-left: 15px;
+    margin-right: 15px;
 }
 .brandTitle a{
     text-decoration: none;
@@ -59,14 +84,22 @@ a.nav-link:hover {
     display: flex;
     align-items: center;
 }
-
+.brandContainer svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root{
+    width: 60px;
+}
 svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root{
-    color: black;
     margin-right: 5px;
 }
 
 .nombreMarca, .nombreMarca:focus, .nombreMarca:hover{
-    color: black;
     margin: auto;
     
+}
+
+.containerNav .nombreMarca:hover,
+span.MuiBadge-badge.MuiBadge-standard.MuiBadge-anchorOriginTopRight.MuiBadge-anchorOriginTopRightRectangular.MuiBadge-overlapRectangular.BaseBadge-badge.css-fvc8ir-MuiBadge-badge:hover,
+svg.MuiSvgIcon-root.MuiSvgIcon-colorAction.MuiSvgIcon-fontSizeMedium.css-11pbyhm-MuiSvgIcon-root:hover,
+svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root:hover
+{
+    color: #027cff;
 }

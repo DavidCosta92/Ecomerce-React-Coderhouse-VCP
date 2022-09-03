@@ -1,6 +1,6 @@
-.formularioContacto{
-    width: 50vw;
-    margin-left: 25vw;
+.formularioContacto {
+    width: 85vw;
+    margin: auto;
 }
 .formularioContacto label{
     width: 100%;
@@ -9,9 +9,11 @@
     margin-top: 15px;
     font-weight: 700;
 }
-.formularioContacto input{
 
+.MuiFormGroup-root.MuiFormGroup-row.css-qfz70r-MuiFormGroup-root{
+    
 }
+
 
 
 .formulario .botonEnvio{
@@ -36,23 +38,24 @@
 }
 
 .formMediosPagos .radioBtnMedioPago{
-    width: 25%;
+    width: 15%;
+    margin-left: 10%;
 }
 .medioPago{
     display: flex;
     justify-content: space-between;
-    width: 74%;
+    width: 70%;
     align-items: center;
 }
 .medioPago svg{
-    width: 100px;
+    width: 80px;
 }
 
 .medioPago p{
     margin-left: 4px;
     text-align: center;
     font-size: 1.3rem;
-    width: 60%;
+    width: 70%;
 }
 
 .medioPago .mediosPagoPrecio{

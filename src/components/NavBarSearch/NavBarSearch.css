@@ -1,6 +1,22 @@
 .containerNavBarSearch{
-    padding: 2px;
-    margin-right: 15px;
+    margin: auto;
+    width: 100%;
+}
+
+.containerNavBarSearch form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+
+
+.containerNavBarSearch form .MuiFormControl-root.MuiTextField-root {
+    width: 80%;
+}
+svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.botonEnvio.lupa.css-i4bv87-MuiSvgIcon-root{
+    width: 10%;
 }
 
 .containerNavBarSearch .MuiOutlinedInput-input {
@@ -9,4 +25,12 @@
 
 .containerNavBarSearch  .MuiInputBase-input{
     height: 0.75em;
+}
+
+.containerNavBarSearch label{
+    color: #027cff9d;
+}
+
+svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.lupa.css-i4bv87-MuiSvgIcon-root{
+    margin-left: 5px;
 }

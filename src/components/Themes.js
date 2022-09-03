@@ -1,4 +1,4 @@
-export const lightTheme = {
+export const lightTheme = {  
     body: '#ffffff',
     text: '#363537',
     toggleBorder: '#FFF',
@@ -11,6 +11,9 @@ export const lightTheme = {
     btn1:'#fffdfd',
     btn1Hover:'#0004ff63',
     btn1HoverShwadow:'#1414144d',
+    smoothLine:'#0a0a0a4f',
+
+    brandColor: '#032d59',
 
     text1:'#000000',
     text2SemiDisabled:'#5b5959e5',
@@ -20,12 +23,20 @@ export const lightTheme = {
     textWhiteBlackSmooth:'#000000cc',
     textPriceAnima:'#032e5c',
 
+    blackToBlue:'#363537',
+
     productDetailsCard:'#36363605',
     productDetailsCardShadow:'#00000023',
     backgroundBlackWhite:'#000000',
     backgroundWhiteBlack:'#ffffff',
 
     checkOutBackground:'#022c5b0a',
+    cartWidgetModal:'#ffffff',
+    backgroundNavBar: '#ffffff',
+    backgroundBtnHamb:'#ffffff',
+    backgroundBtnSize:'#ffffffb5',
+
+
 
 
 
@@ -44,6 +55,9 @@ export const darkTheme = {
     btn1Hover:'#0095ff63',
     btn1HoverShwadow:'#ffffff',
     textPriceAnima:'#027cff',
+    smoothLine:'#fffcfc4d',
+
+    brandColor: '#027cff',
     
 
     text1:'#ffffff',
@@ -53,12 +67,18 @@ export const darkTheme = {
     textkWhiteBlack:'#000000',
     textWhiteBlackSmooth:'#fffcfccc',
 
+    blackToBlue:'#002b58',
+
     productDetailsCard:'#3636365c',
     productDetailsCardShadow:'#ffffff30',
     backgroundBlackWhite:'#ffffff',
     backgroundWhiteBlack:'#000000',
     
     checkOutBackground:'#0004ff0a',
+    cartWidgetModal:'#01101f',
+    backgroundNavBar: '#000000',
+    backgroundBtnHamb:'#fffcfc70',
+    backgroundBtnSize:'#ffffffb5',
 
 
     

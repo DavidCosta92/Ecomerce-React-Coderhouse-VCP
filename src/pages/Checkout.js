@@ -40,21 +40,21 @@ const Checkout = () =>{
             cartProducts.length!==0? 
             (
                 <>
-                <div className="tableContainer">   
+                <div className="tableContainer tableCheckout">   
                         <p className="tituloCarrito"> Carrito</p>
                         
                         <TableContainer component={Paper} >
                             <Table sx={{ minWidth: 700 }} aria-label="spanning table" className="table">
                                 <TableHead>
                                 <TableRow>
-                                    <TableCell align="left" colSpan={4} className="tableTitle">
+                                    <TableCell align="left" colSpan={3} className="tableTitle">
                                     <p>Detalles del carrito</p>
                                     </TableCell>
                                     <TableCell align="center" colSpan={2}><p>Precio</p></TableCell>
                                     <TableCell align="center"><p>Acciones</p></TableCell>
                                 </TableRow>
                                 <TableRow>
-                                    <TableCell colSpan={2}><p>Articulo</p></TableCell>
+                                    <TableCell ><p>Articulo</p></TableCell>
                                     <TableCell align="center"><p>Talle</p></TableCell>
                                     <TableCell align="center"><p>Cant.</p></TableCell>
                                     <TableCell align="center"><p>Precio Un</p></TableCell>
@@ -67,12 +67,12 @@ const Checkout = () =>{
                                         <TableRow key={product.title}>
                                         <TableCell>
                                         <Link to={`/Products/Id=${product.id}`}>
+                                            <p>{product.title}</p>
                                             <div className="imgCheckout">
                                                 <img src={`../assets/imagenes/${product.srcA}`} alt={`${product.textoAlt}`}/>
                                             </div>
                                         </Link>
                                         </TableCell>
-                                        <TableCell><p>{product.title}</p></TableCell>
                                         <TableCell align="center"><p>{product.size}</p></TableCell>
                                         <TableCell align="center"><p>{product.inCart}</p></TableCell>
                                         <TableCell align="center"><p>{product.price}</p></TableCell>
@@ -87,7 +87,7 @@ const Checkout = () =>{
                                 }
 
                                 <TableRow>
-                                    <TableCell colSpan={5} className="tableTitle"><p>Total</p></TableCell>
+                                    <TableCell colSpan={4} className="tableTitle"><p>Total</p></TableCell>
                                     <TableCell align="center" className="tableTitle"><p>{totalPrice}</p></TableCell>
                                     <TableCell align="center" className="tableTitle"><button className="btnVaciarCarrito" onClick={()=>warningClearCart()}>Vaciar Carrito <DangerousIcon/></button></TableCell>
                                     <TableCell ></TableCell>

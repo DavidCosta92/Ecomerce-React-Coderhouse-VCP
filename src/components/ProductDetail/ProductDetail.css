@@ -38,8 +38,8 @@
     background-color: transparent;
     font-weight: 600;
     border-radius: 5px;
-    margin: 2px;
-    padding: 10px 20px;
+    margin: 6px;
+    padding: 10px 10px;
     margin-bottom: 20px;
 }
 
@@ -58,13 +58,13 @@
 }
 
 .productDetails .offer{
-    margin-left: 40%;
+    margin-left: 57%;
     transform: rotate(25deg);
 }
 
 .productDetails .offerPrice{
-    margin-left: 30%;
-    margin-top: -5%;
+    margin-left: 55%;
+    margin-top: -15%;
 }
 .productDetails .offerPrice p{
     font-size: 1.6rem;

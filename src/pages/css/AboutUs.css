@@ -9,13 +9,15 @@
 }
 .aboutContainer{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
-    width: 100%;
+    width: 90%;
+    margin: auto;
     padding-bottom: 50px;
 }
 .aboutContainer .sliderAbout{
-    width: 35%;
-    margin-right: 5vw;
+    width: 90%;
+    margin: auto;
  }
 .aboutContainer .formAbout .formularioContacto{
     margin-left: 5vw;

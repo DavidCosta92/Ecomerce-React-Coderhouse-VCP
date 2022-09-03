@@ -31,18 +31,18 @@ const PurchaseSummary = () =>{
                                 <TableHead>
                                 <TableRow>
                                     <TableCell align="left" colSpan={4} className="tableTitle">
-                                    Resumen de compra
+                                    <p>Resumen de compra</p>
                                     </TableCell>
                                     <TableCell align="center" colSpan={2}>
-                                    Usuario: {buyer.email}
+                                    <p>Usuario: {buyer.email}</p>
                                     </TableCell>
                                 </TableRow>
                                 <TableRow>
-                                    <TableCell colSpan={2} align="center">Articulos</TableCell>
-                                    <TableCell align="center">Talle</TableCell>
-                                    <TableCell align="center">Cant.</TableCell>
-                                    <TableCell align="center">Precio UN</TableCell>
-                                    <TableCell align="center">Subtotal</TableCell>
+                                    <TableCell colSpan={2} align="center"> <p>Articulos</p></TableCell>
+                                    <TableCell align="center"> <p>Talle</p></TableCell>
+                                    <TableCell align="center"> <p>Cant.</p></TableCell>
+                                    <TableCell align="center"> <p>Precio UN</p></TableCell>
+                                    <TableCell align="center"> <p>Subtotal</p></TableCell>
                                 </TableRow>
                                 </TableHead>
                                 <TableBody>
@@ -57,22 +57,22 @@ const PurchaseSummary = () =>{
                                             </div>
                                         </TableCell>
                                         <TableCell>
-                                            <Link to={`/Products/Id=${product.id}`}>{product.title}</Link>
+                                            <Link to={`/Products/Id=${product.id}`}> <p>{product.title}</p></Link>
                                         </TableCell>
-                                        <TableCell align="center">{product.size}</TableCell>
-                                        <TableCell align="center">{product.amount}</TableCell>
-                                        <TableCell align="center">{product.unitPrice}</TableCell>
-                                        <TableCell align="center">{product.TotalPrice}</TableCell>
+                                        <TableCell align="center"> <p>{product.size}</p></TableCell>
+                                        <TableCell align="center"> <p>{product.amount}</p></TableCell>
+                                        <TableCell align="center"> <p>{product.unitPrice}</p></TableCell>
+                                        <TableCell align="center"> <p>{product.TotalPrice}</p></TableCell>
                                         </TableRow>
                                     )) 
                                 }
                                 <TableRow>
-                                    <TableCell colSpan={4}>Comprado {date}, pago elegido: {buyer.payMethod}</TableCell>
-                                    <TableCell align="center" colSpan={1} className="tableTitle">Total</TableCell>
-                                    <TableCell align="center" colSpan={2} className="tableTitle">{total}</TableCell>                                    
+                                    <TableCell colSpan={4}> <p>Comprado {date}, pago elegido: {buyer.payMethod}</p></TableCell>
+                                    <TableCell align="center" colSpan={1} className="tableTitle"> <p>Total</p></TableCell>
+                                    <TableCell align="center" colSpan={2} className="tableTitle"> <p>{total}</p></TableCell>                                    
                                 </TableRow>
                                 <TableRow>
-                                    <TableCell colSpan={1}>ID compra: {orderID}</TableCell>
+                                    <TableCell colSpan={1}> <p>ID compra: {orderID}</p></TableCell>
                                 </TableRow>
                                 </TableBody>
                             </Table> 

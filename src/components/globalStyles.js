@@ -3,28 +3,88 @@ export const GlobalStyles = createGlobalStyle`
   body {
     background: ${({ theme }) => theme.body};
     color: ${({ theme }) => theme.text};
-    font-family: Tahoma, Helvetica, Arial, Roboto, sans-serif;
     transition: all 0.50s linear;
   }
+
+  // NAV
   .toggleTheme{
-    background-color: ${({ theme }) => theme.toggleBkg};
-    color:${({ theme }) => theme.toggleBkgP};
+    background-color: ${({ theme }) => theme.textkWhiteBlack};
+    color:${({ theme }) => theme.textBlackWhite};
   }
-  .toggleTheme svg{
-    color:${({ theme }) => theme.toggleBkgP};
+  svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root {
+    color:${({ theme }) => theme.textBlackWhite};
+  }
+  .toggleTheme:hover svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root{
+    color:${({ theme }) => theme.textkWhiteBlack};
+  }
+  .red svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root:hover{
+    color:${({ theme }) => theme.textBlackWhite};
   }
   .toggleTheme:hover{
-    background-color: ${({ theme }) => theme.toggleBkgHover};
+    background-color: ${({ theme }) => theme.textBlackWhite};
+    color:${({ theme }) => theme.textkWhiteBlack};
   }
+  .containerNav .txtNav, a#basic-nav-dropdown{
+    color:${({ theme }) => theme.textBlackWhite};
+  }
+
+  .containerNav .dropdown-menu{
+    background-color: ${({ theme }) => theme.backgroundNavBar};
+   }
+
+   //cartWidget
+   svg.MuiSvgIcon-root.MuiSvgIcon-colorAction.MuiSvgIcon-fontSizeMedium.css-11pbyhm-MuiSvgIcon-root{
+    color:${({ theme }) => theme.textBlackWhite};
+   }
+
+   //cartWidget, badge Counter
+   span.MuiBadge-badge.MuiBadge-standard.MuiBadge-anchorOriginTopRight.MuiBadge-anchorOriginTopRightRectangular.MuiBadge-overlapRectangular.BaseBadge-badge.css-fvc8ir-MuiBadge-badge{
+    background-color:${({ theme }) => theme.brandColor};
+    color:#ffffff;
+   }
+
+   .containerNav .nombreMarca{
+    color:${({ theme }) => theme.textBlackWhite};
+   }
+
+
+   .containerNavBarSearch .MuiInputBase-root{
+    color:${({ theme }) => theme.textBlackWhite};
+   }
+
+   .containerNavBarSearch .MuiOutlinedInput-notchedOutline{
+    border-color:${({ theme }) => theme.blackToBlue};
+  }
+
+  svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.lupa.css-i4bv87-MuiSvgIcon-root{
+    color:${({ theme }) => theme.blackToBlue};
+  }
+
+
+ // boton hamburg
+
+ .navbar-light .navbar-toggler{
+    color:${({ theme }) => theme.textBlackWhiteSmooth};
+    border-color: ${({ theme }) => theme.textBlackWhiteSmooth}; 
+    background-color: ${({ theme }) => theme.backgroundBtnHamb};
+
+ }
+
+
+
+
+
+
+
+  // FOOTER
   .footer{
     background-color: ${({ theme }) => theme.backgroundFooter};
   }
   .footer .tituloFooter{
     color:${({ theme }) => theme.text1};
   }
-  svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root {
-    color:${({ theme }) => theme.svgFooter};
-  }
+
+  // FORMS
   .formulario .botonEnvio{
     background-color: ${({ theme }) => theme.btn1};
   }
@@ -33,15 +93,21 @@ export const GlobalStyles = createGlobalStyle`
     color:${({ theme }) => theme.text1};
     background-color: ${({ theme }) => theme.btn1Hover};
   }
+
+  // PRODUCTS
   .productDetails{
-    box-shadow: 2px 2px 1px 1px ${({ theme }) => theme.productDetailsCardShadow};;
+    box-shadow: 2px 2px 1px 1px ${({ theme }) => theme.productDetailsCardShadow};
     background-color: ${({ theme }) => theme.productDetailsCard};
   }
   .productDetails .stockDisponible{
     color:${({ theme }) => theme.text2SemiDisabled};
   }
+  .btnsTalles button{
+    background-color: ${({ theme }) => theme.backgroundBtnSize};
+  }
+
   .btnTerminarCompra{
-     color: ${({ theme }) => theme.textBlackWhite};
+     background-color: ${({ theme }) => theme.backgroundBtnSize};
   }
   .btnTerminarCompra:hover, .btnTerminarCompra:focus{
     background-color: ${({ theme }) => theme.backgroundBlackWhite};
@@ -90,7 +156,8 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .MuiToggleButtonGroup-root.css-1gjgmky-MuiToggleButtonGroup-root {
-    border: 1px solid ${({ theme }) => theme.textBlackWhiteSmooth};
+    border: 1px solid ${({ theme }) => theme.smoothLine};
+
   }
   .MuiToggleButtonGroup-root.css-1gjgmky-MuiToggleButtonGroup-root :hover{
     background-color: ${({ theme }) => theme.btn1Hover};
@@ -112,5 +179,28 @@ export const GlobalStyles = createGlobalStyle`
   .btnVaciarCarrito{
     color:${({ theme }) => theme.textWhiteBlackSmooth};
   }
+  .MuiPaper-root.MuiPaper-elevation.MuiPaper-elevation16.MuiDrawer-paper.MuiDrawer-paperAnchorRight.css-1160xiw-MuiPaper-root-MuiDrawer-paper {
+    background-color: ${({ theme }) => theme.cartWidgetModal};
+    color:${({ theme }) => theme.textBlackWhite};
+
+    
+}
+p.totalPriceWidget{
+
+}
+
+// PURCHASE FORM
+.formMediosPagos .css-u4tvz2-MuiFormLabel-root{
+  color:${({ theme }) => theme.textBlackWhite};
+}
+
+
+
+
+
+
+
+
+
 
   `

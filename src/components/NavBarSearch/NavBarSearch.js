@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import TextField from '@material-ui/core/TextField';
 import { useState } from "react";
 import {useNavigate} from 'react-router-dom';
+import SearchIcon from '@mui/icons-material/Search';
 
 const NavBarSearch = () =>{    
     const [searchData, setSearchData]=useState("")
@@ -26,7 +27,7 @@ const NavBarSearch = () =>{
         <div className="containerNavBarSearch" >
             <form noValidate onSubmit={handleSubmit} onChange={handleChange}>
                 <TextField id="outlined-basic" label="PENDIENTE AUN.." variant="outlined"  value={searchData}/>
-                <input type="submit" className="botonEnvio"/>
+                <SearchIcon className=" botonEnvio lupa"><input type="submit"/></SearchIcon>
             </form>            
         </div>
     )

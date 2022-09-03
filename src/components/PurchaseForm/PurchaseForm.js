@@ -173,7 +173,7 @@ const PurchaseForm =()=>{
     return (
         <>  
             {!success&& (
-            <div className="formularioContacto">
+            <div className="formularioContacto ">
                 <fieldset>
                 <legend>Completa los datos para terminar la compra</legend>
                 <form className="formulario" onSubmit={handleSubmit(submitData)} onChange={handleChange}>

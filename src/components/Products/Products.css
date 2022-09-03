@@ -3,7 +3,7 @@
     margin: auto;
     margin-bottom: 40px;
     border: none;
-    max-width: 50vw;
+
 }
 .productCard .tituloProducto{
     font-size: 1.4rem;
@@ -12,7 +12,8 @@
 }
 
 .productCard img{
-    max-width: 300px;
+    
+    width: 300px;
     object-fit: cover;
 }
 .productCard img:hover{
@@ -30,7 +31,7 @@
     border-radius: 10px;
     margin-top: 25px;
     margin-bottom: 10px;
-    width: 35%;
+    width: 85%;
     padding: 4px;
     font-weight: 600;
     font-size: 1.1rem;
@@ -71,6 +72,7 @@ p.productDescription {
     border-radius: 15px;
     margin-top: 2%;
     transform: rotate(-25deg);
+    margin-left: 65vw;
 }
 
 .offer p{
@@ -97,7 +99,7 @@ p.productDescription {
 
 .offerPrice{
     position: absolute;
-    margin-left: 16%;
+    margin-left: 65%;
     z-index: 100;
     border-radius: 15px;
     margin-top: -3%;

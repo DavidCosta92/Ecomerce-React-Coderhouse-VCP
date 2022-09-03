@@ -4,7 +4,7 @@
     text-align: center;
 }
 .tableContainer{
-    padding: 30px;
+    padding: 15px;
 }
 
 svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.btnAdd.css-i4bv87-MuiSvgIcon-root, svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.btnRemove.css-i4bv87-MuiSvgIcon-root,
@@ -51,7 +51,7 @@ svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.btnClear.css-i4bv87-MuiSvgIcon-roo
 }
 
 .imgCheckout img{
-    max-width: 150px;
+    max-width: 110px;
 }
 
 .textoCarroVacio{
@@ -61,3 +61,13 @@ svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.btnClear.css-i4bv87-MuiSvgIcon-roo
     margin-top: 20px;
 }
 
+/* modificaciones de tabla para pantalla 400   */
+
+.tableCheckout td.MuiTableCell-root.MuiTableCell-body.MuiTableCell-sizeMedium.css-1ex1afd-MuiTableCell-root {
+    max-width: 120px;
+    padding-left: 5px;
+}
+
+.tableCheckout td.MuiTableCell-root.MuiTableCell-body.MuiTableCell-sizeMedium{
+    padding: 1px;
+}

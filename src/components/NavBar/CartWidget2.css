@@ -1,10 +1,23 @@
 
 .css-tlelie-MuiListItemText-root{
-    width: 130px;
+    width: 50vw;
 }
+
+/*
+.MuiPaper-root.MuiPaper-elevation.MuiPaper-elevation16.MuiDrawer-paper.MuiDrawer-paperAnchorRight.css-1160xiw-MuiPaper-root-MuiDrawer-paper{
+    width: 80vw;
+}
+.MuiBox-root .css-qxh7fn{
+    width: 70vw;
+}
+*/
 
 img.productImgCartWidget{
     height: 150px;
+}
+
+button.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.css-1e6y48t-MuiButtonBase-root-MuiButton-root{
+    padding: 0;
 }
 
 
