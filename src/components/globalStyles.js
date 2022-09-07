@@ -11,15 +11,21 @@ export const GlobalStyles = createGlobalStyle`
     background-color: ${({ theme }) => theme.textkWhiteBlack};
     color:${({ theme }) => theme.textBlackWhite};
   }
+  //
   svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root {
     color:${({ theme }) => theme.textBlackWhite};
   }
   .toggleTheme:hover svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root{
     color:${({ theme }) => theme.textkWhiteBlack};
   }
-  .red svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root:hover{
+  // red footer
+  .footer .contenidoFooter .redesFooter .red{
     color:${({ theme }) => theme.textBlackWhite};
   }
+  .footer .contenidoFooter .redesFooter .red svg:hover{
+    color:${({ theme }) => theme.textBlackWhite};
+  }
+
   .toggleTheme:hover{
     background-color: ${({ theme }) => theme.textBlackWhite};
     color:${({ theme }) => theme.textkWhiteBlack};
@@ -37,11 +43,21 @@ export const GlobalStyles = createGlobalStyle`
     color:${({ theme }) => theme.textBlackWhite};
    }
 
-   //cartWidget, badge Counter
-   .badgeContentVCP span.MuiBadge-badge.MuiBadge-standard.MuiBadge-anchorOriginTopRight.MuiBadge-anchorOriginTopRightRectangular.MuiBadge-overlapRectangular.BaseBadge-badge.css-fvc8ir-MuiBadge-badge{
-    background-color:${({ theme }) => theme.brandColor} !important;
+   /*cartWidget, badge Counter*/
+   #badgeContentVCP{
+    color:${({ theme }) => theme.textBlackWhite};
+   }
+
+   #badgeContentVCP :hover{
+    background-color:${({ theme }) => theme.btn1Hover};
+   }
+
+   #badgeContentVCP span{
+    background-color:${({ theme }) => theme.brandColor};
     color:#ffffff;
    }
+
+
 
    .containerNav .nombreMarca{
     color:${({ theme }) => theme.textBlackWhite};

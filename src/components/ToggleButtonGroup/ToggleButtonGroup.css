@@ -1,43 +1,18 @@
-
 .toggleContainer{
     width: 100%;
     display: flex;
     justify-content: flex-end;
 
 }
+.toggleContainer #toggleButtonGroupOrderProducts{
+    margin-right:20px;
+    margin-bottom: 10px;
+}
 
 .toggleContainer #toggleButtonGroupOrderProducts button{
-    font-size: 0.6rem;
-    padding: 2px;
-    
+    font-size: 0.65rem;
+    padding: 3px;
 }
-
-
-
-/* modificados deploy
-.toggleContainer button.MuiButtonBase-root.MuiToggleButton-root.MuiToggleButton-sizeMedium.MuiToggleButton-primary.MuiToggleButtonGroup-grouped.MuiToggleButtonGroup-groupedHorizontal{
-    
-}
-
-.toggleContainer button.MuiButtonBase-root.MuiToggleButton-root.MuiToggleButton-sizeMedium.MuiToggleButton-primary.MuiToggleButtonGroup-grouped.MuiToggleButtonGroup-groupedHorizontal.css-d9c359-MuiButtonBase-root-MuiToggleButton-root{
-    
-}   
-.toggleContainer svg{
+.toggleContainer #toggleButtonGroupOrderProducts svg{
     margin-left: 2px;
 }
-
-.MuiToggleButtonGroup-root.css-1gjgmky-MuiToggleButtonGroup-root {
-   margin-right:20px;
-   margin-bottom: 10px;
-}
-
-button.MuiButtonBase-root.MuiToggleButton-root.MuiToggleButton-sizeMedium.MuiToggleButton-primary.MuiToggleButtonGroup-grouped.MuiToggleButtonGroup-groupedHorizontal{
-    font-size: 0.7rem;
-    padding: 4px;
-}
-
-button.MuiButtonBase-root.MuiToggleButton-root.MuiToggleButton-sizeMedium.MuiToggleButton-primary.MuiToggleButtonGroup-grouped.MuiToggleButtonGroup-groupedHorizontal.css-d9c359-MuiButtonBase-root-MuiToggleButton-root {
-    font-size: 0.7rem;
-    padding: 4px;
-}
-*/
