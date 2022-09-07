@@ -8,6 +8,7 @@
     height: 35px;
     font-weight: 500;
     width: 120px;
+    margin-left: 20px;
 }
 .toggleTheme:hover{
     cursor: pointer;

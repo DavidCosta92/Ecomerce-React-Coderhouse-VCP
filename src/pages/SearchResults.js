@@ -1,97 +1,89 @@
 import {useParams} from "react-router-dom"
 import { useState, useEffect } from "react";
 import ItemList from "../components/ItemList/ItemList";
-//import db from "../firebaseConfig";
-//import { collection, getDocs,query,where} from "firebase/firestore";
-//import CircularProgress from '@mui/material/CircularProgress';
-//import Box from '@mui/material/Box';
-import AuxListProductSearch from "../components/NavBarSearch/AuxListProducsSearch";
-
+import db from "../firebaseConfig";
+import { collection, getDocs} from "firebase/firestore";
+import Home from "./home";
+import { Box } from "@material-ui/core";
+import { CircularProgress } from "@mui/material";
+import "./css/SearchResults.css"
 
 const SearchResults =()=>{
-    const[listProducts, setListProducts] = useState([]);
     const {search} =useParams();
-    let auxSearch= search.toLowerCase();
+    const [loading, setLoading]=useState(true);
+    const [busqueda, setBusqueda]=useState([]);
+    let auxSearch= search.toLowerCase();    
 
-    //const [auxListProduct, setAuxListProduct]= useState([]);
-   // const {auxListProduct} = useContext(AuxContext)
+    function getProductList(){
+        console.log("llame funcion getProductList, LLAMANDO A FIREBASE")
+        const queryCollection= collection (db, "products");
+        getDocs(queryCollection)
+            .then(res=> saveProducts(res))
+            .catch((error)=>{
+                    console.log("llamada a verTodo fallo",error)
+                    }) 
+    }
 
-/*
+    function saveProducts(res){
+        let productListFirebase=[];
+        res.docs.map((product)=>{
+            productListFirebase.push({id: product.id, ...product.data()})
+        })
+        setTimeout(()=>{
+            searchProducts(productListFirebase)
+            setLoading(false);
+        },2000)
+    }
+
+    function searchProducts(listProducts){
+        let auxList=[];
+        listProducts.forEach((product)=>{
+            let productKeyWords=product.keyWords.toLowerCase();
+            if(productKeyWords.includes(auxSearch)){
+                    auxList.push(product);
+            }
+        })
+        setBusqueda(auxList);
+    }
+
     useEffect(()=>{
-        const queryCollection= collection (db, "products");  
-        const queryFilter=query(queryCollection);
-        getDocs(queryFilter)
-        .then(res=> getAuxListProduct(res));
-
-        const getAuxListProduct= (res)=>{
-            let listP=[];
-            res.docs.map(product=> ( 
-                listP.push({id: product.id, ...product.data()})
-            ));
-            setAuxListProduct(listP);
-            console.log("esto viendo cuantas veces me renderizo dentro de un useEfect con corchetes vacios..")
-            localStorage.setItem("auxListProduct",JSON.stringify(listP));
-        }
-    }, []) // corchete vacio para que solo descargue productos una unica vez...
-    console.log("lista actual aux de productos, osea TODOS=>",auxListProduct)
-*/
-
-
-    useEffect(()=>{
-        setTimeout(() => {
-            searchProducts();       
-        }, 2000); 
-        console.log("estoy renderizando el useEfect segun aux search?")
-    }, [auxSearch])
-
-// FUNCION SEARCH PARA OBTENER PRODUCTOS DESDE LOCAL STORAGE
-
-/*
-
-**************************** DEBO SOLUCIONAR CANTIDAD DE LLAMADAS A BD
-- INTENTE LLAMANDO A BD, GUARDANDO PRODUCTOS EN LOCAL STORAGE Y LUEGO TRATANDO DE TOMARLOS DE AHI...
-AUN QUEDA POR EXPLORAR, YA QUE ME SALE UNDEFINED EL STORAGE.. ALGUN ERROR HAY POR ALLI...
-
-*/
-
-
-    function searchProducts(){
-           let listProductSearch=[];
-           if (localStorage.getItem("auxListProduct")){
-            let productListLocalStorage= JSON.parse(localStorage.getItem("auxListProduct"));
-            productListLocalStorage.forEach((product)=>{
-                let productKeyWords=product.keyWords.toLowerCase();
-                if(productKeyWords.includes(auxSearch)){
-                    listProductSearch.push(product);
-                }
-               })
-           } 
-           setListProducts(listProductSearch);
-           //  setSpinner(false);
-       }
-   
-
-
-    function renderProducts(){
+        setLoading(true)
+         getProductList(); 
+    }, [search])
+    
+    function renderEmptySearch(){
         return (
-            <div>
-                <ItemList listProducts={listProducts}/>
+            <div className="emptySearhTxt">
+                <p className="emptySearhTitle">¡Ups, no pudimos encontrar lo que buscas!</p> 
+                <p>¿Quieres probar con otra palabra?</p>
+                <p>O talvez, te mostramos algunos productos tentadores</p>
+                <Home/>
             </div>
+        )
+    }
+
+    function renderProductsSearch(){
+        return (
+            <div>                 
+                {busqueda.length===0? renderEmptySearch() : <div className="searchProducts"><p>Resultados de busqueda</p><ItemList listProducts={busqueda}/></div>}
+            </div>
+        )
+    }
+    function renderSpiner(){
+        return(
+            <div className="spinner"> 
+                <p>Estamos buscando..</p>
+                <Box sx={{ display: 'flex' }}  className="spinnerWheel">
+                    <CircularProgress />
+                </Box>
+                
+            </div>           
         )
     }
 
     return (
         <div>
-            <AuxListProductSearch/>
-            <h1>Resultados de busqueda</h1>
-            {/*spinner&&(
-                    <div className="spinner"> 
-                        <Box sx={{ display: 'flex' }} >
-                            <CircularProgress />
-                        </Box>
-                    </div>
-            )*/}
-            {renderProducts() }
+          {loading?  renderSpiner() : renderProductsSearch()}
         </div>
     )
 }

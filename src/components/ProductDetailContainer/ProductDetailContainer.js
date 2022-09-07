@@ -26,11 +26,11 @@ const ProductsDetailContainer=()=>{
         return(
             <div className="productContainer">
                 <div className="productCard productDetails">
-                    <Skeleton  className="skeletonTxt" width={600} height={50} duration={0.5}/>
-                    <Skeleton  variant="rectangular" className="skeletonImg" width={600} height={500} duration={0.5}/>
-                    <Skeleton  className="skeletonTxt" width={600} height={44} duration={0.5}/>
-                    <Skeleton  className="skeletonTxt" width={600} height={46} duration={0.5}/>
-                    <Skeleton  className="skeletonTxt" width={600} height={110} duration={0.5}/>                              
+                    <Skeleton  className="skeletonTxt" height={50} duration={0.5}/>
+                    <Skeleton  variant="rectangular" className="skeletonImg" height={500} duration={0.5}/>
+                    <Skeleton  className="skeletonTxt" height={44} duration={0.5}/>
+                    <Skeleton  className="skeletonTxt"  height={46} duration={0.5}/>
+                    <Skeleton  className="skeletonTxt"  height={110} duration={0.5}/>                              
                 </div>
             </div>
         )

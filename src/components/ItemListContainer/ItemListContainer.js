@@ -1,16 +1,8 @@
 import { useEffect, useState } from "react";
 import ItemList from "../ItemList/ItemList";
 import "./ItemListContainer.css"
-
 import { Skeleton } from "@mui/material";
-
-//import * as React from 'react';
-//import CircularProgress from '@mui/material/CircularProgress';
-//import Box from '@mui/material/Box';
-
 import { collection, getDocs,query,where} from "firebase/firestore";
-//import { orderBy } from "firebase/firestore";
-//import { limitToLast } from "firebase/firestore";
 import db from "../../firebaseConfig"
 import ColorToggleButton from "../ToggleButtonGroup/ToggleButtonGroup";
 
@@ -30,6 +22,9 @@ const ItemListContainer=({Category})=>{
                 break;
             case "category": 
                 listProducts.sort(compareByCategory);
+                break;
+            case "discount": 
+                listProducts.sort(compareByDiscount);
                 break;
             default:
                 listProducts.sort(compareByPrice);
@@ -54,6 +49,11 @@ const ItemListContainer=({Category})=>{
         if ( a.category > b.category) return 1;
         return 0;
     }
+    function compareByDiscount(a,b){
+        if ( a.discount > b.discount) return -1;
+        if ( a.discount < b.discount) return 1;
+        return 0;
+    }
 
 
 
@@ -68,29 +68,27 @@ const ItemListContainer=({Category})=>{
     useEffect(()=>{
         const queryCollection= collection (db, "products")   
         if(Category==="Ofertas"){
-            const queryFilter=query(queryCollection, where ("oferta","==",true ) /*, orderBy('price') , limitToLast(2)*/) 
-// DEBO CREAR UN INDEX ESPECIAL PARA USAR ORDER Y WHERE, O SOLO USAR ORDER... EN CUANTO A LIMIT, SE PODRIA USAR LUEGO DE USAR ORDER
-//  PARA CREAR EL INDEX => https://console.firebase.google.com/project/ecommerce-coderhouse-vcp/firestore/indexes?create_composite=Cllwcm9qZWN0cy9lY29tbWVyY2UtY29kZXJob3VzZS12Y3AvZGF0YWJhc2VzLyhkZWZhdWx0KS9jb2xsZWN0aW9uR3JvdXBzL3Byb2R1Y3RzL2luZGV4ZXMvXxABGgoKBm9mZXJ0YRABGgkKBXByaWNlEAIaDAoIX19uYW1lX18QAg
+            const queryFilter=query(queryCollection, where ("oferta","==",true )) 
             getDocs(queryFilter)
             .then(res=> productRender(res))
-           /* .catch((error)=>{
-                console.log("llamada a Ofertas fallo")
-                })*/
+            .catch((error)=>{
+                console.log("llamada a Ofertas fallo ",error)
+                })
         }
         else if (Category==="verTodo"){
             getDocs(queryCollection)
             .then(res=> productRender(res))
-           /* .catch((error)=>{
-                console.log("llamada a verTodo fallo")
-                }) */
+           .catch((error)=>{
+                console.log("llamada a Ver Todo fallo ",error)
+                })
         }
         else if (Category!=="verTodo"){
             const queryFilter=query(queryCollection, where ("category","==",Category ))
             getDocs(queryFilter)
             .then(res=> productRender(res))
-          /*  .catch((error)=>{
-                console.log("llamada a categoria fallo")
-                }) */
+            .catch((error)=>{
+                console.log("llamada a categoria fallo ",error)
+                })
         }
     }, [Category])
 
@@ -102,14 +100,14 @@ const ItemListContainer=({Category})=>{
         for (let p=0; p<10;p++){
             productListSkeleton.push(
                 <div className="productCard" key={p}>
-                    <Skeleton  className="skeletonTxt" width={300} height={33} duration={0.5}/>               
-                    <Skeleton  variant="rectangular" className="skeletonImg" width={300} height={300} duration={0.5}/>
-                    <Skeleton  className="skeletonTxt" width={300} height={200} duration={0.5}/>
+                    <Skeleton  className="skeletonTxt"  height={33} duration={0.5}/>               
+                    <Skeleton  variant="rectangular" className="skeletonImg" height={300} duration={0.5}/>
+                    <Skeleton  className="skeletonTxt" height={200} duration={0.5}/>
                 </div>)
         }
         return (
             <div>
-                <Skeleton  className="skeletonTxt" width={300} height={50} duration={0.5}/>
+                <Skeleton  className="skeletonTxtTitle" height={100} duration={0.5}/>
                 <div className="productContainer containerSkeleton">
                     {productListSkeleton}
                 </div>

@@ -3,7 +3,9 @@
     margin: auto;
     margin-bottom: 40px;
     border: none;
-
+    max-width: 450px;
+    width: 100%;
+    height: 500px;
 }
 .productCard .tituloProducto{
     font-size: 1.4rem;
@@ -12,10 +14,10 @@
 }
 
 .productCard img{
-    
     width: 300px;
     object-fit: cover;
 }
+
 .productCard img:hover{
     transform: scale(1.05);
 }
@@ -29,13 +31,16 @@
 
 .btnBuy{
     border-radius: 10px;
-    margin-top: 25px;
+    margin-top: 2.7rem;
     margin-bottom: 10px;
     width: 85%;
     padding: 4px;
     font-weight: 600;
     font-size: 1.1rem;
     background-color: transparent;
+
+
+
 }
 
 .btnBuy:hover{
@@ -47,7 +52,7 @@
     background-color: #032e5c;
 }
 .txtSoldOut{
-    margin-bottom: 0;
+    margin-bottom: 20px;
     height: 25px;
 }
 .imgSoldOut{
@@ -70,9 +75,8 @@ p.productDescription {
     position: absolute;
     z-index: 100;
     border-radius: 15px;
-    margin-top: 2%;
     transform: rotate(-25deg);
-    margin-left: 65vw;
+    margin-left: 275px;
 }
 
 .offer p{
@@ -99,10 +103,10 @@ p.productDescription {
 
 .offerPrice{
     position: absolute;
-    margin-left: 65%;
+    margin-left: 250px;
     z-index: 100;
     border-radius: 15px;
-    margin-top: -3%;
+    margin-top: -40px;
     transform: rotate(20deg);
 }
 
@@ -112,4 +116,33 @@ p.productDescription {
     font-weight: 700;
     margin: 0;
     padding: 2px;
+}
+
+/* media queries  */
+
+@media (max-width: 450px) {
+    .offer{
+        margin-left: 250px;
+    }
+}
+@media (min-width: 450px) {
+    .offer{
+        margin-left: 225px;
+    }
+    .offerPrice{
+        margin-left: 200px;
+    }
+}
+
+
+@media (min-width: 600px) {
+    .offer{
+        margin-left:200px;
+    }
+
+
+
+
+
+
 }

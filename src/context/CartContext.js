@@ -1,33 +1,31 @@
 import { createContext, useState } from "react";
+import {toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 let productCartFromLocalStorage;
-let totalAmountInCartFromLocalStorage;
-let totalPriceFromLocalStorage;
+let totalAmountInCartFromLocalStorage=0;
+let totalPriceFromLocalStorage=0;
 
 if(JSON.parse(localStorage.getItem("userCart"))){
     productCartFromLocalStorage = JSON.parse(localStorage.getItem("userCart"));
     productCartFromLocalStorage.map((product)=>{
         totalAmountInCartFromLocalStorage+=product.inCart;
-        totalPriceFromLocalStorage+=product.inCart*product.price
+        totalPriceFromLocalStorage=totalPriceFromLocalStorage+product.inCart*product.price
     })
-    console.log("accedi al carrito guardado.. =>",productCartFromLocalStorage)
+
 } else{
     productCartFromLocalStorage = localStorage.setItem("userCart",JSON.stringify([]));
     totalAmountInCartFromLocalStorage=0;
     totalPriceFromLocalStorage=0;
-    console.log("no habia carrito, asi que cree uno nuevo vacio..=>",productCartFromLocalStorage)
 }
 
 const CartContext =createContext();
-
 const CartProvider =({children})=>{
-    const [cartProducts, setCartProducts] = useState(productCartFromLocalStorage);  
-    const [totalAmountInCart, setTotalAmountInCart] = useState(totalAmountInCartFromLocalStorage);
-    const [totalPrice, setTotalPrice] = useState(totalPriceFromLocalStorage);
+    const [cartProducts, setCartProducts] = useState(productCartFromLocalStorage===undefined? []:productCartFromLocalStorage);    
+    const [totalAmountInCart, setTotalAmountInCart] = useState(productCartFromLocalStorage===undefined? 0:totalAmountInCartFromLocalStorage);
+    const [totalPrice, setTotalPrice] = useState(productCartFromLocalStorage===undefined? 0:totalPriceFromLocalStorage);
     const [orderID, setOrderID]=useState();
-    const [order, setOrder]=useState();
-
-    
+    const [order, setOrder]=useState();  
 
     function saveLocalStorage(){
         localStorage.setItem("userCart",JSON.stringify(cartProducts));
@@ -44,23 +42,6 @@ const CartProvider =({children})=>{
         })
         return isInCart;
     }
-
-
-
-    /// de aca para abajo revisar... y mejorar!
-
-  //  const [amountInCart, setAmountInCart] = useState(
-        /* JSON.parse(localStorage.getItem("userCart")).amountInCart */
- //   0
-    /// PARA QUE LO ESSTOY USANDO??? DEBERIA SER UN AUMOUNT PARA CADA PRODUCTO... USO PARA RENDERIZAR???
- //   );
-
-
-
-    
-    const [bought, setBought] = useState(false);
-
-
    
     function addProductToCart(productData,ItemCounter, size){
         if(isInCart(productData)){
@@ -68,11 +49,23 @@ const CartProvider =({children})=>{
         } else{
             productData.inCart=ItemCounter;
             productData.size=size;
-         //   setAmountInCart(productData.inCart);
             cartProducts.push(productData)
             setCartProducts(cartProducts);
             calcSumTotal(cartProducts);
             saveLocalStorage();
+   
+            
+
+
+//// REVISAR NOTIFICACIONES, HAY ALGUN ERROR CON LAS CANTIDADES DE ITEM COUNTER.. NO  ME LAS MUESTRA CORRECTAMENTE
+
+
+
+            let es;
+            ItemCounter=1? es="" : es="es"
+            renderAlert("success",`Agregaste ${ItemCounter} unidad${es} de ${productData.title}`)
+            console.log("mostrando es", es)
+            console.log("mostrando  ItemCounter",  ItemCounter)
         }           
     }
 
@@ -84,21 +77,22 @@ const CartProvider =({children})=>{
         let indexToUpdate= ids.indexOf(productData.id)
         let newCart= cartProducts;
         newCart[indexToUpdate].inCart=parseInt(newCart[indexToUpdate].inCart)+ItemCounter;
-      //  setAmountInCart(productData.inCart +1);
-        setCartProducts(newCart);  // antes calculaba con cart Products.. que onda??
-        calcSumTotal(newCart); // antes calculaba con cart Products.. que onda??
+        setCartProducts(newCart);
+        calcSumTotal(newCart);
         saveLocalStorage();
-        
+        let es;
+        ItemCounter=1? es="" : es="es"
+        renderAlert("success",`Agregaste ${ItemCounter} unidad${es} de ${productData.title}`)
     }
     function removeUnitFromCart(productData){
         if(productData.inCart>1){
             let indexToUpdate= cartProducts.indexOf(productData)
             let newCart = cartProducts;
             newCart[indexToUpdate].inCart=parseInt(newCart[indexToUpdate].inCart)-1;
-      //      setAmountInCart(productData.inCart -1);
             setCartProducts(newCart);
             calcSumTotal(cartProducts)
             saveLocalStorage(cartProducts)
+            renderAlert("error",`Eliminaste 1 unidad de ${productData.title}`)
         } else{
             removeAllUnitsFromCart(productData);
         }      
@@ -107,19 +101,12 @@ const CartProvider =({children})=>{
     function removeAllUnitsFromCart(productData){
         let indexToDelete= cartProducts.indexOf(productData)
         cartProducts.splice(indexToDelete,1)
-    //    setAmountInCart(0);
         setCartProducts(cartProducts);
         calcSumTotal(cartProducts);
         saveLocalStorage(cartProducts);
+        renderAlert("error",`Eliminaste todas las unidades de ${productData.title}`)
     }
-  /*  const seEstaComprando=()=>{
-        setBought(current => !current);
-   }*/
-
     function buyCart(newOrder,orderID){
-       // seEstaComprando() 
-       setBought() // solucionar porque no funcioa
-        console.log("estoy mostrando si se compro o no...",bought)
         setOrderID(orderID);
         setOrder(newOrder);
         clearCart();
@@ -135,24 +122,69 @@ const CartProvider =({children})=>{
 
     function calcSumTotal(cartProducts){
         let totalAmount=0;
+        let subtotal=0;
         cartProducts.map((p)=>{
             totalAmount+=p.inCart;
+            subtotal+=p.price * p.inCart
         })
         setTotalAmountInCart(totalAmount);
-    }
-
-    function subtotal(products) {
-        let subtotal=0;
-        products.map((product)=>{
-            subtotal+=product.price * product.inCart
-        })
         setTotalPrice(subtotal);
-      return subtotal;
     }
 
-    function warningClearCart(){
-        /// hacer cartel de warning.. si es ok se vacia y sino no
+    function deleteCart(){
         clearCart();
+        renderAlert("error",`¡VACIASTE EL CARRITO!`)  
+    }
+
+    function renderAlert(type, msj){
+        let theme='light';
+        JSON.parse(localStorage.getItem("userThemePreference")) && (theme=JSON.parse(localStorage.getItem("userThemePreference")));
+        if(type==="success" && theme=== 'light'){
+            toast.success(msj, {
+                position: "bottom-left",
+                autoClose: 4000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
+
+        }else if(type==="success"&& theme=== 'dark'){
+            toast.success(msj, {
+                position: "bottom-left",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: 'dark'
+                });
+        }
+        else if(type==="error" && theme=== 'light'){
+            toast.error(msj, {
+                position: "bottom-left",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
+
+        }else if(type==="error" && theme=== 'dark'){
+            toast.error(msj, {
+            position: "bottom-left",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'dark'
+            });
+        }
     }
 
     const data={
@@ -162,18 +194,15 @@ const CartProvider =({children})=>{
         removeUnitFromCart,
         removeAllUnitsFromCart,
         buyCart,
-       // amountInCart,
         totalAmountInCart,
         setTotalAmountInCart,
         totalPrice,
         calcSumTotal,
-        bought,
-        setBought,
         orderID,
-        subtotal,
         order,
         addUnitsToCart,
-        warningClearCart
+        deleteCart,
+        renderAlert
     }
     return (
         <CartContext.Provider value={data}>

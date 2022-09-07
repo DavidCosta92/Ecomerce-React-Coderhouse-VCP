@@ -3,12 +3,12 @@ import ItemCounter from "../ItemCount/ItemCount";
 import SlideProductImg from "../SlideProductImg/SlideProductImg";
 import { useState } from "react";
 import {Link} from "react-router-dom"
-
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ProductDetail=({data}) =>{
     const {title, price, srcA, srcB, srcC,srcD , description, textoAlt, stockXS,stockS,stockM,stockL,stockXL,descriptionExtra, discount} =data;
     const [unitsSelected, setUnitsSelected] = useState(0);
-    
     let stockTotal=stockXS+stockS+stockM+stockL+stockXL;
 
     return(
@@ -37,7 +37,16 @@ const ProductDetail=({data}) =>{
                     (<><Link to="/checkout"><button className="btnTerminarCompra">Terminar Compra</button></Link><Link to="/"><button className="btnTerminarCompra">Ver mas productos</button></Link></>) 
                     : (<ItemCounter unitsSelected={setUnitsSelected} productData={data}/>))
                 }
-                
+                {<ToastContainer
+                    position="bottom-left"
+                    autoClose={4000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+            pauseOnHover/>}
         </div>
     )
 }

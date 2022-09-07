@@ -9,7 +9,7 @@ const Footer =()=>{
         <div className="footer">
             <Link to="/">
                 <div className="logoMarca">
-                    <img src="../assets/imagenes/icons/logo.webp"/>
+                    <img src="../assets/imagenes/icons/logo.webp" alt="Logo Van Como Piña"/>
                 </div>
             </Link>
             <p className="tituloFooter"> Conecta con nostros</p>

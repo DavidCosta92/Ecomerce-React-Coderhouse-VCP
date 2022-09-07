@@ -2,8 +2,6 @@ import "./ItemCount.css";
 import { useState} from "react";
 import { CartContext } from "../../context/CartContext";
 import { useContext } from "react";
-import BasicAlerts from "../BasicAlerts/BasicAlerts";
-
 
 const ItemCounter=({unitsSelected, productData})=>{
     const {setTotalAmountInCart,totalAmountInCart,addProductToCart} = useContext(CartContext);
@@ -12,14 +10,8 @@ const ItemCounter=({unitsSelected, productData})=>{
     const [size, setSize] = useState("");
     const [sizeStock, setSizeStock] =useState();
    
-   // alert
-    const [alert, setAlert]= useState(false);
     const onAdd=()=>{
-        setAlert( current=>!current)
-        setTimeout(() => {
-            setAlert(current=>!current) 
-            addProduct()          
-        }, 2000); 
+        addProduct();
     }
 
     const addUnit = ()=>{
@@ -33,12 +25,6 @@ const ItemCounter=({unitsSelected, productData})=>{
         unitsSelected(ItemCounter);
         addProductToCart(productData,ItemCounter,size);
         setTotalAmountInCart(totalAmountInCart+ItemCounter);
-    }
-
-    function renderAlert(){
-        return(
-            <BasicAlerts type={true} message={`${productData.title} fue agregado al carrito`}/>
-        )
     }
 
     const handleClickTalle =(e)=>{
@@ -89,7 +75,8 @@ const ItemCounter=({unitsSelected, productData})=>{
                 <button className="sumarUnidad" onClick={addUnit}>+</button>
             </div>
             {size===""?<p>Seleccione un talle para continuar</p> : <button className="btnBuy" onClick={()=> onAdd()}>¡Agregar prenda en talle {size} !</button>}
-            {alert&& renderAlert()}
+
+            
         </>
     )
 }

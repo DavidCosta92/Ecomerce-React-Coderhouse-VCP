@@ -11,10 +11,7 @@ import Footer from './components/Footer/Footer';
 import Checkout from './pages/Checkout';
 import CartProvider from './context/CartContext';
 import SearchResults from './pages/SearchResults';
-//import SwitchColorMode from './components/SwitchColorMode/SwitchColorMode';
-
-import React, { useState, useEffect } from "react";
-
+import React, { useState} from "react";
 import {ThemeProvider} from "styled-components";
 import { GlobalStyles } from "./components/globalStyles";
 import { lightTheme, darkTheme } from "./components/Themes"
@@ -24,7 +21,6 @@ function App() {
   let themePreference;
   JSON.parse(localStorage.getItem("userThemePreference"))&& (themePreference=JSON.parse(localStorage.getItem("userThemePreference")))
   !JSON.parse(localStorage.getItem("userThemePreference"))&& ( themePreference='light')
-  
   localStorage.setItem("userThemePreference",JSON.stringify(themePreference));
   
   const [theme, setTheme] = useState(themePreference);

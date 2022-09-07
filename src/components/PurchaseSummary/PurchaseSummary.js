@@ -16,7 +16,7 @@ const PurchaseSummary = () =>{
 
     const {orderID,order} =useContext(CartContext);
 
-    const {items,total,date, buyer}=order;
+    const {items,total,date, buyer, finalPrice,payMethod}=order;
 
     return (
         <div>
@@ -52,7 +52,7 @@ const PurchaseSummary = () =>{
                                         <TableCell>
                                             <div className="imgCheckout">
                                                 <Link to={`/Products/Id=${product.id}`}>
-                                                    <img src={`../assets/imagenes/${product.srcA}`}/>
+                                                    <img src={`../assets/imagenes/${product.srcA}`} alt={product.textoAlt}/>
                                                 </Link>
                                             </div>
                                         </TableCell>
@@ -67,12 +67,14 @@ const PurchaseSummary = () =>{
                                     )) 
                                 }
                                 <TableRow>
-                                    <TableCell colSpan={4}> <p>Comprado {date}, pago elegido: {buyer.payMethod}</p></TableCell>
-                                    <TableCell align="center" colSpan={1} className="tableTitle"> <p>Total</p></TableCell>
-                                    <TableCell align="center" colSpan={2} className="tableTitle"> <p>{total}</p></TableCell>                                    
+                                    <TableCell colSpan={4}><p>Fecha compra: {date}</p> </TableCell>
+                                    <TableCell align="center" colSpan={1}> <p>SubTotal ${total} (Descuento: -${total-finalPrice})</p></TableCell>
+                                    <TableCell align="center" colSpan={2} className="tableTitle"> <p>Precio Final ${finalPrice}</p></TableCell>                                    
                                 </TableRow>
                                 <TableRow>
-                                    <TableCell colSpan={1}> <p>ID compra: {orderID}</p></TableCell>
+                                    <TableCell colSpan={2}> <p>ID compra: {orderID}</p></TableCell>
+                                    <TableCell colSpan={2}> </TableCell>
+                                    <TableCell align="center" colSpan={2}> <p>Metodo de pago elegido: {payMethod}</p></TableCell>   
                                 </TableRow>
                                 </TableBody>
                             </Table> 

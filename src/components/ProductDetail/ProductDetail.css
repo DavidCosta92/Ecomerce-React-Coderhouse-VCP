@@ -69,3 +69,15 @@
 .productDetails .offerPrice p{
     font-size: 1.6rem;
 }
+
+/* media queries  */
+
+@media (min-width: 600px) {
+    .productDetails .offer{
+        margin-left: 300px;
+    }
+    .productDetails .offerPrice{
+        margin-left: 300px;
+        margin-top: -50px;
+    }
+}

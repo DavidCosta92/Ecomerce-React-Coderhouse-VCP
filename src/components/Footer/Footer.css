@@ -20,6 +20,9 @@
     margin-top: 25px;
     margin-bottom: 20px;
 }
+.footer .logoMarca {
+    margin-bottom: 35px;
+}
 .logoMarca img:hover, .logoMarca img:focus{
     transform: scale(1.2);
     cursor: pointer;

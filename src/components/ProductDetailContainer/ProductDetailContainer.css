@@ -1,12 +1,13 @@
-.spinner{
-    margin-left: 49%;
-    padding-top: 10%;
-    padding-bottom: 10%;
+.productDetails{
+    height: auto;
 }
 
-.skeletonTxt{
+.productDetails .skeletonTxt{
     margin: auto;
+    width:70vw;
 }
-.skeletonImg{
+
+.productDetails .skeletonImg{
     margin: auto;
+    width:70vw;
 }

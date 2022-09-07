@@ -73,9 +73,6 @@ export const GlobalStyles = createGlobalStyle`
 
 
 
-
-
-
   // FOOTER
   .footer{
     background-color: ${({ theme }) => theme.backgroundFooter};
@@ -195,8 +192,16 @@ p.totalPriceWidget{
 }
 
 
+// btn vaciar carrito
+.btnVaciarCarrito button.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.css-1e6y48t-MuiButtonBase-root-MuiButton-root{
+  color:${({ theme }) => theme.textBlackWhite};
+}
 
 
+// modal vaciar carrito
+.MuiBox-root.css-1wnsr1i{
+  background-color: ${({ theme }) => theme.backgroundWhiteBlack};
+}
 
 
 

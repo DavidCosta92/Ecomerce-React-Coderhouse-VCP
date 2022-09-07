@@ -13,11 +13,19 @@ import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 import { useForm } from "react-hook-form";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const PurchaseForm =()=>{
     const { register, handleSubmit, formState: { errors },setFocus }  = useForm();
-    const {cartProducts,subtotal, buyCart}=useContext(CartContext)
+    const {cartProducts, buyCart,totalPrice}=useContext(CartContext)
     const [success,setSuccess] = useState();
+    const [payMethod, setPayMethod]= useState("Efectivo");
+    const [finalPrice, setFinalPrice]=useState(0);
+    const EFECTIVO=0.9;
+    const TRANSFERENCIA=0.95;
+    const CREDITO=1;
+   
 
     useEffect(() => {
         setFocus("name");
@@ -31,8 +39,6 @@ const PurchaseForm =()=>{
         address:""
     })
     
-
-
     const [order, setOrder]=useState({
         items:cartProducts.map((product)=>{
             return{
@@ -46,15 +52,34 @@ const PurchaseForm =()=>{
             }
         }),
         buyer: {},
-        total: subtotal(cartProducts),
-        date: new Date().toLocaleString(), // poner otro tipo de fecha, que diga hace 5 horas fue comprado...
+        total: totalPrice,
+        payMethod: payMethod,
+        finalPrice: {},
+        date: new Date().toLocaleString(), 
     })
 
     const handleChange = (e) => {
-        setFormData({...formData, [e.target.name] : e.target.value})
+        if(e.target.name==="payMethod"){
+            setPayMethod(e.target.value);
+            switch (e.target.value){
+                case "Efectivo":
+                    setFinalPrice(totalPrice*EFECTIVO);
+                    break;
+                case "Transferencia":
+                    setFinalPrice(totalPrice*TRANSFERENCIA);
+                    break;
+                case "Tarjeta Credito":
+                    setFinalPrice(totalPrice*CREDITO);
+                    break;
+                default:
+
+            }
+        } else{
+            setFormData({...formData, [e.target.name] : e.target.value})
+        }
     }
     const submitData=(e)=>{
-        let newOrder={...order, buyer: formData}
+        let newOrder={...order, buyer: formData, finalPrice:finalPrice}
         pushData(newOrder)
     }
     
@@ -79,14 +104,16 @@ const PurchaseForm =()=>{
             case "XL":
                 productStock=product.stockXL-amount;
                 break;
+            default:
         }
         return productStock;
     }
 
     async function updateStock (productID,amount,size){    
-       const updateRef= doc(db, "products", productID);
-       getProductStock(productID,amount,size)
-       .then((resp)=>{
+        let updateStatus;
+        const updateRef= doc(db, "products", productID);
+        getProductStock(productID,amount,size)
+        .then((resp)=>{
         let data;
         switch (size){            
             case "XS":
@@ -104,31 +131,49 @@ const PurchaseForm =()=>{
             case "XL":
                 data={ stockXL: resp};
                 break;
+            default:
         }
-        const updateStock= setDoc(updateRef, data,{ merge:true })
-        // OPCIONAL PARA ERROR DE UPCDATE, DEBERIA HACER UN TOSTY O MODAL
-        .then(()=>{
-            console.log("Update exitoso")
-        })
-        .catch((error)=>{
-            console.log("Update erroneo", error)
-        });
-       })       
+        
+        const updateStock = setDoc(updateRef, data,{ merge:true })
+            .then(()=>{
+                console.log("Update exitoso", updateStock)   
+                updateStatus=true;   
+            })
+            .catch((error)=>{
+                console.log("Update erroneo", error)
+                updateStatus=false;   
+            });
+        
+       }) 
+       return updateStatus;
     }
 
-    function updateAllStocks (){
+    function updateAllStocks (){      
+        let updateAllStock;
         cartProducts.map((product)=>{
-            updateStock (product.id,product.inCart,product.size);
+            updateAllStock = updateStock (product.id,product.inCart,product.size);
         })
+        return updateAllStock;
     }
 
     const pushData = async (newOrder)=>{
+        const id = toast.loading("Estamos procesando el pedido..")
         const collectionOrder = collection(db, 'purchase orders');
         const orderDoc = await addDoc(collectionOrder,newOrder);
-        updateAllStocks ()
-        setSuccess(orderDoc.id);
-        buyCart(newOrder,orderDoc.id);
+
+        // SIMULACION DE DEMORA EN ACTUALIZAR INFO A FIREBASE..
+        let statusAllUpdates= updateAllStocks();
+        setTimeout(()=>{
+            if(statusAllUpdates){
+                toast.update(id, { render: "¡ Pedido Aprobado !", type: "success", isLoading: false });
+                setSuccess(orderDoc.id);
+                buyCart(newOrder,orderDoc.id); 
+            }else{
+                toast.update(id, { render: "¡Error inesperado! Vuelve a intentar por favor", type: "error", isLoading: false });
+            }
+        },3000)
     }
+
     const payMethods=()=>{
         return (
             <FormControl className="formMediosPagos" >
@@ -136,24 +181,25 @@ const PurchaseForm =()=>{
               <RadioGroup
                 row
                 aria-labelledby="demo-row-radio-buttons-group-label"
-                name="payMethod"                 
+                name="payMethod" 
+                onSubmit={handleSubmit(submitData)}                
               >
                 <FormControlLabel onChange={handleChange} value="Efectivo" control={<Radio {...register("payMethod", { required: true})}/>} label="Efectivo" className="radioBtnMedioPago" />
                 <div className="medioPago">
                     <MonetizationOnIcon/>
-                    <p>Pago efectivo contado, 10% OFF<div className="mediosPagoPrecio"> ${Math.round(subtotal(cartProducts)*0.9)}</div></p>
+                    <p>Pago efectivo contado, 10% OFF<div className="mediosPagoPrecio"> ${Math.round(totalPrice*EFECTIVO)}</div></p>
                 </div>
                
                 <FormControlLabel onChange={handleChange} value="Transferencia" control={<Radio {...register("payMethod", { required: true})}/>} label="Transferencia" className="radioBtnMedioPago"/>
                 <div className="medioPago">
-                    <AccountBalanceIcon/>
-                    <p>Pago con transferencia, 5% OFF<div className="mediosPagoPrecio"> ${Math.round(subtotal(cartProducts)*0.95)}</div></p>
+                    <AccountBalanceIcon/> 
+                    <p>Pago con transferencia, 5% OFF<div className="mediosPagoPrecio"> ${Math.round(totalPrice*TRANSFERENCIA)}</div></p>
                 </div>
                
                 <FormControlLabel onChange={handleChange} value="Tarjeta Credito" control={<Radio {...register("payMethod", { required: true})}/>} label="Tarjeta Credito" className="radioBtnMedioPago"/>
                 <div className="medioPago">
                     <CreditCardIcon/>
-                    <p>Credito, hasta 6 cuotas sin interes de<div className="mediosPagoPrecio"> ${Math.round(subtotal(cartProducts)/6)}</div></p>
+                    <p>Credito, hasta 6 cuotas sin interes de<div className="mediosPagoPrecio"> ${Math.round(totalPrice*CREDITO/6)}</div></p>
                 </div>
                 {errors.payMethod && <p className="errorForm">Debes seleccionar una forma de pago</p>}
               </RadioGroup>
@@ -161,17 +207,27 @@ const PurchaseForm =()=>{
           );
     }
 
-    {<div className="labelFormContacto">
+    <div className="labelFormContacto">
         <label >Nombre
         <input type="text" name="name" {...register("name", { required: true})} />
         {errors.name && <p className="errorForm">Necesitamos tu nombre para conocerte</p>}
         {errors.mensaje && errors.mensaje.type ==="minLength" && (<p className="errorForm">Al menos necesitamos 8 caracteres..</p>)}
         {errors.mensaje && errors.mensaje.type ==="maxLength" && <p className="errorForm">Mensaje demasiado largo, mantente en los 200 caracteres por favor</p>}
         </label>
-    </div>}
+    </div>
 
     return (
         <>  
+            <ToastContainer
+                    position="bottom-left"
+                    autoClose={4000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+            pauseOnHover/>
             {!success&& (
             <div className="formularioContacto ">
                 <fieldset>

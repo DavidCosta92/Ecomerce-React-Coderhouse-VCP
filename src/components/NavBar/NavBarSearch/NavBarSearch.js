@@ -1,5 +1,5 @@
 import "./NavBarSearch.css"
-import React, { useEffect } from 'react';
+import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import { useState } from "react";
 import {useNavigate} from 'react-router-dom';
@@ -15,7 +15,7 @@ const NavBarSearch = () =>{
     const navigate = useNavigate();
 
     function redirectSearch(){
-       navigate(`/search/search=${searchData}`);     
+       navigate(`/search/search=${searchData}`);   
     }
 
     function handleSubmit(e){
@@ -26,7 +26,7 @@ const NavBarSearch = () =>{
     return (
         <div className="containerNavBarSearch" >
             <form noValidate onSubmit={handleSubmit} onChange={handleChange}>
-                <TextField id="outlined-basic" label="PENDIENTE AUN.." variant="outlined"  value={searchData}/>
+                <TextField id="outlined-basic" label="Buscar.." variant="outlined"  value={searchData}/>
                 <SearchIcon className=" botonEnvio lupa"><input type="submit"/></SearchIcon>
             </form>            
         </div>

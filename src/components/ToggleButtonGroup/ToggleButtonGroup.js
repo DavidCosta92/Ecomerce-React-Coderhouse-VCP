@@ -1,11 +1,11 @@
 import * as React from 'react';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-import { useState } from 'react';
 import "./ToggleButtonGroup.css"
 import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 import CategoryIcon from '@mui/icons-material/Category';
+import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 
 
 export default function ColorToggleButton({orderProductsBy}) {
@@ -25,6 +25,7 @@ export default function ColorToggleButton({orderProductsBy}) {
         <ToggleButton value="priceAsc">Precio <KeyboardDoubleArrowUpIcon/></ToggleButton>
         <ToggleButton value="priceDesc">Precio <KeyboardDoubleArrowDownIcon/></ToggleButton>
         <ToggleButton value="category">Categorias <CategoryIcon/></ToggleButton>
+        <ToggleButton value="discount">Descuento <LocalOfferIcon/></ToggleButton>
         </ToggleButtonGroup>
     </div>
   );

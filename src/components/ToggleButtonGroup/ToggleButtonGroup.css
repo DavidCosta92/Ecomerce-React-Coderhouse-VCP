@@ -5,6 +5,12 @@
     justify-content: flex-end;
 
 }
+.toggleContainer button.MuiButtonBase-root.MuiToggleButton-root.MuiToggleButton-sizeMedium.MuiToggleButton-primary.MuiToggleButtonGroup-grouped.MuiToggleButtonGroup-groupedHorizontal.css-d9c359-MuiButtonBase-root-MuiToggleButton-root{
+    font-size: 0.6rem;
+}
+.toggleContainer svg{
+    margin-left: 2px;
+}
 
 .MuiToggleButtonGroup-root.css-1gjgmky-MuiToggleButtonGroup-root {
    margin-right:20px;

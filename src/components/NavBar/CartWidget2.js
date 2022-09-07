@@ -18,36 +18,70 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 
 export default function TemporaryDrawer() {
-    const { cartProducts, clearCart, addProductToCart,removeUnitFromCart,removeAllUnitsFromCart,totalPrice} = useContext(CartContext)
-
-    function renderProductsWidget(){
-      return(
-        <>
-          <p className='totalPriceWidget'>Carrito</p>
-          <Divider />
-          
-            {cartProducts.forEach((product) => (        
-              <ListItem key={product.title} disablePadding>
-                <ListItemButton>
-                    <img src={`/assets/imagenes/${product.srcA}`} className="productImgCartWidget"/>
-                    <p className="titleWidget">{product.title}</p>
-                  <div>
-                    <p className="priceWidget">$ {product.inCart*product.price}</p>
-                    <p className="cantWidget">Cant. {product.inCart}</p>
-                  </div>
-                  <div className='widgetAction'>
-                    <AddIcon className="WidgetAdd" onClick={()=> addProductToCart(product,1)}/>
-                    <RemoveIcon className="WidgetRemove" onClick={()=> removeUnitFromCart(product)}/>
-                    <DeleteIcon className="WidgetClear" onClick={()=> removeAllUnitsFromCart(product)}/>
-                  </div>
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </>
-      )
-    }
-
   const [state, setState] = React.useState({right: false});
+    const {cartProducts,clearCart, addProductToCart,removeUnitFromCart,removeAllUnitsFromCart,totalPrice} = useContext(CartContext);
+
+    function renderProductsWidget(){   
+      if(cartProducts){
+        return(
+          <>
+            <p className='totalPriceWidget'>Carrito</p>
+            <Divider />   
+              {cartProducts.map((product) => (  
+                <div className='productCartWidget'>   
+                <Divider />                  
+                <ListItem key={product.title} disablePadding>
+                  <ListItemButton>
+                      <img src={`/assets/imagenes/${product.srcA}`} className="productImgCartWidget" alt={product.textoAlt}/>
+                      <p className="titleWidget">{product.title}</p>
+                    <div>
+                      <p className="priceWidget">$ {product.inCart*product.price}</p>
+                      <p className="cantWidget">Cant. {product.inCart}</p>
+                    </div>
+                    <div className='widgetAction'>
+                      <AddIcon className="WidgetAdd" onClick={()=> addProductToCart(product,1)}/>
+                      <RemoveIcon className="WidgetRemove" onClick={()=> removeUnitFromCart(product)}/>
+                      <DeleteIcon className="WidgetClear" onClick={()=> removeAllUnitsFromCart(product)}/>
+                    </div>
+                    
+                  </ListItemButton>
+                </ListItem>
+                </div>
+              ))}
+            </>
+        )
+
+      }
+
+      }
+
+
+      function renderActionsCart(){
+        if(cartProducts){
+          if(cartProducts.length>0){
+            return(
+              <>
+                <Divider />
+                <ListItem key={"totalPriceWidget"} disablePadding>
+                  <ListItemButton>
+                  <p className="totalPriceWidget">{`Precio total $${totalPrice}`}</p>
+                  </ListItemButton>
+                </ListItem> 
+                <ListItem key={"comprarCarrito"} disablePadding className='containerBtnComprarCarrito'> 
+                  <Link to="/Checkout"><button className="comprarCarrito" onClick={()=>setState({right: false})}>COMPRAR CARRITO</button></Link>
+                </ListItem> 
+                <ListItem key={"eliminarCarrito"} disablePadding>
+                  <button className="eliminarCarrito" onClick={() => clearCart()}>Eliminar carrito</button>
+                </ListItem> 
+              </>     
+            )
+          } else{
+            return(             
+              <div className="carritoVacio"><p>¡Aun no has agregado productos al carrito! ¿Deseas ver algunas ofertas?</p><Link to="/"><button className="comprarCarrito" onClick={()=>setState({right: false})}>Ver Ofertas</button></Link></div>
+            )
+          }
+        }
+      }
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -62,27 +96,11 @@ export default function TemporaryDrawer() {
       role="presentation"
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <List>
+      <List className='productListCartWidget'>
       {renderProductsWidget()}
       </List>
-      {cartProducts.length > 0 && <Divider />}
       <List>       
-        {cartProducts.length > 0 && 
-        (    <ListItem key={"totalPriceWidget"} disablePadding>
-                <ListItemButton>
-                <p className="totalPriceWidget">{`Precio total $${totalPrice}`}</p>
-                </ListItemButton>
-            </ListItem> )         
-        }     
-        {cartProducts.length > 0 && 
-        (<ListItem key={"comprarCarrito"} disablePadding className='containerBtnComprarCarrito'> 
-            <Link to="/Checkout"><button className="comprarCarrito" onClick={()=>setState({right: false})}>COMPRAR CARRITO</button></Link>
-          </ListItem>  )        
-        }
-        {<ListItem key={"eliminarCarrito"} disablePadding>
-            {cartProducts.length>0? <button className="eliminarCarrito" onClick={() => clearCart()}>Eliminar carrito</button>:(<div className="carritoVacio"><p>¡Aun no has agregado productos al carrito! ¿Deseas ver algunas ofertas?</p><Link to="/"><button className="comprarCarrito" onClick={()=>setState({right: false})}>Ver Ofertas</button></Link></div>)}
-          </ListItem>          
-        }
+        {renderActionsCart()}
       </List>
     </Box>
   );

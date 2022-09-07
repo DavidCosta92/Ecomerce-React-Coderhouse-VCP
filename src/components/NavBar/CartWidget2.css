@@ -1,6 +1,6 @@
 
 .css-tlelie-MuiListItemText-root{
-    width: 50vw;
+    width: 40vw;
 }
 
 /*
@@ -12,9 +12,23 @@
 }
 */
 
-img.productImgCartWidget{
-    height: 150px;
+.productListCartWidget svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root:hover,
+.productListCartWidget svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root:focus,
+.productListCartWidget svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root:active{
+    color: white;
 }
+
+.productListCartWidget .MuiButtonBase-root.MuiListItemButton-root.MuiListItemButton-gutters.css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root{
+    padding: 15px 5px 15px 0;
+}
+.productCartWidget{
+    width: 100%;
+
+}
+img.productImgCartWidget{
+    height: 25vw;
+}
+
 
 button.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.css-1e6y48t-MuiButtonBase-root-MuiButton-root{
     padding: 0;
@@ -46,7 +60,7 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.Mu
     text-align: center;
     margin-left: 5px;
     margin-right: 5px;
-    width: 100px;
+    width: 70px;
 }
 .totalPriceWidget{
     text-align: center;
@@ -59,7 +73,7 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.Mu
     flex-direction: column;
     justify-content: center;
     align-items: space-evenly;
-    margin-left: 20px;
+    margin-left: 10px;
 }
 
 .WidgetAdd,.WidgetRemove,.WidgetClear{

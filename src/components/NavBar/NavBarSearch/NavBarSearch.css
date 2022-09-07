@@ -34,3 +34,15 @@ svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.botonEnvio.lupa.css-i4bv87-MuiSvgI
 svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.lupa.css-i4bv87-MuiSvgIcon-root{
     margin-left: 5px;
 }
+
+/* media queries  */
+
+@media (min-width: 992px) {
+    .containerNavBarSearch{
+        width: auto;
+    }
+    .navbar-expand-lg .navbar-nav{
+        text-align: center;
+        vertical-align: top;
+    }
+}

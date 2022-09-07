@@ -10,7 +10,7 @@
 .containerNav .navbar {
     margin: 0;
     display: flex;
-    justify-content:center;
+    justify-content:space-between;
 }
 .containerNav .navbar .container{
     margin: 0;
@@ -23,11 +23,14 @@
     width: 30%;
 }
 
+.marcaNavBar:hover{
+    transform: scale(1.1);
+}
+
 .marcaNavBar img{
     width: 80px;
 }
 .navbar-brand{
-    margin:10px;
 }
 .material-icons {
     font-size: 40px;
@@ -83,6 +86,7 @@ a.nav-link:hover {
 .brandContainer{
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 .brandContainer svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeMedium.css-i4bv87-MuiSvgIcon-root{
     width: 60px;

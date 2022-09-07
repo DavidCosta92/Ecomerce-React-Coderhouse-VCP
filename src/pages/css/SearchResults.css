@@ -1,0 +1,24 @@
+
+.spinner p{
+    text-align: center;
+    font-size: 1.6rem;
+}
+
+.spinnerWheel{
+    margin-left: 45vw;
+}
+.emptySearhTxt{
+    margin-left: 25px;
+    text-align: center; 
+}
+
+.emptySearhTitle{
+    padding: 0;
+    text-align: center;
+    font-size: 1.6rem;
+}
+
+.searchProducts p{
+    text-align: center;
+    font-size: 1.2rem;
+}
