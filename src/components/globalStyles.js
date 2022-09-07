@@ -145,7 +145,12 @@ export const GlobalStyles = createGlobalStyle`
   .offerPrice p{
     color:${({ theme }) => theme.textPriceAnima}
   }
-  button.MuiButtonBase-root.MuiToggleButton-root.MuiToggleButton-sizeMedium.MuiToggleButton-primary.MuiToggleButtonGroup-grouped.MuiToggleButtonGroup-groupedHorizontal.css-d9c359-MuiButtonBase-root-MuiToggleButton-root {
+
+
+
+// probando organizador de productos....
+
+  button.MuiButtonBase-root.MuiToggleButton-root.MuiToggleButton-sizeMedium.MuiToggleButton-primary.MuiToggleButtonGroup-grouped.MuiToggleButtonGroup-groupedHorizontal {
     color: ${({ theme }) => theme.textBlackWhite};
   }
   .css-1gjgmky-MuiToggleButtonGroup-root .MuiToggleButtonGroup-grouped:not(:first-of-type){
