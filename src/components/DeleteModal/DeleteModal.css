@@ -31,7 +31,7 @@
     background-color:rgba(20, 208, 17, 1);
 }
 
-.btnVaciarCarrito{
+#btnVaciarCarrito{
     background-color:rgba(255, 0, 0, 0.2);
     border-radius: 5px;
     padding-left: 3px;
@@ -42,7 +42,7 @@
 }
 
 
-.btnVaciarCarrito:hover{
+#btnVaciarCarrito:hover{
     background-color: rgba(255, 0, 0,0.7);
     color: white;
     font-weight: 500;

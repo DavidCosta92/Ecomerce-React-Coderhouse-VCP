@@ -40,9 +40,8 @@ const Checkout = () =>{
             <>
                 <div className="tableContainer tableCheckout">   
                     <p className="tituloCarrito"> Carrito</p>
-                    
-                    <TableContainer component={Paper} >
-                        <Table sx={{ minWidth: 700 }} aria-label="spanning table" className="table">
+                    <TableContainer component={Paper} id="tablaProductosCheckout">
+                        <Table sx={{ minWidth: 700 }} aria-label="spanning table" className="table" >
                             <TableHead>
                             <TableRow>
                                 <TableCell align="left" colSpan={3} className="tableTitle">

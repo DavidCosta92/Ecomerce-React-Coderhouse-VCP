@@ -186,14 +186,14 @@ export const GlobalStyles = createGlobalStyle`
     background-color:${({ theme }) => theme.backgroundFooter};
   }
 
-  .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1.MuiTableContainer-root.css-11xur9t-MuiPaper-root-MuiTableContainer-root{
+  .tableCheckout  #tablaProductosCheckout{
     background-color:${({ theme }) => theme.checkOutBackground};
   }
 
   .tableContainer .table p{
     color:${({ theme }) => theme.textBlackWhite};
   }
-  .btnVaciarCarrito{
+  #btnVaciarCarrito{
     color:${({ theme }) => theme.textWhiteBlackSmooth};
   }
   .MuiPaper-root.MuiPaper-elevation.MuiPaper-elevation16.MuiDrawer-paper.MuiDrawer-paperAnchorRight.css-1160xiw-MuiPaper-root-MuiDrawer-paper {
@@ -213,7 +213,7 @@ p.totalPriceWidget{
 
 
 // btn vaciar carrito
-.btnVaciarCarrito button.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.css-1e6y48t-MuiButtonBase-root-MuiButton-root{
+#btnVaciarCarrito button.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.css-1e6y48t-MuiButtonBase-root-MuiButton-root{
   color:${({ theme }) => theme.textBlackWhite};
 }
 

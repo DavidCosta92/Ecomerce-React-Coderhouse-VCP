@@ -27,7 +27,7 @@ const DeleteModal=({deleteFunc})=>{
     const handleClose = () => setOpen(false);
     
     return (
-        <div className="btnVaciarCarrito">
+        <div id="btnVaciarCarrito">
             <Button onClick={handleOpen} >Vaciar Carrito <DangerousIcon/></Button>
             <Modal            
             open={open}

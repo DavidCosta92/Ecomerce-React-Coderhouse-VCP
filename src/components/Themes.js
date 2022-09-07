@@ -74,7 +74,7 @@ export const darkTheme = {
     backgroundBlackWhite:'#ffffff',
     backgroundWhiteBlack:'#000000',
     
-    checkOutBackground:'#0004ff0a',
+    checkOutBackground:'#000e1bf0',
     cartWidgetModal:'#01101f',
     backgroundNavBar: '#000000',
     backgroundBtnHamb:'#fffcfc70',
