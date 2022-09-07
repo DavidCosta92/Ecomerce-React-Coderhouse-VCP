@@ -148,22 +148,21 @@ export const GlobalStyles = createGlobalStyle`
 
 
 
-// probando organizador de productos....
 
-  button.MuiButtonBase-root.MuiToggleButton-root.MuiToggleButton-sizeMedium.MuiToggleButton-primary.MuiToggleButtonGroup-grouped.MuiToggleButtonGroup-groupedHorizontal {
-    color: ${({ theme }) => theme.textBlackWhite};
-  }
   .css-1gjgmky-MuiToggleButtonGroup-root .MuiToggleButtonGroup-grouped:not(:first-of-type){
   
   }
 
-  .MuiToggleButtonGroup-root.css-1gjgmky-MuiToggleButtonGroup-root {
-    border: 1px solid ${({ theme }) => theme.smoothLine};
+  /* togle de ordenamiento productos */
 
+  .toggleContainer #toggleButtonGroupOrderProducts {
+    border: 1px solid ${({ theme }) => theme.smoothLine};
   }
-  .MuiToggleButtonGroup-root.css-1gjgmky-MuiToggleButtonGroup-root :hover{
+  .toggleContainer #toggleButtonGroupOrderProducts button{
+    color:${({ theme }) => theme.textBlackWhite}
+  }
+  .toggleContainer #toggleButtonGroupOrderProducts button:hover{
     background-color: ${({ theme }) => theme.btn1Hover};
-   
   }
 
   .formularioContacto input{
@@ -209,6 +208,14 @@ p.totalPriceWidget{
 }
 
 
+
+
+
+MODIFICACIONES DEPLOY
+// probando organizador de productos....
+/*   button.MuiButtonBase-root.MuiToggleButton-root.MuiToggleButton-sizeMedium.MuiToggleButton-primary.MuiToggleButtonGroup-grouped.MuiToggleButtonGroup-groupedHorizontal {
+  color: ${({ theme }) => theme.textBlackWhite};
+}  */
 
 
 

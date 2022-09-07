@@ -21,7 +21,7 @@ export default function ColorToggleButton({orderProductsBy}) {
         exclusive
         onChange={handleChange}
         aria-label="Platform"
-        >
+        id='toggleButtonGroupOrderProducts'>
         <ToggleButton value="priceAsc">Precio <KeyboardDoubleArrowUpIcon/></ToggleButton>
         <ToggleButton value="priceDesc">Precio <KeyboardDoubleArrowDownIcon/></ToggleButton>
         <ToggleButton value="category">Categorias <CategoryIcon/></ToggleButton>
