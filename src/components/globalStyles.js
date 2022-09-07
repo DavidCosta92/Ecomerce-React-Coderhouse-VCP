@@ -33,17 +33,13 @@ export const GlobalStyles = createGlobalStyle`
    }
 
    //cartWidget
-   svg.MuiSvgIcon-root.MuiSvgIcon-colorAction.MuiSvgIcon-fontSizeMedium.css-11pbyhm-MuiSvgIcon-root{
-
-   }
-
    .shoppingCartIconVCP{
     color:${({ theme }) => theme.textBlackWhite};
    }
 
    //cartWidget, badge Counter
-   span.MuiBadge-badge.MuiBadge-standard.MuiBadge-anchorOriginTopRight.MuiBadge-anchorOriginTopRightRectangular.MuiBadge-overlapRectangular.BaseBadge-badge.css-fvc8ir-MuiBadge-badge{
-    background-color:${({ theme }) => theme.brandColor};
+   .badgeContentVCP span.MuiBadge-badge.MuiBadge-standard.MuiBadge-anchorOriginTopRight.MuiBadge-anchorOriginTopRightRectangular.MuiBadge-overlapRectangular.BaseBadge-badge.css-fvc8ir-MuiBadge-badge{
+    background-color:${({ theme }) => theme.brandColor} !important;
     color:#ffffff;
    }
 

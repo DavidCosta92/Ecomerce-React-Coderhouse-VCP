@@ -8,14 +8,17 @@ import { useContext } from "react";
 import { CartContext } from '../../../context/CartContext';
 
 
+
 export default function ColorBadge() {  
   const {totalAmountInCart} = useContext(CartContext);
-
+// badgeContentVCP badgeConter
   return (
-    <Stack spacing={2} direction="row" className="badgeConter">
-      <Badge badgeContent={totalAmountInCart}>
-        <ShoppingCartIcon color="action" className='shoppingCartIconVCP'/>
+    <Stack spacing={2} direction="row" className="">
+       
+      <Badge badgeContent={totalAmountInCart} className='badgeContentVCP'>
+      <ShoppingCartIcon color="action" className='shoppingCartIconVCP'/>
       </Badge>
+      
     </Stack>
   );
 }
