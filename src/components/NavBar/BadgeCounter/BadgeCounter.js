@@ -14,7 +14,7 @@ export default function ColorBadge() {
   return (
     <Stack spacing={2} direction="row" className="badgeConter">
       <Badge badgeContent={totalAmountInCart}>
-        <ShoppingCartIcon color="action" />
+        <ShoppingCartIcon color="action" className='shoppingCartIconVCP'/>
       </Badge>
     </Stack>
   );

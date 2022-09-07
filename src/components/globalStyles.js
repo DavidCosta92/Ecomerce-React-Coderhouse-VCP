@@ -34,6 +34,10 @@ export const GlobalStyles = createGlobalStyle`
 
    //cartWidget
    svg.MuiSvgIcon-root.MuiSvgIcon-colorAction.MuiSvgIcon-fontSizeMedium.css-11pbyhm-MuiSvgIcon-root{
+
+   }
+
+   .shoppingCartIconVCP{
     color:${({ theme }) => theme.textBlackWhite};
    }
 
