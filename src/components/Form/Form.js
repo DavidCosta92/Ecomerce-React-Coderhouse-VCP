@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const Form = ()=>{
     const { register, handleSubmit, formState: { errors } }  = useForm();
     const onSubmit=()=>{
-        renderAlert("¡Gracias por escribirnos, en breve estaremos respondiendo!")
+        renderAlert("¡Gracias por escribirnos, pronto estaremos respondiendo!")
     }
     
     function renderAlert(msj){
