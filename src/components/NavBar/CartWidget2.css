@@ -180,6 +180,7 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.Mu
     #btnWidget{
         width: 100%;
         justify-content: flex-end;
+        align-items: end;
     }
     .carritoVacio{
         margin-top: 20%;

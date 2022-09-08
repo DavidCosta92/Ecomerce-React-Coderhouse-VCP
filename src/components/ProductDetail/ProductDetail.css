@@ -58,8 +58,7 @@
 }
 
 .productDetails .offer{
-    margin-left: 57%;
-    transform: rotate(25deg);
+    margin-left: 20px
 }
 
 .productDetails .offerPrice{
@@ -73,9 +72,6 @@
 /* media queries  */
 
 @media (min-width: 600px) {
-    .productDetails .offer{
-        margin-left: 300px;
-    }
     .productDetails .offerPrice{
         margin-left: 300px;
         margin-top: -50px;

@@ -50,7 +50,6 @@ function App() {
               </div>
         </>
     </ThemeProvider>
-
     </CartProvider>
     </BrowserRouter>
 

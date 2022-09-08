@@ -55,28 +55,31 @@ const ItemCounter=({unitsSelected, productData})=>{
                 setItemCounter();
         }
     }
+    function renderSizes(){
+        return (
+            <div className="talles">
+            <p>Elegi tu talle</p>
+            <div className="btnsTalles">
+                {stockXS>0?<button onClick={handleClickTalle} value="XS" className={size==="XS"&& "sizeClicked"}>XS</button>:<button className="btnSizeDisabled">XS</button>}
+                {stockS>0?<button onClick={handleClickTalle} value="S" className={size==="S"&& "sizeClicked"}>S</button>:<button className="btnSizeDisabled">S</button>}
+                {stockM>0?<button onClick={handleClickTalle} value="M" className={size==="M"&& "sizeClicked"}>M</button>:<button className="btnSizeDisabled">M</button>}
+                {stockL>0?<button onClick={handleClickTalle} value="L" className={size==="L"&& "sizeClicked"}>L</button>:<button className="btnSizeDisabled">L</button>}
+                {stockXL>0?<button onClick={handleClickTalle} value="XL" className={size==="XL"&& "sizeClicked"}>XL</button>:<button className="btnSizeDisabled">XL</button>}
+            </div>
+            <p className="stockDisponible"> {size!=="" && `Stock disponible en talle ${size}: ${sizeStock}`}</p>
+        </div>
+        )
+    }
 
     return(
         <>
-            <div className="talles">
-                <p>Elegi tu talle</p>
-                <div className="btnsTalles">
-                    {stockXS>0?<button onClick={handleClickTalle} value="XS" className={size==="XS"&& "sizeClicked"}>XS</button>:<button className="btnSizeDisabled">XS</button>}
-                    {stockS>0?<button onClick={handleClickTalle} value="S" className={size==="S"&& "sizeClicked"}>S</button>:<button className="btnSizeDisabled">S</button>}
-                    {stockM>0?<button onClick={handleClickTalle} value="M" className={size==="M"&& "sizeClicked"}>M</button>:<button className="btnSizeDisabled">M</button>}
-                    {stockL>0?<button onClick={handleClickTalle} value="L" className={size==="L"&& "sizeClicked"}>L</button>:<button className="btnSizeDisabled">L</button>}
-                    {stockXL>0?<button onClick={handleClickTalle} value="XL" className={size==="XL"&& "sizeClicked"}>XL</button>:<button className="btnSizeDisabled">XL</button>}
-                </div>
-                <p className="stockDisponible"> {size!=="" && `Stock disponible en talle ${size}: ${sizeStock}`}</p>
-            </div>
+            {renderSizes()}
             <div className="ItemCounter">
                 <button className="restarUnidad" onClick={subtractUnit}>-</button>
                     <p className="cantidadUnidad">{ItemCounter}</p>
                 <button className="sumarUnidad" onClick={addUnit}>+</button>
             </div>
-            {size===""?<p>Seleccione un talle para continuar</p> : <button className="btnBuy" onClick={()=> onAdd()}>¡Agregar prenda en talle {size} !</button>}
-
-            
+            {size===""?<p>Seleccione un talle para continuar</p> : <button className="btnBuy" onClick={()=> onAdd()}>¡Agregar prenda en talle {size} !</button>}           
         </>
     )
 }

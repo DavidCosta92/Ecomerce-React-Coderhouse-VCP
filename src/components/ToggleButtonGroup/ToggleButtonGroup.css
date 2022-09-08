@@ -2,7 +2,7 @@
     width: 100%;
     display: flex;
     justify-content: flex-end;
-
+    margin-bottom: 30px;
 }
 .toggleContainer #toggleButtonGroupOrderProducts{
     margin-right:20px;
@@ -15,4 +15,10 @@
 }
 .toggleContainer #toggleButtonGroupOrderProducts svg{
     margin-left: 2px;
+}
+.toggleContainerTxt{
+    text-align: right;
+    margin-right: 30px;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
 }

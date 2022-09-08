@@ -53,14 +53,6 @@ const CartProvider =({children})=>{
             setCartProducts(cartProducts);
             calcSumTotal(cartProducts);
             saveLocalStorage();
-   
-            
-
-
-//// REVISAR NOTIFICACIONES, HAY ALGUN ERROR CON LAS CANTIDADES DE ITEM COUNTER.. NO  ME LAS MUESTRA CORRECTAMENTE
-
-
-
             let es;
             ItemCounter=1? es="" : es="es"
             renderAlert("success",`Agregaste ${ItemCounter} unidad${es} de ${productData.title}`)
@@ -111,12 +103,11 @@ const CartProvider =({children})=>{
     }
 
     function clearCart(){
-        setTotalAmountInCart(0); // ERROR, NO BORRA LA CANTIDAD DE ITEMS, CUANDO DESDE EL WIDGET SE APRIETA ELIMINAR CARRITO!!
+        setTotalAmountInCart(0);
         setTotalPrice(0);
         setCartProducts([]);
         deleteCartLocalStorage();
     }
-
 
     function calcSumTotal(cartProducts){
         let totalAmount=0;

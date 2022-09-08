@@ -38,10 +38,6 @@ export const lightTheme = {
     backgroundBtnHamb:'#ffffff',
     backgroundBtnSize:'#ffffffb5',
 
-
-
-
-
 }
 export const darkTheme = {
     body: '#151515',
@@ -82,7 +78,5 @@ export const darkTheme = {
     backgroundNavBar: '#000000',
     backgroundBtnHamb:'#fffcfc70',
     backgroundBtnSize:'#ffffffb5',
-
-
     
 }

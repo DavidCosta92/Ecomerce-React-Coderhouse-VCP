@@ -15,7 +15,6 @@ const SearchResults =()=>{
     let auxSearch= search.toLowerCase();    
 
     function getProductList(){
-        console.log("llame funcion getProductList, LLAMANDO A FIREBASE")
         const queryCollection= collection (db, "products");
         getDocs(queryCollection)
             .then(res=> saveProducts(res))

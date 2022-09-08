@@ -14,19 +14,22 @@ export default function ColorToggleButton({orderProductsBy}) {
   };
 
   return (
-    <div className='toggleContainer'>
-        <ToggleButtonGroup
-        color="primary"
-        value={""}
-        exclusive
-        onChange={handleChange}
-        aria-label="Platform"
-        id='toggleButtonGroupOrderProducts'>
-        <ToggleButton value="priceAsc">Precio <KeyboardDoubleArrowUpIcon/></ToggleButton>
-        <ToggleButton value="priceDesc">Precio <KeyboardDoubleArrowDownIcon/></ToggleButton>
-        <ToggleButton value="category">Categorias <CategoryIcon/></ToggleButton>
-        <ToggleButton value="discount">Descuento <LocalOfferIcon/></ToggleButton>
-        </ToggleButtonGroup>
-    </div>
+    <>
+      <p className="toggleContainerTxt"> Ordenar por </p>
+      <div className='toggleContainer'>
+          <ToggleButtonGroup
+          color="primary"
+          value={""}
+          exclusive
+          onChange={handleChange}
+          aria-label="Platform"
+          id='toggleButtonGroupOrderProducts'>
+          <ToggleButton value="priceAsc">Precio <KeyboardDoubleArrowUpIcon/></ToggleButton>
+          <ToggleButton value="priceDesc">Precio <KeyboardDoubleArrowDownIcon/></ToggleButton>
+          <ToggleButton value="category">Categorias <CategoryIcon/></ToggleButton>
+          <ToggleButton value="discount">Descuento <LocalOfferIcon/></ToggleButton>
+          </ToggleButtonGroup>
+      </div>
+    </>
   );
 }

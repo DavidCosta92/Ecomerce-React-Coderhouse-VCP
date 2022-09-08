@@ -11,25 +11,29 @@ const ProductDetail=({data}) =>{
     const [unitsSelected, setUnitsSelected] = useState(0);
     let stockTotal=stockXS+stockS+stockM+stockL+stockXL;
 
+    function renderDiscount(){
+        return(
+            <div className="offer">
+                <p>-{discount}% OFF</p>
+            </div>
+        )
+    }
+    function renderDiscountPrice(){
+        return(
+            <div className="offerPrice">    
+                <p>${price}</p>
+            </div>
+        )
+    }
     return(
         <div className="productCard productDetails">
             <p className="tituloProducto">{title}</p>
-            {discount!==0 && (
-                        <div className="offer">
-                            <p>-{discount}%OFF</p>
-                        </div>
-            )}
+            {discount!==0 && (renderDiscount())}
             <p className="productDescription">{description}</p>
             <SlideProductImg a={srcA} b={srcB} c={srcC} d={srcD}  textoAlt={textoAlt} />
             <p className={`productPrice ${discount!==0 && "discountPrice"}`}>${price*discount/100+price}</p>
-            {discount!==0 && (
-                        <div className="offerPrice">    
-                            <p>${price}</p>
-                        </div>
-                )} 
-            
+            {discount!==0 && ( renderDiscountPrice() )} 
             <p className="productDescriptionExtra">{descriptionExtra}</p>
-            
             
             {stockTotal===0? 
                 (<p className="soldOutText">Producto Agotado</p>) 

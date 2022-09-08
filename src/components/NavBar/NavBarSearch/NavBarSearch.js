@@ -11,18 +11,15 @@ const NavBarSearch = () =>{
         setSearchData(e.target.value)
         redirectSearch();        
     }
-    
     const navigate = useNavigate();
-
     function redirectSearch(){
        navigate(`/search/search=${searchData}`);   
     }
-
     function handleSubmit(e){
         e.preventDefault();
         redirectSearch();
     }
-  
+
     return (
         <div className="containerNavBarSearch" >
             <form noValidate onSubmit={handleSubmit} onChange={handleChange}>
@@ -32,5 +29,4 @@ const NavBarSearch = () =>{
         </div>
     )
 }
-
 export default NavBarSearch;

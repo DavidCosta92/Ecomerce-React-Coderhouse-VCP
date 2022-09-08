@@ -18,13 +18,18 @@ const PurchaseSummary = () =>{
 
     const {items,total,date, buyer, finalPrice,payMethod}=order;
 
-    return (
-        <div>
+    function renderSuccess(){
+        return (
             <div className="cartelSucces">
                 <p>¡Ya estamos preparando tu compra!</p>
                 <p>Revisa tu casilla de email, recibiras un link de pago con mas instrucciones</p>
                 <p>♥ Gracias por elegirnos ♥</p>
             </div>
+        )
+    }
+
+    function renderTableSumary(){
+        return (
             <div className="tableContainer">   
                 <TableContainer component={Paper} id="tablaProductosResumenCompra">
                             <Table sx={{ minWidth: 700 }} aria-label="spanning table" className="table">
@@ -80,8 +85,14 @@ const PurchaseSummary = () =>{
                             </Table> 
                 </TableContainer>
             </div>
+        )
+    }
+
+    return (
+        <div>
+            {renderSuccess()}
+            {renderTableSumary()}
         </div>
     )
 }
-
 export default PurchaseSummary;

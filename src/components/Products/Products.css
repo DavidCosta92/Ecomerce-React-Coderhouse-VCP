@@ -75,8 +75,7 @@ p.productDescription {
     position: absolute;
     z-index: 100;
     border-radius: 15px;
-    transform: rotate(-25deg);
-    margin-left: 275px;
+    margin-left: 15px;
 }
 
 .offer p{
@@ -84,17 +83,13 @@ p.productDescription {
     font-weight: 700;
     margin: 0;
     padding: 2px;
-    animation-name: priceAnima;
-    animation-duration: 0.6s;
-    animation-direction: alternate;
-    animation-iteration-count: infinite;
 }
-
+/*
 @keyframes priceAnima {
     from {font-size: 1.2rem; opacity: 0.5;}
     to {font-size: 1.5rem; opacity: 1;}
 } 
-
+*/
 .discountPrice{
     text-decoration: line-through;
     font-weight: 300;
@@ -107,8 +102,9 @@ p.productDescription {
     z-index: 100;
     border-radius: 15px;
     margin-top: -40px;
-    transform: rotate(20deg);
+    transform: rotate(-20deg);
 }
+
 
 .offerPrice p{
     font-style: italic;
@@ -119,17 +115,7 @@ p.productDescription {
 }
 
 /* media queries  */
-
-@media (max-width: 450px) {
-    .offer{
-        margin-left: 250px;
-    }
-}
 @media (min-width: 450px) {
-    .offer{
-        margin-left: 300px;
-    }
-    
     .offerPrice{
         margin-left: 300px;
     }

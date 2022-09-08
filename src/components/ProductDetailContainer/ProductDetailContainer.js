@@ -3,11 +3,8 @@ import {useParams} from "react-router-dom"
 import ProductDetail from "../ProductDetail/ProductDetail";
 import "./ProductDetailContainer.css"
 import { Skeleton } from "@mui/material";
-
 import db from "../../firebaseConfig"
 import { doc, getDoc } from "firebase/firestore";
-
-
 
 const ProductsDetailContainer=()=>{
     const [product, setProduct]= useState([]);

@@ -1,4 +1,6 @@
 import "./PurchaseForm.css"
+import 'react-toastify/dist/ReactToastify.css';
+
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import {useState, useEffect } from 'react'
@@ -14,7 +16,6 @@ import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 const PurchaseForm =()=>{
     const { register, handleSubmit, formState: { errors },setFocus }  = useForm();
@@ -206,16 +207,6 @@ const PurchaseForm =()=>{
             </FormControl>
           );
     }
-/*
-    <div className="labelFormContacto">
-        <label >Nombre
-        <input type="text" name="name" {...register("name", { required: true})} />
-        {errors.name && <p className="errorForm">Necesitamos tu nombre para conocerte</p>}
-        {errors.mensaje && errors.mensaje.type ==="minLength" && (<p className="errorForm">Al menos necesitamos 8 caracteres..</p>)}
-        {errors.mensaje && errors.mensaje.type ==="maxLength" && <p className="errorForm">Mensaje demasiado largo, mantente en los 200 caracteres por favor</p>}
-        </label>
-    </div>
-*/
 
     return (
         <>  
@@ -234,40 +225,31 @@ const PurchaseForm =()=>{
                 <fieldset>
                 <legend>Completa los datos para terminar la compra</legend>
                 <form className="formulario" onSubmit={handleSubmit(submitData)} onChange={handleChange}>
-
                     <label className="name">Nombre 
                         <input type="text"  name="name" {...register("name", { required: true})}/>
                         {errors.name && <p className="errorForm">Necesitamos tu nombre para realizar tu factura</p>}
                     </label>
-
                     <label className="lastName">Apellido 
                         <input type="text" name="lastName" {...register("lastName", { required: true})} />
                         {errors.lastName && <p className="errorForm">Necesitamos tu nombre para realizar tu factura </p>}
                     </label>
-
                     <label className="email">Email
                         <input type="email"  name="email" {...register("email", { required: true})}  placeholder="Solo lo usaremos para contactarnos contigo.."/>
                         {errors.email && <p className="errorForm">Necesitamos tu email para contactarnos en caso de ser necesario</p>}
                     </label>
-
                     <label className="phone">Telefono
                         <input type="number"  name="phone" {...register("phone", { required: true})} placeholder="Solo lo usaremos para contactarnos contigo.."/>
                         {errors.phone && <p className="errorForm">Necesitamos tu numero de telefono para contactarnos en caso de ser necesario</p>}
                     </label>
-
                     <label className="address">Direccion
                         <input type="text"  name="address" {...register("address", { required: true})} placeholder="Requerido para realizar envio"/>
                         {errors.text && <p className="errorForm">Necesitamos tu direccion para enviarte la compra</p>}
                     </label>
-
                     {payMethods()}
-
                     <input type="submit" class="botonEnvio"/>
                 </form></fieldset>
             </div>
             )}
-            
-            
         </>
     )
 }

@@ -11,11 +11,9 @@ import { Link } from "react-router-dom";
 import ColorBadge from './BadgeCounter/BadgeCounter.js';
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
-
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import DeleteIcon from '@mui/icons-material/Delete';
-
 
 export default function TemporaryDrawer() {
   const [state, setState] = React.useState({right: false});
@@ -43,18 +41,14 @@ export default function TemporaryDrawer() {
                       <RemoveIcon className="WidgetRemove" onClick={()=> removeUnitFromCart(product)}/>
                       <DeleteIcon className="WidgetClear" onClick={()=> removeAllUnitsFromCart(product)}/>
                     </div>
-                    
                   </ListItemButton>
                 </ListItem>
                 </div>
               ))}
             </>
-        )
-
+          )
+        }
       }
-
-      }
-
 
       function renderActionsCart(){
         if(cartProducts){

@@ -13,12 +13,25 @@ e inspirado en la Tienda Online de Van Como Piña.
 Posee todas las funcionalidades Front-end necesarias 
 para una utilizacion intuitiva y agradable de la App.
 
+Para el diseño se uso la tecnica de Movile First, para ver que sea
+totalmente responsive. 
+
+Tambien posee modo Dark, para procurar un mejor uso durante horarios
+nocturnos.
+
+Espero que les guste, y sino, cualquier sugerencia sera muy bien recibida! 
+
+¡GRACIAS TOTALES a todo el equipo de CODERHOUSE, profesores y tutores!
+
+## Links interesantes
+- GitHub: https://github.com/DavidCosta92/Ecomerce-React-Coderhouse-VCP.git
+- Deploy: https://ecomerce-react-coderhouse-vcp.vercel.app/
+- LinkeIn: https://www.linkedin.com/in/david-costa-yafar
 
 ## Principales caracteristicas
-Firebase
+Base de datos, Firebase.
 - Almacenar productos, Titulo, talles, stocks, precio, oferta porcentual, descripcion de producto, ruta de imagen, texto alterativo. 
 - Al realizar compra, el stock es modificado segun cantidades y talles elegido, realizado los updates correspodientes.
-- 
 
 ## Pantallas y componentes pricipales:
 - Home y Categorias.
@@ -62,7 +75,6 @@ Firebase
 - El estado del carrio se guarda en caso de que se cierre el navegador.
 - La orden de compra se envia a Firebase para almacenarce, ademas actualiza los stocks correspondiente en cada talle. Orden indica comprador productos y metodo de pago, con su respectivo descuento si correspondiere.
 
-
 ## Resumen de compra
 - Muestra mensaje de compra exitosa, y advierte que sera enviado un mail.
 - Muestra detalles de productos comprados, cantidades y talles.
@@ -74,13 +86,6 @@ Firebase
 - Muestra la cantidad total de items en carrito y el precio total que representan
 - Da opcion de eliminar todos los productos en carrito, o bien pasar a vista de Checkout.
 
-
-## App 
-- App totalmente responsive, diseñada con tecnica de Movile First, para resoluciones a partir de las 400px.
-- Light/dark mode toggle, con persistencia entre secciones.
-- 
-- 
-- 
 ## Librerias
 - Material Ui para iconos, navbar, modales y otros componentes esteticos principalmente.
 - React Hook Form, para validar formularios y manejar los envios.
