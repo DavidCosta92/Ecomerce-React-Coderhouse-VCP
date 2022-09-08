@@ -3,6 +3,9 @@
     text-transform: uppercase;
     font-weight: 500;
 }
+.containerNav .navbar .container .navbar-nav{
+    width: -webkit-fill-available;
+}
 .containerNav{
     border-bottom-style: groove;
     border-bottom-color: rgba(0, 0, 0, 0.301);
@@ -21,6 +24,8 @@
 }
 .marcaNavBar {
     width: 30%;
+    margin-left:15px;
+    margin-right: 5px;
 }
 
 .marcaNavBar:hover{

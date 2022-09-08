@@ -6,7 +6,7 @@ const Products=({data}) =>{
     let totalStock=stockXS+stockS+stockM+stockL+stockXL;
     return(
         <Link to={`/Products/Id=${id}`}>
-            <div className="productCard">
+            <div className="productCard" id="productInListConteiner">
                 <p className="tituloProducto">{title}</p>
                 {discount!==0 && (
                         <div className="offer">

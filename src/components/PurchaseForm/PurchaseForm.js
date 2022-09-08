@@ -206,7 +206,7 @@ const PurchaseForm =()=>{
             </FormControl>
           );
     }
-
+/*
     <div className="labelFormContacto">
         <label >Nombre
         <input type="text" name="name" {...register("name", { required: true})} />
@@ -215,6 +215,7 @@ const PurchaseForm =()=>{
         {errors.mensaje && errors.mensaje.type ==="maxLength" && <p className="errorForm">Mensaje demasiado largo, mantente en los 200 caracteres por favor</p>}
         </label>
     </div>
+*/
 
     return (
         <>  

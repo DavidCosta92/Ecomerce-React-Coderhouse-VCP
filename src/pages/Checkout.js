@@ -100,7 +100,6 @@ const Checkout = () =>{
     
     return (
         <>  
-        {(cartProducts.length===0 && orderID===undefined)?(renderEmptyCart()) : (cartProducts.length!==0? (renderTableCart()) : (<PurchaseSummary/>))}
         <ToastContainer
                     position="bottom-left"
                     autoClose={4000}
@@ -111,6 +110,7 @@ const Checkout = () =>{
                     pauseOnFocusLoss
                     draggable
             pauseOnHover/>
+        {(cartProducts.length===0 && orderID===undefined)?(renderEmptyCart()) : (cartProducts.length!==0? (renderTableCart()) : (<PurchaseSummary/>))}
         </>
     )
 }

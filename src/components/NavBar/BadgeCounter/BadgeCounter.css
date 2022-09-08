@@ -1,6 +1,8 @@
 
 svg.MuiSvgIcon-root.MuiSvgIcon-colorAction.MuiSvgIcon-fontSizeMedium.css-11pbyhm-MuiSvgIcon-root {
     width: 60px;
+    border-radius: 5px;
+    margin-left: 10px;
 }
 
 span.MuiBadge-badge.MuiBadge-standard.MuiBadge-anchorOriginTopRight.MuiBadge-anchorOriginTopRightRectangular.MuiBadge-overlapRectangular.BaseBadge-badge.css-fvc8ir-MuiBadge-badge {

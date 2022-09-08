@@ -41,7 +41,7 @@ const Form = ()=>{
 
     return (
         <>
-            <div className="formularioContacto">
+            <div className="formularioContacto" id="aboutUs">
                 <form className="formulario" onSubmit={handleSubmit(onSubmit)}>
                     <div className="labelFormContacto">
                         <label >Nombre</label>

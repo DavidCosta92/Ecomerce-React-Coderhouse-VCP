@@ -16,11 +16,33 @@
     padding-bottom: 50px;
 }
 .aboutContainer .sliderAbout{
-    width: 90%;
+    width: 70%;
     margin: auto;
  }
 .aboutContainer .formAbout .formularioContacto{
     margin-left: 5vw;
-    
 }
 
+.aboutContainer .sliderAbout .swiperslide img{
+    margin-left: 10%;
+    width: 80%;
+}
+
+/*   media queries */
+
+@media (min-width: 1400px) {
+    .aboutContainer{
+        display: flex;
+        flex-wrap: wrap;    
+    }
+    .aboutContainer .formAbout #aboutUs{
+        width: 40vw;
+        max-width: 600px;
+    }
+
+    .aboutContainer .sliderAbout{
+        width: 40vw;
+        max-width: 600px;
+    }
+
+}

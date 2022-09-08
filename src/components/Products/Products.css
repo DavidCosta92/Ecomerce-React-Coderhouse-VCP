@@ -127,22 +127,10 @@ p.productDescription {
 }
 @media (min-width: 450px) {
     .offer{
-        margin-left: 225px;
+        margin-left: 300px;
     }
+    
     .offerPrice{
-        margin-left: 200px;
+        margin-left: 300px;
     }
-}
-
-
-@media (min-width: 600px) {
-    .offer{
-        margin-left:200px;
-    }
-
-
-
-
-
-
 }

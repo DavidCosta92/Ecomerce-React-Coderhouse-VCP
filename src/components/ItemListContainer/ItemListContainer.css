@@ -40,16 +40,32 @@
 
 }
 
-/* media queries  */
-
+/* media queries  #productInListConteiner */
+@media (max-width: 450px) {
+     .offer{
+        margin-left: 250px;
+    }
+}
 @media (min-width: 450px) {
     .productContainer{
         flex-direction: row;
         flex-wrap: wrap;
     }
+    .productContainer .offer{
+        margin-left: 200px;
+    }
+    .productContainer  .offerPrice{
+        margin-left: 230px;
+    }
 }
 
 @media (min-width: 600px) {
+    .productContainer .offer{
+        margin-left: 200px;
+    }
+    .productContainer  .offerPrice{
+        margin-left: 200px;
+    }
     .skeletonTxtTitle{
         width: 280px;
     }

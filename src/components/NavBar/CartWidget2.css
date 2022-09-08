@@ -20,6 +20,7 @@
 
 .productListCartWidget .MuiButtonBase-root.MuiListItemButton-root.MuiListItemButton-gutters.css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root{
     padding: 15px 5px 15px 0;
+    width: auto;
 }
 .productCartWidget{
     width: 100%;
@@ -27,6 +28,7 @@
 }
 img.productImgCartWidget{
     height: 25vw;
+    max-height: 150px;
 }
 
 
@@ -105,6 +107,9 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.Mu
     font-size: 1.2rem;
     font-weight: 700;
     margin-bottom: 2%; 
+    max-width: 300px;
+    margin-top: 30px;
+
 }
 .comprarCarrito:hover{
     background-color: rgba(0, 255, 0, 0.8);
@@ -122,4 +127,62 @@ button.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.Mu
 }
 .eliminarCarrito:hover{
     background-color: rgba(255, 0, 0);
+}
+
+
+
+/* media queries  */
+ 
+
+@media (min-width: 450px) {
+    .titleWidget{
+        width: 35%;
+   }
+}
+@media (min-width: 600px) {
+    .titleWidget{
+        width: 40%;
+   }
+    .widgetAction{
+        flex-direction: row;
+        margin-left: 15px;
+    }
+    #btnWidget{
+        display: flex;
+        justify-content: space-around;
+    }
+    .containerBtnComprarCarrito{
+        width: 50%;
+        max-width: 300px;
+    }
+    .containerBtnEliminarCarrito{
+        width: 50%;
+        max-width: 300px;
+    }
+
+
+}
+@media (min-width: 700px) {
+    .titleWidget{
+        width: 35%;
+   }
+   .widgetAction{
+    flex-direction: row;
+    }
+    .productListCartWidget .MuiButtonBase-root.MuiListItemButton-root.MuiListItemButton-gutters.css-16ac5r2-MuiButtonBase-root-MuiListItemButton-root{
+        justify-content: space-around;
+    }
+    .carritoVacio{
+        margin-top: 30%;
+    }
+}
+@media (min-width: 1000px) {
+    #btnWidget{
+        width: 100%;
+        justify-content: flex-end;
+    }
+    .carritoVacio{
+        margin-top: 20%;
+    }
+
 }

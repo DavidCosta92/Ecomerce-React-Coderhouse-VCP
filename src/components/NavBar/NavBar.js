@@ -12,7 +12,7 @@ import SwitchColorMode from '../SwitchColorMode/SwitchColorMode'
 const Navv=({theme, themeToggler})=>{
     return (
         <div className='containerNav'>
-            <Navbar expand="lg">
+            <Navbar expand="xl">
                 <Container>
                 <SwitchColorMode theme={theme} themeToggler= {themeToggler} />
                 <Link to="/">

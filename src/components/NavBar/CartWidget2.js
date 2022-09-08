@@ -67,12 +67,14 @@ export default function TemporaryDrawer() {
                   <p className="totalPriceWidget">{`Precio total $${totalPrice}`}</p>
                   </ListItemButton>
                 </ListItem> 
-                <ListItem key={"comprarCarrito"} disablePadding className='containerBtnComprarCarrito'> 
-                  <Link to="/Checkout"><button className="comprarCarrito" onClick={()=>setState({right: false})}>COMPRAR CARRITO</button></Link>
-                </ListItem> 
-                <ListItem key={"eliminarCarrito"} disablePadding>
-                  <button className="eliminarCarrito" onClick={() => clearCart()}>Eliminar carrito</button>
-                </ListItem> 
+                <div id='btnWidget'>
+                  <ListItem key={"comprarCarrito"} disablePadding className='containerBtnComprarCarrito'> 
+                    <Link to="/Checkout"><button className="comprarCarrito" onClick={()=>setState({right: false})}>COMPRAR CARRITO</button></Link>
+                  </ListItem> 
+                  <ListItem key={"eliminarCarrito"} disablePadding className='containerBtnEliminarCarrito'>
+                    <button className="eliminarCarrito" onClick={() => clearCart()}>Eliminar carrito</button>
+                  </ListItem>
+                </div>
               </>     
             )
           } else{

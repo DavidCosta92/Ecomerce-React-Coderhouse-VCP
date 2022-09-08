@@ -1,6 +1,7 @@
 .formularioContacto {
     width: 85vw;
     margin: auto;
+    max-width: 600px;
 }
 .formularioContacto label{
     width: 100%;
@@ -8,10 +9,6 @@
     flex-direction: column;
     margin-top: 15px;
     font-weight: 700;
-}
-
-.MuiFormGroup-root.MuiFormGroup-row.css-qfz70r-MuiFormGroup-root{
-    
 }
 
 
