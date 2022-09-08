@@ -93,3 +93,8 @@ Base de datos, Firebase.
 - React Styled Components, para funcionalidad Light / Dark mode
 - React Tostify, para notificaciones.
 - Firebase, para base de datos
+
+
+![Van como piña Preview 2](https://user-images.githubusercontent.com/89800442/189241770-1a3e90a8-5e02-489c-8a31-a4c6bb87b671.gif)
+
+
