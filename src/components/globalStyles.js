@@ -26,6 +26,9 @@ export const GlobalStyles = createGlobalStyle`
     color:${({ theme }) => theme.textBlackWhite};
   }
 
+  #btnRemove{
+    color:${({ theme }) => theme.textBlackWhite};
+  }
   .toggleTheme:hover{
     background-color: ${({ theme }) => theme.textBlackWhite};
     color:${({ theme }) => theme.textkWhiteBlack};
@@ -165,13 +168,6 @@ export const GlobalStyles = createGlobalStyle`
     color:${({ theme }) => theme.textPriceAnima}
   }
 
-
-
-
-  .css-1gjgmky-MuiToggleButtonGroup-root .MuiToggleButtonGroup-grouped:not(:first-of-type){
-  
-  }
-
   /* togle de ordenamiento productos */
 
   .toggleContainer #toggleButtonGroupOrderProducts {
@@ -207,7 +203,6 @@ export const GlobalStyles = createGlobalStyle`
 
   .comprarCarrito, .eliminarCarrito{
     color:${({ theme }) => theme.textBlackWhite};
-
   }
 
 // PURCHASE FORM
