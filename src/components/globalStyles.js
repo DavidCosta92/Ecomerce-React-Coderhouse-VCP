@@ -189,7 +189,7 @@ export const GlobalStyles = createGlobalStyle`
     background-color:${({ theme }) => theme.backgroundFooter};
   }
 
-  .tableCheckout  #tablaProductosCheckout{
+  .tableCheckout  #tablaProductosCheckout, .tableContainer #tablaProductosResumenCompra{
     background-color:${({ theme }) => theme.checkOutBackground};
   }
 
@@ -202,11 +202,13 @@ export const GlobalStyles = createGlobalStyle`
 
   .MuiPaper-root.MuiPaper-elevation.MuiPaper-elevation16.MuiDrawer-paper.MuiDrawer-paperAnchorRight{
     background-color:${({ theme }) => theme.cartWidgetBkg};
+    color:${({ theme }) => theme.textBlackWhite};
   }
 
-p.totalPriceWidget{
+  .comprarCarrito, .eliminarCarrito{
+    color:${({ theme }) => theme.textBlackWhite};
 
-}
+  }
 
 // PURCHASE FORM
 .formMediosPagos .css-u4tvz2-MuiFormLabel-root{

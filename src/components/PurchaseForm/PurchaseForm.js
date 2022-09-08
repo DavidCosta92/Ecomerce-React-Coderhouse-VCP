@@ -165,7 +165,7 @@ const PurchaseForm =()=>{
         let statusAllUpdates= updateAllStocks();
         setTimeout(()=>{
             if(statusAllUpdates){
-                toast.update(id, { render: "¡ Pedido Aprobado !", type: "success", isLoading: false });
+                toast.update(id, { render: "¡ Pedido Aprobado !", type: "success", isLoading: false , autoClose: 4000 });
                 setSuccess(orderDoc.id);
                 buyCart(newOrder,orderDoc.id); 
             }else{

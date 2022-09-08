@@ -23,7 +23,7 @@ const Navv=({theme, themeToggler})=>{
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link><Link to="/" className='txtNav'>CASITTTTA</Link></Nav.Link>
+                            <Nav.Link><Link to="/" className='txtNav'>Home</Link></Nav.Link>
                             <Nav.Link><Link to="/AboutUs" className='txtNav'>About Us</Link></Nav.Link>
                             <NavDropdown title="Categorias" id="basic-nav-dropdown">
                                 <NavDropdown.Item className='btnLinkNav'><Link to="/Categories/verTodo" className='txtNav'>Ver todo</Link></NavDropdown.Item>

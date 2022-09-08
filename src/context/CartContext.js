@@ -64,8 +64,6 @@ const CartProvider =({children})=>{
             let es;
             ItemCounter=1? es="" : es="es"
             renderAlert("success",`Agregaste ${ItemCounter} unidad${es} de ${productData.title}`)
-            console.log("mostrando es", es)
-            console.log("mostrando  ItemCounter",  ItemCounter)
         }           
     }
 

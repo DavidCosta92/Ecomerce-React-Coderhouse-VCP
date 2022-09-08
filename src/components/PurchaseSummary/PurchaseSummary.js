@@ -26,7 +26,7 @@ const PurchaseSummary = () =>{
                 <p>♥ Gracias por elegirnos ♥</p>
             </div>
             <div className="tableContainer">   
-                <TableContainer component={Paper} >
+                <TableContainer component={Paper} id="tablaProductosResumenCompra">
                             <Table sx={{ minWidth: 700 }} aria-label="spanning table" className="table">
                                 <TableHead>
                                 <TableRow>
