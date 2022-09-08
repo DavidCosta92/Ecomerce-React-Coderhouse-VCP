@@ -62,6 +62,9 @@ export const GlobalStyles = createGlobalStyle`
    .containerNav .nombreMarca{
     color:${({ theme }) => theme.textBlackWhite};
    }
+   .containerNav .nombreMarca:hover{
+    color:${({ theme }) => theme.brandColor};
+   }
 
 
    .containerNavBarSearch .MuiInputBase-root{
@@ -196,12 +199,11 @@ export const GlobalStyles = createGlobalStyle`
   #btnVaciarCarrito{
     color:${({ theme }) => theme.textWhiteBlackSmooth};
   }
-  .MuiPaper-root.MuiPaper-elevation.MuiPaper-elevation16.MuiDrawer-paper.MuiDrawer-paperAnchorRight.css-1160xiw-MuiPaper-root-MuiDrawer-paper {
-    background-color: ${({ theme }) => theme.cartWidgetModal};
-    color:${({ theme }) => theme.textBlackWhite};
 
-    
-}
+  .MuiPaper-root.MuiPaper-elevation.MuiPaper-elevation16.MuiDrawer-paper.MuiDrawer-paperAnchorRight{
+    background-color:${({ theme }) => theme.cartWidgetBkg};
+  }
+
 p.totalPriceWidget{
 
 }
@@ -213,7 +215,7 @@ p.totalPriceWidget{
 
 
 // btn vaciar carrito
-#btnVaciarCarrito button.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.css-1e6y48t-MuiButtonBase-root-MuiButton-root{
+#btnVaciarCarrito button{
   color:${({ theme }) => theme.textBlackWhite};
 }
 

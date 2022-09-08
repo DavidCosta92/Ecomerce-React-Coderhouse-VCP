@@ -15,6 +15,8 @@ export const lightTheme = {
 
     brandColor: '#032d59',
 
+    cartWidgetBkg: '#ffffff',
+
     text1:'#000000',
     text2SemiDisabled:'#5b5959e5',
     textBlackWhite:'#000000',
@@ -59,6 +61,7 @@ export const darkTheme = {
 
     brandColor: '#027cff',
     
+    cartWidgetBkg: '#031120',
 
     text1:'#ffffff',
     text2SemiDisabled:'#faf4f4e5',

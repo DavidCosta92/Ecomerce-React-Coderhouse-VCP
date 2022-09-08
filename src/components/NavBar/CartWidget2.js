@@ -114,8 +114,10 @@ export default function TemporaryDrawer() {
             anchor={anchor}
             open={state[anchor]}
             onClose={toggleDrawer(anchor, false)}
-          >
+            >
+            <div id="pruebaWidget">              
             {list(anchor)}
+            </div>
           </Drawer>
         </React.Fragment>
       ))}

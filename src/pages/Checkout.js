@@ -75,9 +75,9 @@ const Checkout = () =>{
                                     <TableCell align="center"><p>{product.price}</p></TableCell>
                                     <TableCell align="center"><p>{product.price*product.inCart}</p></TableCell>
                                     <TableCell align="center">
-                                        <AddIcon className="btnAdd" onClick={()=>addUnitsToCart(product,1)}/>
-                                        <RemoveIcon className="btnRemove" onClick={()=>removeUnitFromCart(product)}/>
-                                        <DeleteIcon className="btnClear" onClick={()=>removeAllUnitsFromCart(product)}/>
+                                        <AddIcon id="btnAdd" onClick={()=>addUnitsToCart(product,1)}/>
+                                        <RemoveIcon id="btnRemove" onClick={()=>removeUnitFromCart(product)}/>
+                                        <DeleteIcon id="btnClear" onClick={()=>removeAllUnitsFromCart(product)}/>
                                     </TableCell>
                                     </TableRow>
                                 )) 
