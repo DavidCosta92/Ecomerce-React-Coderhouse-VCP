@@ -13,7 +13,7 @@ e inspirado en la Tienda Online de Van Como Piña.
 Posee todas las funcionalidades Front-end necesarias 
 para una utilizacion intuitiva y agradable de la App.
 
-Para el diseño se uso la tecnica de Movile First, para ver que sea
+Para el diseño se uso la tecnica de Mobile First, para ver que sea
 totalmente responsive. 
 
 Tambien posee modo Dark, para procurar un mejor uso durante horarios
